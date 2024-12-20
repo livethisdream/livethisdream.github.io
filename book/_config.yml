@@ -2,10 +2,10 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: My sample book
-author: DFEC
+title: Landing Page
+author: Neil Rogers
 logo: logo.png
-copyright: '2023'
+copyright: '2025'
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -27,7 +27,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/usafa-ece/jupyterbook-template  # Online location of your book
+  url: https://github.com/livethisdream/livethisdream.github.io # Online location of your book
   path_to_book: book  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
