@@ -2,9 +2,9 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Landing Page
+title: "Let's Build Something..."
 author: Neil Rogers
-logo: logo.png
+logo: images/chamber.jpg
 copyright: '2025'
 
 # Force re-execution of notebooks on each build.
