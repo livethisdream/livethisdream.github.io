@@ -1,4 +1,1 @@
-jupyter-book
-pre-commit
-# Uncomment if using mermaid diagrams
-# sphinxcontrib.mermaid
+nbconvert

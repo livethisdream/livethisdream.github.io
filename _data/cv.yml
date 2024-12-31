@@ -1,0 +1,84 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Neil Rogers
+    - name: Title
+      value: Assistant Professor of Electrical and Computer Engineering
+    - name: University
+      value: United States Air Force Academy
+
+- title: Education
+  type: time_table
+  contents:
+    - title: PhD
+      institution: Air Force Institute of Technology
+      year: 2014
+      description:
+        - Nondestructive Electromagnetic Characterization of Anisotropic Materials
+    - title: MSEE
+      institution: Air Force Institute of Technology
+      year: 2011
+      description:
+        - High Powered Microwave Systems
+    - title: BSEE
+      institution: University of Tulsa
+      year: 2003
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: Senior Military Faculty and Assistant Professor of Electrical and Computer Engineering
+      institution: United States Air Force Academy
+      year: 2018-2024
+      description:
+        - ECE 343
+        - Description 2.
+        - title: Description 3.
+          contents:
+            - Sub-description 1.
+            - Sub-description 2.
+    - title: Deputy Director of Engineering
+      institution: JSTARS Recap
+      year: 2014-2018
+      description:
+        - Description 1.
+        - Description 2.
+
+    - title: Section Chief
+      institution: Directed Energy Directorate, AFRL, Kirtland
+      year: 2009-2011
+
+    - title: Project Manager
+      institution: NASIC
+      year: 2004-2007
+      description:
+
+
+#- title: Honors and Awards
+#  type: time_table
+#  contents:
+#    - year: 1921
+#      items:
+#        - Nobel Prize in Physics
+#        - Matteucci Medal
+#    - year: 2029
+#      items:
+#        - Max Planck Medal
+#
+#- title: Academic Interests
+#  type: nested_list
+#  contents:
+#    - title: Topic 1.
+#      items:
+#        - Description 1.
+#        - Description 2.
+#    - title: Topic 2.
+#      items:
+#        - Description 1.
+#        - Description 2.
+#
+#- title: Other Interests
+#  type: list
+#  contents:
+#    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.

@@ -1,0 +1,165 @@
+{
+  "basics": {
+    "name": "Neil Rogers",
+    "label": "Asssistant Professor of ECE",
+    "image": "",
+    "email": "neil.rogers.1@afacademy.af.edu",
+    "url": "https://livethisdream.github.io",
+    "summary": "",
+    "location": {
+      "address": "United States Air Force Academy",
+      "city": "CO",
+       "postalCode": "2E38"
+    },
+//    "profiles": [
+//      {
+//        "network": "Twitter",
+//        "username": "AlbertEinstein",
+//        "url": "https://twitter.com/AlbertEinstein"
+//      }
+//    ]
+  },
+  "work": [
+    {
+      "name": "United States Air Force Academy",
+      "position": "Assistant Professor of Electrical and Computer Engineering",
+      "startDate": "2018",
+      "endDate": "2024",
+      "summary": "Research director, course director for many 300 and 400 level courses.",
+    },
+    {
+      "name": "JSTARS Recap Program Office",
+      "position": "Deputy Director of Engineering",
+      "startDate": "2014",
+      "endDate": "2018",
+      "summary": "Developed Systems Engineering processes and analyzed critical designs for an $8B program.",
+    },
+    {
+      "name": "Air Force Research Lab, Directed Energy Directorate",
+      "position": "Section Chief",
+      "startDate": "2009",
+      "endDate": "2011",
+      "summary": "Active denial technology section chief and advanced microwave sources section chief.",
+    },
+    {
+      "name": "National Air and Space Intelligence Center",
+      "position": "Project Manager",
+      "startDate": "2003",
+      "endDate": "2007",
+      "summary": "Research director, course director for many 300 and 400 level courses.",
+    }
+  ],
+  "education": [
+    {
+      "institution": "Air Force Institute of Technology",
+      "location": "WPAFB, OH",
+      "url": "https://www.afit.edu/",
+      "area": "Nondestructive Electromagnetic Material Evaluation",
+      "studyType": "PhD",
+      "startDate": "2014",
+      "endDate": "2018",
+    },
+    {
+      "institution": "Air Force Institute of Technology",
+      "location": "WPAFB, OH",
+      "url": "https://www.afit.edu/",
+      "area": "High Powered Microwave Sources",
+      "studyType": "MSEE",
+      "startDate": "2007",
+      "endDate": "2009",
+    },
+    {
+      "institution": "University of Tulsa",
+      "location": "Tulsa, OK",
+      "url": "https://www.utulsa.edu/",
+      "area": "Electrical Engineering",
+      "studyType": "BSEE",
+      "startDate": "1999",
+      "endDate": "2003",
+    }
+  ],
+//  "awards": [
+//    {
+//      "title": "Nobel Prize in Physics",
+//      "date": "1921-11-01",
+//      "awarder": "Royal Swedish Academy of Sciences",
+//      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
+//      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+//    }
+//  ],
+//  "certificates": [
+//    {
+//      "name": "Machine Learning",
+//      "date": "2018-01-01",
+//      "issuer": "Stanford University",
+//      "url": "https://example.com",
+//      "icon": "fa-solid fa-location-dot"
+//    },
+//    {
+//      "name": "Quantum Computing",
+//      "date": "2018-01-01",
+//      "issuer": "Stanford University",
+//      "url": "https://example.com",
+//      "icon": "fa-solid fa-tag"
+//    }
+//  ],
+//  "publications": [
+//    {
+//      "name": "Zur Elektrody/namik bewegter Körper",
+//      "publisher": "Annalen der Physik",
+//      "releaseDate": "1905-06-30",
+//      "url": "https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies",
+//      "summary": "It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source."
+//    },
+//    {
+//      "name": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
+//      "publisher": "Annalen der Physik",
+//      "releaseDate": "1905-03-18",
+//      "url": "https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt",
+//      "summary": "In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921."
+//    },
+//    {
+//      "name": "Die Grundlage der allgemeinen Relativitätstheorie",
+//      "publisher": "Annalen der Physik",
+//      "releaseDate": "1916-03-20",
+//      "url": "https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie",
+//      "summary": "The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914)."
+//    }
+//  ],
+//  "skills": [
+//    {
+//      "name": "Physics",
+//      "level": "Master",
+//      "icon": "fa-solid fa-hashtag",
+//      "keywords": [
+//        "Quantum Mechanics",
+//        "Quantum Computing",
+//        "Quantum Information",
+//        "Quantum Cryptography",
+//        "Quantum Communication",
+//        "Quantum Teleportation"
+//      ]
+//    }
+//  ],
+  "interests": [
+    {
+      "name": "Music",
+      "icon": "fa-solid fa-tag",
+      "keywords": [
+        "Metal",
+        "Rock"
+      ]
+    }
+  ],
+
+//  "projects": [
+//    {
+//      "name": "Quantum Computing",
+//      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
+//      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
+//      "startDate": "2018-01-01",
+//      "endDate": "2018-01-01",
+//      "url": "https://example.com"
+//    }
+//  ]
+}

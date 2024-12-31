@@ -1,0 +1,14 @@
+# this file uses prebuilt image in dockerhub
+services:
+  jekyll:
+    image: al-folio-rogers:latest #amirpourmand/al-folio:latest
+    build: .
+    entrypoint: ["./startup.sh"]
+    ports:
+      - 8080:8080
+      - 35729:35729
+    #command: bash -c "rm -f Gemfile.lock && bundle exec jekyll serve --port=8080 --host=0.0.0.0 --livereload"
+    volumes:
+      - .:/srv/jekyll
+    environment:
+      - JEKYLL_ENV=development
