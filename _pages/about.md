@@ -2,7 +2,7 @@
 layout: about
 title: <strong>Neil</strong> Rogers
 permalink: /
-description: Assistant Professor | Tinkerer | Mentor
+description: Assistant Professor | Builder | Improver
 nav: false
 #nav_order: 1
 #subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
@@ -18,4 +18,6 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I love making things better...
+I bring **high-energy** teaching methods coupled with expertise in developing novel, low-cost research solutions. I 
+look at everything I see and ask, "how can I make this **better**?" I love to **collaborate and elevate others** 
+along the way. Teaching and **student-focused** research is my **greatest professional passion**.

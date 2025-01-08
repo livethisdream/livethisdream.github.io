@@ -25,7 +25,7 @@ Fairchild 2E38
 
 <img src="/assets/img/EIQR.png" alt="QR code" width="75"/>
 
-# Course Goals & Objectives
+# Goals & Objectives
 Cadets enrolled in the course shall develop the ability to analyze and understand electrostatics, magnetostatics, 
 and electromagnetic-wave propagation and their roles in modern electronic systems.
 
@@ -106,9 +106,10 @@ on demonstrated mastery. Earning a 1 on an assessment indicates mastery of the a
 specification scale of: 0, 0.5, and 1 for each problem. The final exam will be taken during the assigned period during finals week and will be graded similarly.  \\
 
 **Engagement Credits (EC)** You may earn engagement points by engaging with the course content in the following ways:
-	- Completing **practice problems**
-	- Attending **EI**
-	- Up to 5 engagement points may be earned for completing a **research paper** on a relevant, pre-approved 
+
+- Completing **practice problems**
+- Attending **EI**
+- Up to 5 engagement points may be earned for completing a **research paper** on a relevant, pre-approved 
 topic. The paper must be in IEEE format, contain at least 3 scholarly references, and adhere to submission standards contained in this syllabus.
 
 # Learning Objectives
