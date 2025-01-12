@@ -175,7 +175,7 @@ latest_posts:
 
 # Markdown and syntax highlight
 markdown: kramdown
-highlighter: rouge
+highlighter: none #rouge
 kramdown:
   input: GFM
   syntax_highlighter_opts:
