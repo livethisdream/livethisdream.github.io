@@ -48,22 +48,32 @@ ninja.data = [{
           title: 'Syllabus',
           description: "[&quot;Start Here&quot;]",
           section: "Ece343",handler: () => {
-              window.location.href = "/ece343/1_ece343_syllabus/";
+              window.location.href = "/ece343/0_ece343_syllabus/";
             },},{id: "ece343-course-overview",
           title: 'Course Overview',
           description: "Where are we going?",
           section: "Ece343",handler: () => {
-              window.location.href = "/ece343/2_ece343_ch1/";
+              window.location.href = "/ece343/1_ece343_ch1/";
             },},{id: "ece343-fields",
           title: 'Fields',
           description: "Basic Emag Field Info",
           section: "Ece343",handler: () => {
-              window.location.href = "/ece343/3_ece343_ch2/";
+              window.location.href = "/ece343/2_ece343_ch2/";
+            },},{id: "ece343-transmission-lines",
+          title: 'Transmission Lines',
+          description: "Bridging the gap from circuits to waves",
+          section: "Ece343",handler: () => {
+              window.location.href = "/ece343/3_ece343_ch3/";
+            },},{id: "ece343-electrostatics",
+          title: 'Electrostatics',
+          description: "Electric fields start somewhere.",
+          section: "Ece343",handler: () => {
+              window.location.href = "/ece343/4_ece343_ch4/";
             },},{id: "ece448-syllabus",
           title: 'Syllabus',
           description: "Start Here",
           section: "Ece448",handler: () => {
-              window.location.href = "/ece448/1_ece448/";
+              window.location.href = "/ece448/0_ece448_syllabus_placeholder/";
             },},{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
