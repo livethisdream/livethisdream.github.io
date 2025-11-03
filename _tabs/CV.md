@@ -232,7 +232,7 @@ I am a technology builder with proven expertise in tackling the hardest problems
 
 ### PRINCIPAL SCIENTIST I
 
-**Electromagnetic Applications** | Lakewood, CO | *June 2025-Sept 2025*
+**Electromagnetic Applications** \| Lakewood, CO \| *June 2025-Sept 2025*
 
 * Guides long-term strategy on $4.2M in RF-focused engineering consulting, simulation, and development projects.
 
@@ -431,7 +431,7 @@ I am a technology builder with proven expertise in tackling the hardest problems
 
 [**Dyadic Green's Functions for a Parallel Plate Waveguide Filled with Uniaxial Media**](https://usncursi.org/archive/nrsm/2014/html/Session_B6.htm) \| N. Rogers and M. Havrilla \| URSI National Radio Science Meeting \| January 2014
 
-**2.5 MW Active Denial Technology Gyrotron: Background and Updates** \| P. Mardahl and N. Rogers \| 13th Annual Directed Energy Symposium | Nov 2010
+**2.5 MW Active Denial Technology Gyrotron: Background and Updates** \| P. Mardahl and N. Rogers \| 13th Annual Directed Energy Symposium \| Nov 2010
 
 **Two technical posters (titles unreleasable)** \| N. Rogers \| 13th Annual Directed Energy Symposium \| Nov 2010
 
