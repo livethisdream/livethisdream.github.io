@@ -3,6 +3,8 @@ layout: page
 title: CV
 icon: fa-solid fa-book
 order: 2
+toc: true
+pin: false
 ---
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
