@@ -1,0 +1,13 @@
+<div class="link-preview-card note-card">
+  <div class="note-icon">
+    <i class="fas {{ include.icon | default: 'fa-info-circle' }}"></i>
+  </div>
+  <div class="link-preview-content">
+    {% if include.title %}
+    <h4 class="link-preview-title">{{ include.title }}</h4>
+    {% endif %}
+    <p class="link-preview-description">
+      {{ include.content }}
+    </p>
+  </div>
+</div>
