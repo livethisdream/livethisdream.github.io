@@ -106,3 +106,4 @@ title: Neil's Wishlist
     </a>
 </div>
 
+[Quad Cortex (Grey)](https://www.sweetwater.com/store/detail/QuadCortex--neural-dsp-quad-cortex-quad-core-digital-effects-modeler-profiler-floorboard "Quad Cortex")
