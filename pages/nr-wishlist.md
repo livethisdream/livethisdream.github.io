@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2025-12-03 19:49_
+_Last updated: 2025-12-08 05:49_
 
 ## High Priority
 
@@ -103,6 +103,7 @@ _Last updated: 2025-12-03 19:49_
     </a>
 </div>
 
+- https://www.roguefitness.com/rogue-echo-bike
 ## Low Priority
 
 <div class="link-preview-card">
