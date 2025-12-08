@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2025-12-08 05:49_
+_Last updated: 2025-12-08 05:55_
 
 ## High Priority
 
@@ -103,7 +103,18 @@ _Last updated: 2025-12-08 05:49_
     </a>
 </div>
 
-- https://www.roguefitness.com/rogue-echo-bike
+
+<div class="link-preview-card">
+    <a href="https://www.roguefitness.com/rogue-echo-bike" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('https://assets.roguefitness.com/f_auto,q_auto,c_limit,w_1600,b_rgb:ffffff/catalog/Conditioning/Endurance%20/Bikes/ECHOBIKE/ECHOBIKE-H_t5871p.png');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Rogue Echo Bike</h4>
+            <p class="link-preview-description">This belt-driven, overbuilt unit provides a rock solid foundation producing a smooth, consistent ride, while a high-contrast, battery-powered LCD console allows athletes to track intervals, distance, calories burned, heart rate, and more. Get yours today!</p>
+            <span class="link-preview-url">www.roguefitness.com</span>
+        </div>
+    </a>
+</div>
+
 ## Low Priority
 
 <div class="link-preview-card">
