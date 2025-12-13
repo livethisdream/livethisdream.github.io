@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2025-12-13 10:00_
+_Last updated: 2025-12-13 10:15_
 
 ## High Priority
 
@@ -50,6 +50,42 @@ _Last updated: 2025-12-13 10:00_
             <h4 class="link-preview-title">Quad Cortex (Grey)</h4>
             <p class="link-preview-description">Quad Cortex</p>
             <span class="link-preview-url">www.sweetwater.com</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://repfitness.com/products/kettlebells-kg?variant=41731316088990" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('http://repfitness.com/cdn/shop/products/Shopify-KB-3002-16-Thumbnail.jpg?v=1736200777');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Pair of 28kg kettlebells</h4>
+            <p class="link-preview-description">Shop Kettlebells (kg) at REP Fitness. Gravity die casting, color-coded handles, kg and lb markings, and a shiny black finish. Bring the gym home!</p>
+            <span class="link-preview-url">repfitness.com</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://repfitness.com/products/kettlebells-kg?variant=41731316088990" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('http://repfitness.com/cdn/shop/products/Shopify-KB-3002-16-Thumbnail.jpg?v=1736200777');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Pair of 28kg kettlebells</h4>
+            <p class="link-preview-description">Shop Kettlebells (kg) at REP Fitness. Gravity die casting, color-coded handles, kg and lb markings, and a shiny black finish. Bring the gym home!</p>
+            <span class="link-preview-url">repfitness.com</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://repfitness.com/products/kettlebells-kg?variant=41731316088990" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('http://repfitness.com/cdn/shop/products/Shopify-KB-3002-16-Thumbnail.jpg?v=1736200777');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Pair of 28kg kettlebells</h4>
+            <p class="link-preview-description">Shop Kettlebells (kg) at REP Fitness. Gravity die casting, color-coded handles, kg and lb markings, and a shiny black finish. Bring the gym home!</p>
+            <span class="link-preview-url">repfitness.com</span>
         </div>
     </a>
 </div>
