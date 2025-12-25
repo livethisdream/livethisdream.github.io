@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2025-12-25 15:15_
+_Last updated: 2025-12-25 15:30_
 
 ## High Priority
 
@@ -124,18 +124,6 @@ _Last updated: 2025-12-25 15:15_
             <h4 class="link-preview-title">Spider Grills Temperature Controller</h4>
             <p class="link-preview-description">Buy Spider Grills Venom Fan-Powered Temperature Controller with Wi-Fi Bluetooth and App Control for Weber Kettle Grills: Grill Thermometers - Amazon.com ✓ FREE DELIVERY possible on eligible purchases</p>
             <span class="link-preview-url">a.co</span>
-        </div>
-    </a>
-</div>
-
-
-<div class="link-preview-card">
-    <a href="https://gamelabusa.com/products/all-in-one-gamelab-console" target="_blank" rel="noopener noreferrer">
-        <div class="link-preview-image" style="background-image: url('http://gamelabusa.com/cdn/shop/files/21_d99e9a7c-e627-4a57-9efb-3581c0812c45.png?v=1764546346');"></div>
-        <div class="link-preview-content">
-            <h4 class="link-preview-title">Fun Game Console</h4>
-            <p class="link-preview-description">🕹️ Ready out of the box🕹️ Save &amp; Resume Where You Left Off🕹️ 12-Hour Battery, No Wifi Required🕹️ 1-Year warranty</p>
-            <span class="link-preview-url">gamelabusa.com</span>
         </div>
     </a>
 </div>
