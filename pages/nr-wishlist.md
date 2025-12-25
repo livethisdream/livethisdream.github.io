@@ -3,33 +3,9 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2025-12-25 10:15_
+_Last updated: 2025-12-25 10:30_
 
 ## High Priority
-
-<div class="link-preview-card">
-    <a href="https://www.yeti.com/drinkware/mugs/21071507363.html" target="_blank" rel="noopener noreferrer">
-        <div class="link-preview-image" style="background-image: url('https://yeti-webmedia.imgix.net/asset/27191b26-d3c0-4813-a8a2-283affbee2b7/W/site_studio_drinkware_Rambler_14oz_CL_Mug_2-0_White_Front_1499_B_2400x2400.png?bg=0fff&auto=format,compress&w=846&h=846');"></div>
-        <div class="link-preview-content">
-            <h4 class="link-preview-title">Yeti Ceramic-Lined Mug</h4>
-            <p class="link-preview-description">YETI</p>
-            <span class="link-preview-url">www.yeti.com</span>
-        </div>
-    </a>
-</div>
-
-
-<div class="link-preview-card">
-    <a href="https://shop.flipperzero.one/" target="_blank" rel="noopener noreferrer">
-        <div class="link-preview-image" style="background-image: url('http://shop.flipperzero.one/cdn/shop/files/main-2_b5c7bce3-0d29-43d9-ade5-0244b23c1f51.jpg?v=1626188164');"></div>
-        <div class="link-preview-content">
-            <h4 class="link-preview-title">Flipper Zero</h4>
-            <p class="link-preview-description">Flipper Zero is a versatile multi-tool, based on ultra low power STM32 MCU for daily exploring of access control systems and radio protocols. Fully open source and customisable.</p>
-            <span class="link-preview-url">shop.flipperzero.one</span>
-        </div>
-    </a>
-</div>
-
 
 <div class="link-preview-card">
     <a href="https://theprayerishare.com/" target="_blank" rel="noopener noreferrer">
@@ -91,30 +67,6 @@ _Last updated: 2025-12-25 10:15_
 </div>
 
 ## Medium Priority
-
-<div class="link-preview-card">
-    <a href="https://a.co/d/fAImavP" target="_blank" rel="noopener noreferrer">
-        
-        <div class="link-preview-content">
-            <h4 class="link-preview-title">GiiKER Puzzle Game</h4>
-            <p class="link-preview-description">Buy GiiKER Super Decoder, 600-Level Code-Breaking Puzzle Game for 1-2 Players, Handheld Games for Kids and Adults, Birthday Gift for Boys and Girls, Travel Games for Road Trip: Handheld Games - Amazon.com ✓ FREE DELIVERY possible on eligible purchases</p>
-            <span class="link-preview-url">a.co</span>
-        </div>
-    </a>
-</div>
-
-
-<div class="link-preview-card">
-    <a href="https://www.amazon.com/dp/B0CGGPLDX5/" target="_blank" rel="noopener noreferrer">
-        
-        <div class="link-preview-content">
-            <h4 class="link-preview-title">Building a Non-Anxious Life</h4>
-            <p class="link-preview-description">Building a Non-Anxious Life - Kindle edition by Delony, Dr. John, Ramsey, Dave. Download it once and read it on your Kindle device, PC, phones or tablets. Use features like bookmarks, note taking and highlighting while reading Building a Non-Anxious Life.</p>
-            <span class="link-preview-url">www.amazon.com</span>
-        </div>
-    </a>
-</div>
-
 
 <div class="link-preview-card">
     <a href="https://soundhealth.life/products/sonu-band" target="_blank" rel="noopener noreferrer">
