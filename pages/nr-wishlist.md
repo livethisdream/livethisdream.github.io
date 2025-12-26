@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2025-12-25 18:21_
+_Last updated: 2025-12-25 18:22_
 
 ## High Priority
 
@@ -30,19 +30,31 @@ _Last updated: 2025-12-25 18:21_
     </a>
 </div>
 
-## Medium Priority
 
 <div class="link-preview-card">
-    <a href="https://soundhealth.life/products/sonu-band" target="_blank" rel="noopener noreferrer">
-        <div class="link-preview-image" style="background-image: url('http://soundhealth.life/cdn/shop/files/image_sonu_band-gray-product-square.png?v=1752210876');"></div>
+    <a href="https://repfitness.com/products/kettlebells-kg?variant=41731316088990" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('http://repfitness.com/cdn/shop/products/Shopify-KB-3002-16-Thumbnail.jpg?v=1736200777');"></div>
         <div class="link-preview-content">
-            <h4 class="link-preview-title">Sonu Band for Sinus Relief</h4>
-            <p class="link-preview-description">SONU is a clinically proven, drug-free vibrational sound therapy headband that relieves nasal allergy symptoms congestion, itchy nose, and runny nose for easy breathing</p>
-            <span class="link-preview-url">soundhealth.life</span>
+            <h4 class="link-preview-title">Single 32kg kettlebell</h4>
+            <p class="link-preview-description">Shop Kettlebells (kg) at REP Fitness. Gravity die casting, color-coded handles, kg and lb markings, and a shiny black finish. Bring the gym home!</p>
+            <span class="link-preview-url">repfitness.com</span>
         </div>
     </a>
 </div>
 
+
+<div class="link-preview-card">
+    <a href="https://repfitness.com/products/kettlebells-kg?variant=41731316088990" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('http://repfitness.com/cdn/shop/products/Shopify-KB-3002-16-Thumbnail.jpg?v=1736200777');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Single 36kg kettlebell</h4>
+            <p class="link-preview-description">Shop Kettlebells (kg) at REP Fitness. Gravity die casting, color-coded handles, kg and lb markings, and a shiny black finish. Bring the gym home!</p>
+            <span class="link-preview-url">repfitness.com</span>
+        </div>
+    </a>
+</div>
+
+## Medium Priority
 
 <div class="link-preview-card">
     <a href="https://busy.bar/shop" target="_blank" rel="noopener noreferrer">
