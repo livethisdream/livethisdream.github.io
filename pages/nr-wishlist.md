@@ -3,21 +3,9 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2025-12-25 18:13_
+_Last updated: 2025-12-25 18:15_
 
 ## High Priority
-
-<div class="link-preview-card">
-    <a href="https://theprayerishare.com/" target="_blank" rel="noopener noreferrer">
-        <div class="link-preview-image" style="background-image: url('https://cdn.shopify.com/s/files/1/0842/6451/7953/files/Group-BBall_01.jpg?v=1712177941');"></div>
-        <div class="link-preview-content">
-            <h4 class="link-preview-title">The Prayer I Share Bracelet</h4>
-            <p class="link-preview-description">Wear your verse. Share your verse. Christian jewelry, faith-based jewelry, religious jewelry, Christian bracelets, scripture bracelets, Christian athlete jewelry, athlete's prayer bracelet, unisex Christian jewelry, Christian sports accessories, Christian jewelry for athletes, Christian sports apparel</p>
-            <span class="link-preview-url">theprayerishare.com</span>
-        </div>
-    </a>
-</div>
-
 
 <div class="link-preview-card">
     <a href="https://www.sweetwater.com/store/detail/QuadCortex--neural-dsp-quad-cortex-quad-core-digital-effects-modeler-profiler-floorboard" target="_blank" rel="noopener noreferrer">
@@ -100,6 +88,18 @@ _Last updated: 2025-12-25 18:13_
             <h4 class="link-preview-title">Spider Grills Temperature Controller</h4>
             <p class="link-preview-description">Buy Spider Grills Venom Fan-Powered Temperature Controller with Wi-Fi Bluetooth and App Control for Weber Kettle Grills: Grill Thermometers - Amazon.com ✓ FREE DELIVERY possible on eligible purchases</p>
             <span class="link-preview-url">a.co</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://theprayerishare.com/" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('https://cdn.shopify.com/s/files/1/0842/6451/7953/files/Group-BBall_01.jpg?v=1712177941');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">The Prayer I Share Bracelet</h4>
+            <p class="link-preview-description">Wear your verse. Share your verse. Christian jewelry, faith-based jewelry, religious jewelry, Christian bracelets, scripture bracelets, Christian athlete jewelry, athlete's prayer bracelet, unisex Christian jewelry, Christian sports accessories, Christian jewelry for athletes, Christian sports apparel</p>
+            <span class="link-preview-url">theprayerishare.com</span>
         </div>
     </a>
 </div>
