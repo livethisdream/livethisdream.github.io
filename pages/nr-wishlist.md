@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2025-12-25 18:15_
+_Last updated: 2025-12-25 18:21_
 
 ## High Priority
 
@@ -23,7 +23,7 @@ _Last updated: 2025-12-25 18:15_
     <a href="https://repfitness.com/products/kettlebells-kg?variant=41731316088990" target="_blank" rel="noopener noreferrer">
         <div class="link-preview-image" style="background-image: url('http://repfitness.com/cdn/shop/products/Shopify-KB-3002-16-Thumbnail.jpg?v=1736200777');"></div>
         <div class="link-preview-content">
-            <h4 class="link-preview-title">Pair of 28kg kettlebells</h4>
+            <h4 class="link-preview-title">Single 28kg kettlebell</h4>
             <p class="link-preview-description">Shop Kettlebells (kg) at REP Fitness. Gravity die casting, color-coded handles, kg and lb markings, and a shiny black finish. Bring the gym home!</p>
             <span class="link-preview-url">repfitness.com</span>
         </div>
@@ -46,10 +46,10 @@ _Last updated: 2025-12-25 18:15_
 
 <div class="link-preview-card">
     <a href="https://busy.bar/shop" target="_blank" rel="noopener noreferrer">
-        <div class="link-preview-image" style="background-image: url('https://busy.bar/img/tild6231-6663-4533-b266-393636353931__busybar_website_soci.jpg');"></div>
+        <div class="link-preview-image" style="background-image: url('https://busy.bar/img/tild6364-6434-4832-b065-363935653532__bsb_pr_device_whiteb.jpg');"></div>
         <div class="link-preview-content">
             <h4 class="link-preview-title">Busy Bar</h4>
-            <p class="link-preview-description">Buy BUSY Bar, a productivity multi-tool device with an LED pixel screen. Built-in Pomodoro timer and Apps. Fully customizable, open-source, and hacker-friendly.</p>
+            <p class="link-preview-description">Buy the BUSY Bar, a productivity multi-tool device with an LED pixel screen. Built-in Pomodoro timer and Apps. Fully customizable, open-source, and hacker-friendly.</p>
             <span class="link-preview-url">busy.bar</span>
         </div>
     </a>
