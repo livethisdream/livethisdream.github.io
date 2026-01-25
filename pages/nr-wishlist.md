@@ -3,21 +3,22 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2026-01-25 10:06_
+_Last updated: 2026-01-25 10:14_
 
-## Medium Priority
+## High Priority
 
 <div class="link-preview-card">
-    <a href="https://busy.bar/shop" target="_blank" rel="noopener noreferrer">
-        <div class="link-preview-image" style="background-image: url('https://busy.bar/img/tild6364-6434-4832-b065-363935653532__bsb_pr_device_whiteb.jpg');"></div>
+    <a href="https://www.sweetwater.com/store/detail/QuadCortex--neural-dsp-quad-cortex-quad-core-digital-effects-modeler-profiler-floorboard" target="_blank" rel="noopener noreferrer">
+        
         <div class="link-preview-content">
-            <h4 class="link-preview-title">Busy Bar</h4>
-            <p class="link-preview-description">Buy the BUSY Bar, a productivity multi-tool device with an LED pixel screen. Built-in Pomodoro timer and Apps. Fully customizable, open-source, and hacker-friendly.</p>
-            <span class="link-preview-url">busy.bar</span>
+            <h4 class="link-preview-title">Quad Cortex (Grey)</h4>
+            <p class="link-preview-description">Quad Cortex</p>
+            <span class="link-preview-url">www.sweetwater.com</span>
         </div>
     </a>
 </div>
 
+## Medium Priority
 
 <div class="link-preview-card">
     <a href="https://www.roguefitness.com/rogue-echo-bike" target="_blank" rel="noopener noreferrer">
@@ -62,19 +63,6 @@ _Last updated: 2026-01-25 10:06_
             <h4 class="link-preview-title">Remote start for Falcor</h4>
             <p class="link-preview-description"></p>
             <span class="link-preview-url">www.crutchfield.com</span>
-        </div>
-    </a>
-</div>
-
-## Low Priority
-
-<div class="link-preview-card">
-    <a href="https://www.sweetwater.com/store/detail/QuadCortex--neural-dsp-quad-cortex-quad-core-digital-effects-modeler-profiler-floorboard" target="_blank" rel="noopener noreferrer">
-        
-        <div class="link-preview-content">
-            <h4 class="link-preview-title">Quad Cortex (Grey)</h4>
-            <p class="link-preview-description">Quad Cortex</p>
-            <span class="link-preview-url">www.sweetwater.com</span>
         </div>
     </a>
 </div>
