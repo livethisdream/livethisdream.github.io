@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2026-01-25 10:14_
+_Last updated: 2026-01-25 10:15_
 
 ## High Priority
 
@@ -14,6 +14,18 @@ _Last updated: 2026-01-25 10:14_
             <h4 class="link-preview-title">Quad Cortex (Grey)</h4>
             <p class="link-preview-description">Quad Cortex</p>
             <span class="link-preview-url">www.sweetwater.com</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://www.clew.us/products/preorder-clew-independence-1-0-white" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('http://www.clew.us/cdn/shop/files/clew_independence_white_front_min_9d6a47fb-dc30-4a1c-bb70-99bf08e7cf03.png?v=1758524835&width=2048');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Clew Independence 1.0, White, XL</h4>
+            <p class="link-preview-description">Experience ultimate freedom and precision with the CLEW Independence. Designed for riders who demand lightweight performance, seamless step-in, and tool-free adjustments, this binding delivers unmatched comfort and control across all terrains. Built tough for every adventure, it’s your perfect partner from first tracks to last runs.</p>
+            <span class="link-preview-url">www.clew.us</span>
         </div>
     </a>
 </div>
@@ -75,6 +87,18 @@ _Last updated: 2026-01-25 10:14_
             <h4 class="link-preview-title">Spider Grills Temperature Controller</h4>
             <p class="link-preview-description">Buy Spider Grills Venom Fan-Powered Temperature Controller with Wi-Fi Bluetooth and App Control for Weber Kettle Grills: Grill Thermometers - Amazon.com ✓ FREE DELIVERY possible on eligible purchases</p>
             <span class="link-preview-url">a.co</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://busy.bar/shop" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('https://busy.bar/img/tild6364-6434-4832-b065-363935653532__bsb_pr_device_whiteb.jpg');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Busy Bar</h4>
+            <p class="link-preview-description">Buy the BUSY Bar, a productivity multi-tool device with an LED pixel screen. Built-in Pomodoro timer and Apps. Fully customizable, open-source, and hacker-friendly.</p>
+            <span class="link-preview-url">busy.bar</span>
         </div>
     </a>
 </div>
