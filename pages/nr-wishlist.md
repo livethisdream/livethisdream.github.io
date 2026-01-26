@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2026-01-25 13:00_
+_Last updated: 2026-01-26 13:45_
 
 ## High Priority
 
@@ -14,6 +14,18 @@ _Last updated: 2026-01-25 13:00_
             <h4 class="link-preview-title">Quad Cortex (Grey)</h4>
             <p class="link-preview-description">Quad Cortex</p>
             <span class="link-preview-url">www.sweetwater.com</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://shop.flipperzero.one/" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('http://flipper.net/cdn/shop/files/product_flipper-zero_1.png?v=1765368572');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Flipper Zero</h4>
+            <p class="link-preview-description">Flipper Zero is a portable multi-tool for pen-testers and geeks in a toy-like body. It loves researching digital stuff like radio protocols, access control systems, hardware, and more. It's fully open-source and customizable, so you can extend it in whatever way you like.</p>
+            <span class="link-preview-url">shop.flipperzero.one</span>
         </div>
     </a>
 </div>
