@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2026-01-26 13:45_
+_Last updated: 2026-01-27 21:15_
 
 ## High Priority
 
@@ -14,30 +14,6 @@ _Last updated: 2026-01-26 13:45_
             <h4 class="link-preview-title">Quad Cortex (Grey)</h4>
             <p class="link-preview-description">Quad Cortex</p>
             <span class="link-preview-url">www.sweetwater.com</span>
-        </div>
-    </a>
-</div>
-
-
-<div class="link-preview-card">
-    <a href="https://shop.flipperzero.one/" target="_blank" rel="noopener noreferrer">
-        <div class="link-preview-image" style="background-image: url('http://flipper.net/cdn/shop/files/product_flipper-zero_1.png?v=1765368572');"></div>
-        <div class="link-preview-content">
-            <h4 class="link-preview-title">Flipper Zero</h4>
-            <p class="link-preview-description">Flipper Zero is a portable multi-tool for pen-testers and geeks in a toy-like body. It loves researching digital stuff like radio protocols, access control systems, hardware, and more. It's fully open-source and customizable, so you can extend it in whatever way you like.</p>
-            <span class="link-preview-url">shop.flipperzero.one</span>
-        </div>
-    </a>
-</div>
-
-
-<div class="link-preview-card">
-    <a href="https://www.clew.us/products/preorder-clew-independence-1-0-white" target="_blank" rel="noopener noreferrer">
-        <div class="link-preview-image" style="background-image: url('http://www.clew.us/cdn/shop/files/clew_independence_white_front_min_9d6a47fb-dc30-4a1c-bb70-99bf08e7cf03.png?v=1758524835&width=2048');"></div>
-        <div class="link-preview-content">
-            <h4 class="link-preview-title">Clew Independence 1.0, White, XL</h4>
-            <p class="link-preview-description">Experience ultimate freedom and precision with the CLEW Independence. Designed for riders who demand lightweight performance, seamless step-in, and tool-free adjustments, this binding delivers unmatched comfort and control across all terrains. Built tough for every adventure, it’s your perfect partner from first tracks to last runs.</p>
-            <span class="link-preview-url">www.clew.us</span>
         </div>
     </a>
 </div>
