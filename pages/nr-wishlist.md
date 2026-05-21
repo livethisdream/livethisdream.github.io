@@ -3,7 +3,7 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2026-02-11 08:00_
+_Last updated: 2026-05-20 20:00_
 
 ## High Priority
 
@@ -26,6 +26,18 @@ _Last updated: 2026-02-11 08:00_
             <h4 class="link-preview-title">Intuition Dreamliner Snowboard Boot Liners, size 11, medium volume</h4>
             <p class="link-preview-description">Don’t see your size in stock? Check out your local retailer DREAMLINERS provide increased comfort, warmth, and performance while remaining the closest fit and flex […]</p>
             <span class="link-preview-url">intuitionliners.com</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://www.thesoutherntrapper.com/collections/knives/products/mini-knife-bogo" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('https://cdn.shopify.com/s/files/1/1052/3464/files/Logo_Black_72a6c424-78bf-4e2e-b608-e300d8714789_340x.jpg?v=1579804129');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Mini pocket knife</h4>
+            <p class="link-preview-description">Mini Pocket Knife with Leather Sheath Compact. Capable. Always at your side. When you need a reliable edge that doesn’t weigh you down, reach for our Mini Pocket Knife with Leather Sheath. Designed for everyday carry, this compact knife fits perfectly in your front pocket—or that small pocket in your jeans. It’s the ki</p>
+            <span class="link-preview-url">www.thesoutherntrapper.com</span>
         </div>
     </a>
 </div>
