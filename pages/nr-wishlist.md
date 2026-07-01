@@ -3,9 +3,33 @@ layout: page
 title: Neil's Wishlist
 ---
 
-_Last updated: 2026-05-20 20:00_
+_Last updated: 2026-06-30 21:30_
 
 ## High Priority
+
+<div class="link-preview-card">
+    <a href="https://www.homedepot.com/p/MagnoGrip-20-Pocket-Builders-Tool-Rig-006-826/326476505" target="_blank" rel="noopener noreferrer">
+        
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Tool Belt</h4>
+            <p class="link-preview-description"></p>
+            <span class="link-preview-url">www.homedepot.com</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://ohsnap.com/products/snap-grip-stand" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('http://ohsnap.com/cdn/shop/files/blacknew-2.png?v=1772052235');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Oh Snap Grip Stand</h4>
+            <p class="link-preview-description">Snap Grip Stand takes everything you love about Snap Grip (ultra-thin design, powerful magnetic attachment, and a premium build) and adds on a versatile 350° adjustable stand. It sits nearly flush to your phone for zero bulk, then flips out smoothly to hold your device at virtually any angle. Durable, sleek, and endles</p>
+            <span class="link-preview-url">ohsnap.com</span>
+        </div>
+    </a>
+</div>
+
 
 <div class="link-preview-card">
     <a href="https://www.sweetwater.com/store/detail/QuadCortex--neural-dsp-quad-cortex-quad-core-digital-effects-modeler-profiler-floorboard" target="_blank" rel="noopener noreferrer">
@@ -14,6 +38,18 @@ _Last updated: 2026-05-20 20:00_
             <h4 class="link-preview-title">Quad Cortex (Grey)</h4>
             <p class="link-preview-description">Quad Cortex</p>
             <span class="link-preview-url">www.sweetwater.com</span>
+        </div>
+    </a>
+</div>
+
+
+<div class="link-preview-card">
+    <a href="https://missiontoolco.com/products/battex-battery-extension-attachment-system" target="_blank" rel="noopener noreferrer">
+        <div class="link-preview-image" style="background-image: url('http://missiontoolco.com/cdn/shop/files/Battex_Prototype_ceb843d9-bd63-4f58-a451-fde8a403dab7.png?v=1773209604');"></div>
+        <div class="link-preview-content">
+            <h4 class="link-preview-title">Drill Organizer </h4>
+            <p class="link-preview-description">Product Overview Be ready for whatever the job throws at you. The BATTEX installs between your tool and battery, adding a rail mounting system for fast, secure accessory attachment while allowing uninterrupted power and data flow between the battery and tool. Tool-free install. Solid connection. Built for real jobsite </p>
+            <span class="link-preview-url">missiontoolco.com</span>
         </div>
     </a>
 </div>
