@@ -170,6 +170,14 @@ collections:
   tabs:
     output: true
     sort_by: order
+  ece444:
+    output: true
+    sort_by: order
+    permalink: /ece444/:path/
+  ece448:
+    output: true
+    sort_by: order
+    permalink: /ece448/:path/
 
 defaults:
   - scope:
@@ -192,6 +200,22 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  - scope:
+      path: ""
+      type: ece444
+    values:
+      layout: lesson
+      course: ece444
+      course_title: "ECE 444"
+      toc: true
+  - scope:
+      path: ""
+      type: ece448
+    values:
+      layout: lesson
+      course: ece448
+      course_title: "ECE 448"
+      toc: true
 
 sass:
   style: compressed

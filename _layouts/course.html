@@ -1,0 +1,12 @@
+---
+layout: page
+---
+
+{%- assign course = page.course -%}
+{%- assign course_title = page.course_title | default: page.course | upcase -%}
+
+<nav class="course-nav" aria-label="Course navigation" style="margin-bottom:1.25rem;font-size:0.95em;">
+  <a href="{{ '/' | append: course | append: '/' | relative_url }}">← {{ course_title }} home</a>
+</nav>
+
+{{ content }}

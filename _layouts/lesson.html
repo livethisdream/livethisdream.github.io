@@ -1,0 +1,31 @@
+---
+layout: course
+---
+
+<div class="lesson-meta" style="color:#666;font-size:0.9em;margin-bottom:0.75em;">
+  {% if page.kind == 'lab' %}<span style="display:inline-block;background:#e8f4ff;color:#0056b3;border:1px solid #b3d7ff;border-radius:3px;padding:0.05em 0.5em;font-weight:600;font-size:0.85em;margin-right:0.5em;">LAB</span>{% endif %}
+  {% if page.module %}<span>Module {{ page.module }}</span>{% endif %}
+  {% if page.week %}{% if page.module %} · {% endif %}<span>Week {{ page.week }}</span>{% endif %}
+  {% if page.date %}{% if page.week or page.module %} · {% endif %}<span>{{ page.date | date: "%b %-d, %Y" }}</span>{% endif %}
+</div>
+
+{% if page.deck %}
+<p>
+  <a class="btn btn-primary" href="{{ page.url | append: 'slides/' | relative_url }}"
+     style="display:inline-block;padding:0.4em 0.9em;border:1px solid #007bff;border-radius:4px;text-decoration:none;">
+    View slides →
+  </a>
+</p>
+{% endif %}
+
+{{ content }}
+
+{% if page.deck %}
+<hr>
+<p><small>
+  Slides:
+  <a href="{{ page.url | append: 'slides/' | relative_url }}">present</a> ·
+  <a href="{{ page.url | append: 'slides/?print-pdf' | relative_url }}">print PDF</a> ·
+  <a href="{{ page.deck | relative_url }}">raw markdown</a>
+</small></p>
+{% endif %}
