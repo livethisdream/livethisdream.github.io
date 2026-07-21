@@ -56,6 +56,13 @@ By the end of the course, students will be able to:
 
 _Placeholder — academic integrity, attendance, late work, accommodations, etc._
 
+## Projects
+
+Two graded projects anchor the course:
+
+- **Midterm Project — Antenna Pattern Measurement.** Introduced at Lesson 11, due at Lesson 20. Students design and execute a pattern-measurement campaign on an antenna under test, reduce the data, and report gain, beamwidth, sidelobe level, and polarization behavior against expectations.
+- **Final Project — Combined Beamforming + Radar.** Track a moving target while suppressing a static jammer using the ADALM-PHASER. Runs across Lessons 39–41 (Module 5).
+
 ## Schedule
 
 Lessons link to notes on the [course home]({{ '/ece444/' | relative_url }}).
@@ -63,60 +70,61 @@ Labs are marked **LAB**.
 
 ### Module 1 — Foundations of Electromagnetics and Antennas
 
-1. Introduction to Antennas and Field Regions — reactive near-field, radiating near-field, far-field
-2. Basic Properties and Terminology — gain, directivity, effective area, beamwidth, boresight, lobes
-3. Polarization and Bandwidth
-4. Impedance, Feeding, and Baluns
-5. Radiation Integrals
+1. Course Introduction — what an antenna is, why it matters to Air Force operators, course roadmap, SDR + acoustic-beam demos
+2. Field Regions — reactive near-field, radiating near-field, far-field
+3. Basic Properties and Terminology — gain, directivity, effective area, beamwidth, boresight, lobes
+4. Polarization and Bandwidth
+5. Impedance, Feeding, and Baluns
+6. Radiation Integrals
 
 ### Module 2 — Antenna Types, Simulation, and Measurement
 
-6. Simple Resonant Antennas — isotropic radiators, half-wave dipoles
-7. Dipole Simulation Lab **(LAB)**
-8. Loop and Monopole Antennas
-9. Patch, Slot, and Horn Antennas
-10. High-Gain Antennas — reflectors, Yagi-Uda, arrays
-11. Pattern Measurement Theory — anechoic chambers, near-field / far-field transformations, standard gain horns
-12. Measurement Lab Part 1 — Impedance and S-parameters **(LAB)**
-13. Measurement Lab Part 2 — Radiation Patterns **(LAB)**
+7. Simple Resonant Antennas — isotropic radiators, half-wave dipoles
+8. Dipole Simulation Lab **(LAB)**
+9. Loop and Monopole Antennas
+10. Patch, Slot, and Horn Antennas
+11. High-Gain Antennas — reflectors, Yagi-Uda, arrays &nbsp; · &nbsp; **Midterm project introduced**
+12. Pattern Measurement Theory — anechoic chambers, near-field / far-field transformations, standard gain horns
+13. Measurement Lab Part 1 — Impedance and S-parameters **(LAB)**
+14. Measurement Lab Part 2 — Radiation Patterns **(LAB)**
 
 ### Module 3 — Arrays and ADALM-PHASER Beamforming
 
-14. Aperture Distributions and Efficiency
-15. The Array Factor and Pattern Multiplication
-16. Introduction to Phased Array Hardware — ADALM-PHASER, SDR control
-17. Beam Steering Theory
-18. Beam Steering Lab **(LAB)**
-19. Array Factor and Beamwidth Theory
-20. Array Factor Lab **(LAB)**
-21. Antenna Pattern Theory — true pattern vs. array factor
-22. Antenna Pattern Lab **(LAB)** — AUT measurement using Phaser
-23. Sidelobes and Tapering Theory
-24. Tapering Lab **(LAB)**
-25. Beam Squint and Quantization
-26. Null Steering Theory
-27. Null Steering Lab **(LAB)**
+15. Aperture Distributions and Efficiency
+16. The Array Factor and Pattern Multiplication
+17. Introduction to Phased Array Hardware — ADALM-PHASER, SDR control
+18. Beam Steering Theory
+19. Beam Steering Lab **(LAB)**
+20. Array Factor and Beamwidth Theory &nbsp; · &nbsp; **Midterm project due**
+21. Array Factor Lab **(LAB)**
+22. Antenna Pattern Theory — true pattern vs. array factor
+23. Antenna Pattern Lab **(LAB)** — AUT measurement using Phaser
+24. Sidelobes and Tapering Theory
+25. Tapering Lab **(LAB)**
+26. Beam Squint and Quantization
+27. Null Steering Theory
+28. Null Steering Lab **(LAB)**
 
 ### Module 4 — Radar Fundamentals and FMCW
 
-28. The Radar Equation, Path Loss, and Radar Cross Section (RCS)
-29. Range, Resolution, Doppler Effect, and Radar Types
-30. Radar Detection Theory — PD, FAR, dwell time
-31. Introduction to FMCW on Phaser
-32. Range Calculations Lab **(LAB)**
-33. Range Waterfall Lab **(LAB)**
-34. Range-Doppler Lab **(LAB)**
-35. Moving Target Indication (MTI) Lab **(LAB)**
-36. CFAR Processing Theory
-37. CFAR Processing Lab **(LAB)**
+29. The Radar Equation, Path Loss, and Radar Cross Section (RCS)
+30. Range, Resolution, Doppler Effect, and Radar Types
+31. Radar Detection Theory — PD, FAR, dwell time
+32. Introduction to FMCW on Phaser
+33. Range Calculations Lab **(LAB)**
+34. Range Waterfall Lab **(LAB)**
+35. Range-Doppler Lab **(LAB)**
+36. Moving Target Indication (MTI) Lab **(LAB)**
+37. CFAR Processing Theory
+38. CFAR Processing Lab **(LAB)**
 
 ### Module 5 — Final Capstone Project
 
 **Scenario:** Track a moving target while suppressing a static jammer.
 
-38. Final Project Kickoff
-39. Phase 1 — Array Optimization: design beam-steering weights, implement null-steering weights, evaluate array performance
-40. Phase 2 — Radar Integration and Demonstration: integrate FMCW radar processing, perform Doppler target tracking, overlay radar tracking results onto the optimized antenna array pattern
+39. Final Project Kickoff
+40. Phase 1 — Array Optimization: design beam-steering weights, implement null-steering weights, evaluate array performance
+41. Phase 2 — Radar Integration and Demonstration: integrate FMCW radar processing, perform Doppler target tracking, overlay radar tracking results onto the optimized antenna array pattern
 
 ## Textbooks & materials
 
