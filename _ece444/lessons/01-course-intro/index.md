@@ -7,6 +7,7 @@ module: 1
 week: 1
 date: 2026-08-24
 deck: /assets/ece444/decks/01-course-intro.md
+permalink: /ece444/lessons/01-course-intro/
 ---
 
 ## Learning outcomes
@@ -22,6 +23,54 @@ By the end of this lesson, you will be able to:
 
 _Instructor and student introductions — background, career interests, prior exposure to RF or radar._
 
+## About your instructor
+
+**Lt Col Neil Rogers, USAF (Ret.)** — BS from TU; MSEE and PhD from AFIT.
+Currently the **Erdle Chair** at USAFA and a **Field Applications Engineer** at **Analog Devices**.
+
+![Duty stations across the career](/assets/ece444/img/01-course-intro/Duty_stations.png)
+_DF/USAFA · AFRL Directed Energy, Kirtland AFB · NASIC and AFIT (×2), WPAFB · AFLCMC, Hanscom AFB._
+
+![OTS commissioning](/assets/ece444/img/01-course-intro/nr-ots.jpg)
+_Officer Training School — where it started._
+
+![Active Denial System 2](/assets/ece444/img/01-course-intro/ads2.jpg)
+_Active Denial System 2 at AFRL Directed Energy. Section chief for Active Denial and High-Power Sources._
+
+![379th AEW deployment](/assets/ece444/img/01-course-intro/ig-team.JPG)
+_Deployment with the 379th AEW._
+
+![E-8C Joint STARS](/assets/ece444/img/01-course-intro/E8C.jpg)
+_E-8C Joint STARS — airborne ground surveillance radar._
+
+![ACUASR UAS Lab at USAFA](/assets/ece444/img/01-course-intro/Rogers_UAS_Lab.jpg)
+_Directed the Academy Center for UAS Research (ACUASR) at USAFA through 2025._
+
+![USAFA retirement](/assets/ece444/img/01-course-intro/usafa-retirement.jpg)
+_Retirement from active duty — cadets sent me off with "No More Blues."_
+
+Today my day job with **Analog Devices** puts me shoulder-to-shoulder with the team designing the **ADALM-PHASER** you'll use in Module 3.
+
+![Analog Devices booth](/assets/ece444/img/01-course-intro/nr-adi.jpg)
+_Field Applications Engineer at Analog Devices — the folks who make the ADALM-PHASER._
+
+## Outside the lab
+
+![Family in the new house](/assets/ece444/img/01-course-intro/fam_newhouse.jpg)
+_Four kids (ages 11, 13, 15, 17). We just moved into a new house — fixing it up is a running hobby._
+
+![CrossFit](/assets/ece444/img/01-course-intro/CF_dying.png)
+_CrossFit._
+
+![Guitar at Trace church](/assets/ece444/img/01-course-intro/trace_guitar.jpg)
+_Playing guitar with the band at Trace, my church._
+
+## How I teach
+
+- **We're learning this together.** I don't have all the answers, and I'll say so when I don't.
+- **Mistakes are part of learning.** Make them cheaply, and make them count.
+- **Ask questions.** There is no such thing as a dumb question — if something isn't clicking for you, it's almost certainly not clicking for someone else.
+
 ## What is an antenna?
 
 An antenna is the **transducer between a guided electromagnetic wave** (a signal traveling on a cable or waveguide) **and a freely propagating wave** (a signal traveling through space). Every wireless system on Earth has at least one on each end of the link.
@@ -30,6 +79,9 @@ Two ideas we'll keep coming back to:
 
 1. Antennas are **reciprocal** — the same antenna transmits and receives with the same pattern.
 2. Antennas do **not create energy** — they shape *where* the energy goes.
+
+![RF link block diagram: RF Source → Amp → Transmission Line → TX Antenna → Channel → RX Antenna → LNA → Radio](/assets/ece444/img/01-course-intro/rf-link-block-diagram.svg)
+_A generic RF link. The antennas are the only components that touch free space; everything else is guided-wave._
 
 ## Why this matters to you
 

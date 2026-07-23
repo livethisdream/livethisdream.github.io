@@ -4,24 +4,25 @@ order: 1
 permalink: /ece444/materials/
 ---
 
-## Textbooks
+## Textbooks & references
 
-_Placeholder — list required and recommended texts here. If a PDF is freely
-distributable, drop it into `assets/ece444/materials/` and link it below._
+We draw from two primary references throughout the course. Both are provided
+here as PDFs and are referenced by chapter/section in each lesson's "For next
+time" reading list.
 
-## Course materials
+- **[Milligan — *Modern Antenna Design*]({{ '/assets/ece444/materials/Antenna-design-Milligan.pdf' | relative_url }})** (Thomas A. Milligan, IEEE Press/Wiley)
+  Deep treatment of antenna theory and design. Primary textbook for Modules 1–3.
+- **[Rohde &amp; Schwarz — *Antenna Basics* (Whitepaper 8GE01)]({{ '/assets/ece444/materials/Antenna_Basics_8GE01_1e_Rohde-Schwarz.pdf' | relative_url }})**
+  Compact, well-illustrated primer on antenna properties, measurement, and terminology. Excellent complement to Milligan for the foundations.
 
-Example format — replace with real materials:
+## Hardware & software
 
-{% raw %}
-```markdown
-- [Chapter 1 PDF]({{ '/assets/ece444/materials/ch01.pdf' | relative_url }})
-- [Reference sheet]({{ '/assets/ece444/materials/refsheet.pdf' | relative_url }})
-```
-{% endraw %}
+- **ADALM-PHASER** (Analog Devices) — phased-array platform used in Modules 3–4 for beamforming and FMCW radar labs
+- **RTL-SDR / HackRF** — introductory software-defined radio for Lesson 1 demos
+- **Antenna simulation software** — TBD (see Lesson 7 lab notes)
+- **Vector network analyzer (VNA)** — used for impedance / S-parameter measurement labs
+- **Anechoic chamber** — used for pattern measurement labs
 
-_No materials uploaded yet._
+## Additional resources
 
-## Software / tools
-
-_Placeholder — GNU Radio, Python, etc._
+_TBD — application notes, videos, and links will be added here as they are pulled into lessons._
