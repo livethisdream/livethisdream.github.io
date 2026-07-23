@@ -149,6 +149,9 @@ pwa:
 
 paginate: 10
 
+# Course lessons carry `date:` set in the future (Fall 2026 schedule) — render them anyway.
+future: true
+
 # The base URL of your site
 baseurl: ""
 

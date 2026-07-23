@@ -1,0 +1,37 @@
+services:
+  jekyll:
+    image: ruby:3.3
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /site
+    network_mode: host
+    volumes:
+      - .:/site
+    environment:
+      JEKYLL_ENV: development
+      HOME: /tmp
+      BUNDLE_PATH: /site/vendor/bundle
+    command: >
+      bash -c "git config --global --add safe.directory /site &&
+               bundle install &&
+               bundle exec jekyll serve
+                 --host 0.0.0.0
+                 --livereload
+                 --livereload-port 35729
+                 --force_polling
+                 --incremental"
+
+  build:
+    image: ruby:3.3
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /site
+    profiles: ["oneshot"]
+    volumes:
+      - .:/site
+    environment:
+      JEKYLL_ENV: production
+      HOME: /tmp
+      BUNDLE_PATH: /site/vendor/bundle
+    command: >
+      bash -c "git config --global --add safe.directory /site &&
+               bundle install &&
+               bundle exec jekyll build --trace"
