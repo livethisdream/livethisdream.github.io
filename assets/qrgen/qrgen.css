@@ -1,0 +1,27 @@
+.qrgen { max-width: 980px; margin: 0 auto; }
+.qrgen-grid { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr); gap: 1.5rem; align-items: start; }
+@media (max-width: 720px) { .qrgen-grid { grid-template-columns: 1fr; } }
+
+.qrgen-form fieldset { border: 1px solid var(--card-border-color, #ddd); border-radius: 8px; padding: 0.75rem 1rem 1rem; margin: 0 0 1rem; }
+.qrgen-form legend { padding: 0 0.4rem; font-weight: 600; font-size: 0.9rem; }
+.qrgen-form label { display: block; font-size: 0.85rem; margin: 0.5rem 0; }
+.qrgen-form input[type=text],
+.qrgen-form input[type=email],
+.qrgen-form input[type=tel],
+.qrgen-form input[type=url] { display: block; width: 100%; box-sizing: border-box; padding: 0.4rem 0.5rem; margin-top: 0.2rem; border: 1px solid var(--card-border-color, #ccc); border-radius: 4px; font: inherit; background: var(--main-bg, #fff); color: inherit; }
+.qrgen-form input[type=color] { width: 60px; height: 30px; padding: 0; border: 1px solid var(--card-border-color, #ccc); border-radius: 4px; vertical-align: middle; margin-left: 0.5rem; }
+.qrgen-check { display: flex; align-items: center; gap: 0.5rem; }
+.qrgen-check input { margin: 0; }
+
+.qrgen-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.qrgen-actions button { padding: 0.5rem 0.9rem; border: 1px solid var(--card-border-color, #ccc); border-radius: 6px; background: var(--main-bg, #fff); color: inherit; font: inherit; cursor: pointer; }
+.qrgen-actions button:hover { background: var(--card-bg, #f6f6f6); }
+#qrgen-download { background: #0067B9; color: #fff; border-color: #0067B9; }
+#qrgen-download:hover { filter: brightness(1.1); }
+
+.qrgen-preview { position: sticky; top: 1rem; }
+#qrgen-canvas-wrap { display: flex; justify-content: center; padding: 1rem; background: var(--card-bg, #fafafa); border: 1px solid var(--card-border-color, #ddd); border-radius: 8px; }
+#qrgen-canvas-wrap canvas, #qrgen-canvas-wrap img { max-width: 100%; height: auto; }
+
+.qrgen-debug { margin-top: 0.75rem; font-size: 0.85rem; }
+.qrgen-debug pre { background: var(--card-bg, #f6f6f6); border: 1px solid var(--card-border-color, #ddd); border-radius: 6px; padding: 0.6rem; overflow: auto; }
