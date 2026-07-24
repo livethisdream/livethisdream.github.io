@@ -29,10 +29,15 @@ to its legacy PDF where one exists.
 
 - [L2 — Noise Figure & Link Budget]({{ '/assets/ece448/legacy-slides/L02-noise-figure-link-budget.pdf' | relative_url }})
 - [L3 — Signal Space]({{ '/assets/ece448/legacy-slides/L03-signal-space.pdf' | relative_url }})
+- [L4 — SDR Introduction]({{ '/assets/ece448/legacy-slides/L04-sdr-introduction.pdf' | relative_url }})
+- [L7 — AM Simulation]({{ '/assets/ece448/legacy-slides/L07-am-simulation.pdf' | relative_url }})
+- [L8 — AM & FM Receivers]({{ '/assets/ece448/legacy-slides/L08-am-fm-receivers.pdf' | relative_url }})
+- [L13 — PAM Theory]({{ '/assets/ece448/legacy-slides/L13-pam-theory.pdf' | relative_url }})
 - [L14 — ASCII/PAM]({{ '/assets/ece448/legacy-slides/L14-ascii-pam.pdf' | relative_url }})
 - [L16 — Final Project Intro]({{ '/assets/ece448/legacy-slides/L16-final-project-intro.pdf' | relative_url }})
 - [L22 — DTMF]({{ '/assets/ece448/legacy-slides/L22-dtmf.pdf' | relative_url }})
 - [L24 — HD Radio]({{ '/assets/ece448/legacy-slides/L24-hd-radio.pdf' | relative_url }})
+- [L31 — RF Reverse Engineering]({{ '/assets/ece448/legacy-slides/L31-rf-reverse-engineering.pdf' | relative_url }})
 - [L35 — ADS-B]({{ '/assets/ece448/legacy-slides/L35-adsb.pdf' | relative_url }})
 - [L36 — AIS]({{ '/assets/ece448/legacy-slides/L36-ais.pdf' | relative_url }})
 

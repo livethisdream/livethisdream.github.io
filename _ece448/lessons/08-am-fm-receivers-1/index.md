@@ -5,6 +5,7 @@ title: "L8 — AM & FM Receivers"
 order: 8
 module: 3
 week: 4
+legacy_pdf: /assets/ece448/legacy-slides/L08-am-fm-receivers.pdf
 _source_folder: "03_GRC AM · 04_GRC FM"
 permalink: /ece448/lessons/08-am-fm-receivers-1/
 ---

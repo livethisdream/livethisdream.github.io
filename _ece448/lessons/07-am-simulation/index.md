@@ -6,6 +6,7 @@ order: 7
 module: 3
 week: 4
 kind: lab
+legacy_pdf: /assets/ece448/legacy-slides/L07-am-simulation.pdf
 _source_folder: "03_GRC AM"
 permalink: /ece448/lessons/07-am-simulation/
 ---

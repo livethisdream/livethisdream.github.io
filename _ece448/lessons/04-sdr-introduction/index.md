@@ -5,6 +5,7 @@ title: "L4 — SDR Introduction"
 order: 4
 module: 2
 week: 2
+legacy_pdf: /assets/ece448/legacy-slides/L04-sdr-introduction.pdf
 _source_folder: "02_SDRs and GNURadio"
 permalink: /ece448/lessons/04-sdr-introduction/
 ---

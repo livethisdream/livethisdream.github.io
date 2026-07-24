@@ -5,6 +5,7 @@ title: "L13 — PAM Theory"
 order: 13
 module: 4
 week: 7
+legacy_pdf: /assets/ece448/legacy-slides/L13-pam-theory.pdf
 _source_folder: "05_PAM"
 permalink: /ece448/lessons/13-pam-theory/
 ---

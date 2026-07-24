@@ -5,6 +5,7 @@ title: "L31 — RF Reverse Engineering"
 order: 31
 module: 6
 week: 16
+legacy_pdf: /assets/ece448/legacy-slides/L31-rf-reverse-engineering.pdf
 _source_folder: "11_RF Reverse Engineering Remotes"
 permalink: /ece448/lessons/31-rf-reverse-engineering-1/
 ---
