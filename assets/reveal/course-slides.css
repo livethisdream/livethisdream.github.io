@@ -289,6 +289,15 @@ body.reveal-viewport:has(.title-slide.present)::after { display: none; }
 }
 .reveal .qr.qr-corner img { width: 130px; height: 130px; max-height: 130px; }
 
+/* Right-align variant — flows in normal document order but sticks to the
+   right edge. Safe against text overlap because it isn't taken out of flow. */
+.reveal .qr.qr-right {
+  float: right;
+  margin: 0 0 0.6em 1em;
+  shape-outside: margin-box;
+}
+.reveal .qr.qr-right img { width: 130px; height: 130px; max-height: 130px; }
+
 /* Handwriting-style annotation — for margin notes in USAFA red. */
 .reveal .ink {
   font-family: "Caveat", "Comic Sans MS", "Bradley Hand", cursive;
