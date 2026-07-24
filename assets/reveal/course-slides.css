@@ -179,6 +179,15 @@ body.reveal-viewport:has(.title-slide.present)::after { display: none; }
   margin: 0.4em 0;
   align-items: stretch;
 }
+.reveal .schedule-grid.cols-6 { grid-template-columns: repeat(6, 1fr); column-gap: 0.5em; }
+.reveal .schedule-grid.cols-7 { grid-template-columns: repeat(7, 1fr); column-gap: 0.4em; }
+.reveal .schedule-grid.cols-6 .mod-top,
+.reveal .schedule-grid.cols-6 .mod-lessons,
+.reveal .schedule-grid.cols-6 .mod-bottom,
+.reveal .schedule-grid.cols-7 .mod-top,
+.reveal .schedule-grid.cols-7 .mod-lessons,
+.reveal .schedule-grid.cols-7 .mod-bottom { padding: 0.5em 0.55em; }
+.reveal .schedule-grid.cols-7 .mod-title { font-size: 0.85em; }
 /* Each cell is styled independently — they don't share a parent .module. */
 .reveal .schedule-grid .mod-top,
 .reveal .schedule-grid .mod-lessons,

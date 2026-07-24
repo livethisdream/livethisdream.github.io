@@ -242,6 +242,9 @@ exclude:
   - purgecss.js
   - "*.config.js"
   - "package*.json"
+  # Per-lesson symlinks to legacy PDFs — for authoring convenience only;
+  # the layout serves PDFs from /assets/ece448/legacy-slides/ instead.
+  - "_ece448/lessons/**/slides-legacy.pdf"
 
 jekyll-archives:
   enabled: []

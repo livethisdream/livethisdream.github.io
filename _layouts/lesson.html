@@ -16,6 +16,14 @@ layout: course
     View slides →
   </a>
 </p>
+{% elsif page.legacy_pdf %}
+<p>
+  <a class="btn btn-primary" href="{{ page.legacy_pdf | relative_url }}"
+     style="display:inline-block;padding:0.4em 0.9em;border:1px solid #6c757d;border-radius:4px;text-decoration:none;color:#333;">
+    Slides (PDF) ↓
+  </a>
+  <small style="color:#666;margin-left:0.5em;">Legacy Beamer deck — not yet ported to the web.</small>
+</p>
 {% endif %}
 
 {{ content }}
