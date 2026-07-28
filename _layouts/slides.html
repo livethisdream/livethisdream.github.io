@@ -33,6 +33,7 @@
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/math/math.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/customcontrols/plugin.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/plugin.js"></script>
   <script>
@@ -99,7 +100,14 @@
         toggleChalkboardButton: false,
         toggleNotesButton: false
       },
-      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealCustomControls, RevealChalkboard ]
+      math: {
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      },
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3, RevealCustomControls, RevealChalkboard ]
     });
   </script>
 </body>

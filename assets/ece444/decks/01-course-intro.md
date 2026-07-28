@@ -249,8 +249,8 @@ until we get to Module 3 with the Phaser.
 
 Reference:
 
-- §1-1 through §1-11.7 in [Milligan — *Modern Antenna Design*](/assets/ece444/materials/Antenna-design-Milligan.pdf)
-- §3.1 through §3.9 in [Rohde &amp; Schwarz — *Antenna Basics*](/assets/ece444/materials/Antenna_Basics_8GE01_1e_Rohde-Schwarz.pdf)
+- Sections 1-1 through 1-11.7 in [Milligan — *Modern Antenna Design*](/assets/ece444/materials/Antenna-design-Milligan.pdf)
+- Sections 3.1 through 3.9 in [Rohde &amp; Schwarz — *Antenna Basics*](/assets/ece444/materials/Antenna_Basics_8GE01_1e_Rohde-Schwarz.pdf)
 
 <div class="callout">
 

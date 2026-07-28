@@ -9,4 +9,11 @@ layout: page
   <a href="{{ '/' | append: course | append: '/' | relative_url }}">← {{ course_title }} home</a>
 </nav>
 
-{{ content }}
+{%- if page.hide_until_date and page.date and page.date > site.time -%}
+  <div class="callout" style="padding:1em 1.25em;border:1px solid #b3d7ff;background:#e8f4ff;border-radius:6px;color:#0056b3;">
+    <p style="margin:0;"><strong>Not yet available.</strong></p>
+    <p style="margin:0.4em 0 0;">This page unlocks on <strong>{{ page.date | date: "%B %-d, %Y" }}</strong>. Check back then.</p>
+  </div>
+{%- else -%}
+  {{ content }}
+{%- endif -%}

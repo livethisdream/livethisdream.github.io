@@ -70,8 +70,8 @@ mastery-based portion of the grade.
 | 1.1 | I can define what an antenna is, articulate the reciprocity principle, and describe the role of an antenna in a wireless system. |
 | 1.2 | I can define and calculate fundamental antenna properties: gain, directivity, effective aperture, beamwidth, and sidelobe level. |
 | 1.3 | I can determine the polarization of an antenna and describe the bandwidth characteristics of common antenna types. |
-| 1.4 |  I can identify and distinguish the reactive near-field, radiating near-field, and far-field regions and calculate the boundaries for a given antenna. |
-| 1.5 | I can calculate input impedance, feed considerations, and the role of baluns in an antenna feed system. |
+| 1.4 | I can calculate input impedance, feed considerations, and the role of baluns in an antenna feed system. |
+| 1.5 | I can identify and distinguish the reactive near-field, radiating near-field, and far-field regions and calculate the boundaries for a given antenna. |
 | 1.6 | I can set up and interpret the radiation integrals to derive the far-field pattern of a current distribution. |
 
 ### Module 2 — Antenna Types, Simulation, and Measurement
@@ -273,10 +273,10 @@ Labs are marked **LAB**.
 ### Module 1 — Foundations of Electromagnetics and Antennas
 
 1. Course Introduction — what an antenna is, why it matters to Air Force operators, course roadmap, SDR + acoustic-beam demos
-2. Field Regions — reactive near-field, radiating near-field, far-field
-3. Basic Properties and Terminology — gain, directivity, effective area, beamwidth, boresight, lobes
-4. Polarization and Bandwidth
-5. Impedance, Feeding, and Baluns
+2. Basic Properties and Terminology — gain, directivity, effective area, beamwidth, boresight, lobes
+3. Polarization and Bandwidth
+4. Impedance, Feeding, and Baluns
+5. Field Regions — reactive near-field, radiating near-field, far-field
 6. Radiation Integrals
 
 ### Module 2 — Antenna Types, Simulation, and Measurement

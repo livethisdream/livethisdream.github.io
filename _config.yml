@@ -211,6 +211,7 @@ defaults:
       course: ece444
       course_title: "ECE 444"
       toc: true
+      math: true
   - scope:
       path: ""
       type: ece448
@@ -219,6 +220,7 @@ defaults:
       course: ece448
       course_title: "ECE 448"
       toc: true
+      math: true
 
 sass:
   style: compressed
