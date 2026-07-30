@@ -105,17 +105,13 @@ z and substitute the second? You get the 1-D wave equation for v.
 Free space, source-free:
 
 $$
-\nabla^{2} \mathbf{E}
-- \mu \varepsilon\, \frac{\partial^{2} \mathbf{E}}{\partial t^{2}}
-= 0
+\nabla^{2} \mathbf{E} - \mu \varepsilon\, \frac{\partial^{2} \mathbf{E}}{\partial t^{2}} = 0
 $$
 
 Transmission line:
 
 $$
-\frac{\partial^{2} v}{\partial z^{2}}
-- L C\, \frac{\partial^{2} v}{\partial t^{2}}
-= 0
+\frac{\partial^{2} v}{\partial z^{2}} - L C\, \frac{\partial^{2} v}{\partial t^{2}} = 0
 $$
 
 Second derivative in space, second derivative in time, tied by a speed.
@@ -131,15 +127,17 @@ $c = 1 / \sqrt{\mu \varepsilon}$, $\quad u = 1 / \sqrt{L C}$
 Traveling in $+\hat{z}$, linearly polarized along $\hat{x}$:
 
 $$
-\mathbf{E}(z, t) = \hat{x}\, E_{0}\, \cos(\omega t - k z)
+\mathbf{E}(z, t) = \hat{x} E_{0} \cos(\omega t - k z)
 $$
 
-- $\omega = 2 \pi f$ — **time** frequency
-- $k = 2 \pi / \lambda$ — **space** frequency (wave number)
-- $\omega / k = c$ — crest speed
+- $\omega = 2 \pi f \longrightarrow$  **time** frequency
+- $k = 2 \pi / \lambda \longrightarrow$ **space** frequency (wave number)
+- $\omega / k = c \longrightarrow$ **crest speed**
 
 <div class="callout">
-Freeze <em>t</em>: you see a wave in space. Freeze <em>z</em>: you see a wave in time.
+Freeze <em>t</em> $\longrightarrow$ you see a wave in space. 
+
+Freeze <em>z</em> $\longrightarrow$ you see a wave in time.
 </div>
 
 Note:
@@ -165,28 +163,28 @@ wave**: transverse E and H, ratio $\eta_{0}$, amplitude falling as $1/r$.
 
 ---
 
-## Why the phasor trick works
+## Why Phasors Work
 
 We agree to write
 
 $$
 \mathbf{E}(\mathbf{r}, t)
-= \operatorname{Re}\!\left\{ \tilde{\mathbf{E}}(\mathbf{r})\, e^{j \omega t} \right\}
+= \operatorname{Re}\left\lbrace \tilde{\mathbf{E}}(\mathbf{r}) e^{j \omega t} \right\rbrace
 $$
 
 and then carry $\tilde{\mathbf{E}}(\mathbf{r})$ only.
 
 <div class="callout">
-Time isn't gone — we're carrying it silently at a fixed $\omega$.
+Steady-state: we carry the time-dependence silently at a fixed $\omega$ 
 </div>
 
-The moment we have bandwidth, dispersion, or pulses (radar!), time comes back.
+We bring time back to deal with bandwidth, dispersion, or pulses (RADAR!)
 
 ---
 
 ## Part 2
 
-### Parameters that describe what the wave does
+### Wave Parameters
 
 ---
 
@@ -195,14 +193,14 @@ The moment we have bandwidth, dispersion, or pulses (radar!), time comes back.
 Power radiated per unit solid angle:
 
 $$
-U(\theta, \phi) = r^{2}\, S_{\text{rad}}(r, \theta, \phi)
+U(\theta, \phi) = r^{2} S_{\text{rad}}(r, \theta, \phi)
 \quad [\text{W/sr}]
 $$
 
 The $r^{2}$ cancels the $1/r^{2}$ in Poynting — $U$ depends **only on direction**.
 
 $$
-P_{\text{rad}} = \oint U(\theta, \phi)\, d\Omega
+P_{\text{rad}} = \oint U(\theta, \phi) d\Omega
 $$
 
 ---
@@ -213,7 +211,7 @@ Concentration of power relative to isotropic:
 
 $$
 D(\theta, \phi)
-= \frac{4 \pi\, U(\theta, \phi)}{P_{\text{rad}}}
+= \frac{4 \pi U(\theta, \phi)}{P_{\text{rad}}}
 $$
 
 Dimensionless. Reported in **dBi** (dB relative to isotropic).
@@ -221,7 +219,7 @@ Dimensionless. Reported in **dBi** (dB relative to isotropic).
 Pencil-beam approximation:
 
 $$
-D \approx \frac{41{,}253}{\theta_{1}^{\circ}\, \theta_{2}^{\circ}}
+D \approx \frac{41{,}253}{\theta_{1}^{\circ} \theta_{2}^{\circ}}
 $$
 
 ---
@@ -229,7 +227,7 @@ $$
 ## Gain and efficiency
 
 $$
-G(\theta, \phi) = e_{\text{rad}}\, D(\theta, \phi)
+G(\theta, \phi) = e_{\text{rad}} D(\theta, \phi)
 $$
 
 $$
@@ -239,7 +237,7 @@ $$
 With mismatch — **realized gain**:
 
 $$
-G_{\text{re}} = (1 - |\Gamma|^{2})\, G
+G_{\text{re}} = (1 - |\Gamma|^{2}) G
 $$
 
 <div class="callout">
@@ -259,7 +257,7 @@ $$
 Reciprocity ties $A_{e}$ to $G$:
 
 $$
-\boxed{\; A_{e} = \frac{\lambda^{2}}{4 \pi}\, G \;}
+\boxed{A_{e} = \frac{\lambda^{2}}{4 \pi} G}
 $$
 
 - Same physical antenna at higher $f$ → smaller $A_{e}$.
@@ -286,7 +284,7 @@ This is the picture students need to be able to draw from memory.
 
 ---
 
-## The trade you'll see forever
+## Tradeoffs
 
 **Narrower beam** ↔ **higher sidelobes** — pick your poison.
 
@@ -298,7 +296,7 @@ We'll formalize this in **Module 3** with amplitude tapering
 
 ---
 
-## For next time
+## Next Time
 
 <figure class="qr qr-right">
   <img src="/assets/ece444/img/syllabus-qr.png" alt="QR to syllabus">
