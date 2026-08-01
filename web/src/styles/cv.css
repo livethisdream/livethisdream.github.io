@@ -1,0 +1,81 @@
+/* CV page — ported from Chirpy _tabs/CV.md */
+
+.cv-page {
+font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+line-height: 1.6;
+color: #333;
+}
+.cv-page h1, .cv-page h2, .cv-page h3 {
+font-weight: 400; /* A lighter weight for a clean, modern feel */
+}
+.cv-page h1 {
+font-size: 2.5em;
+font-weight: 700; /* Make the name stand out */
+margin-bottom: 0.1em;
+}
+.cv-page h2 {
+font-size: 1.8em;
+border-bottom: 1px solid #eee; /* Subtle underline for section headers */
+padding-bottom: 5px;
+margin-top: 1.5em;
+}
+.cv-page h3 {
+font-size: 1.2em;
+font-weight: 700; /* Bolder for titles/degrees */
+margin-bottom: 0.1em;
+}
+.cv-page p, .cv-page li {
+font-size: 1em;
+font-weight: 300; /* Light text for readability */
+}
+.cv-page ul {
+padding-left: 20px;
+list-style-type: disc;
+}
+.cv-page /* Style the horizontal rule as a clean divider */
+hr {
+border: 0;
+height: 1px;
+background: #ddd;
+margin: 2.5em 0; /* Generous spacing */
+}
+.cv-page /* Header section styling */
+.header {
+text-align: center;
+margin-bottom: 2em;
+}
+.cv-page .header p {
+font-size: 1.1em;
+font-weight: 400;
+margin-top: 0.5em;
+}
+.cv-page /* Style for CV entries (work, .cv-page education) */
+/* This class is no longer used for Work Experience, .cv-page but kept for Education etc. */
+.cv-entry {
+margin-bottom: 1.5em;
+}
+.cv-page .cv-entry p {
+margin: 0.25em 0;
+}
+.cv-page /* Using <strong> for company/school and <em> for date */
+.cv-meta {
+font-size: 1em;
+font-weight: 400;
+color: #555;
+}
+.cv-page a {
+color: #007bff; /* A standard, accessible blue link color */
+text-decoration: none;
+}
+.cv-page a:hover {
+text-decoration: underline;
+}
+.cv-page /* Style for the new publications list */
+.pub-list {
+padding-left: 0;
+list-style-type: none;
+}
+.cv-page .pub-list li {
+margin-bottom: 1em; /* Space out each publication */
+line-height: 1.5;
+}

@@ -11,3 +11,7 @@ assets/libs/
 node_modules/
 vendor
 .idea
+
+# Vite SPA in web/ — build output and lockfiles are per-environment.
+web/dist/
+web/.vite/
