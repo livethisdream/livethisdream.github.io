@@ -1,81 +1,145 @@
-/* CV page — ported from Chirpy _tabs/CV.md */
+/* CV — editorial styling that inherits the site palette + Inter body. */
 
 .cv-page {
-font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-line-height: 1.6;
-color: #333;
+  color: var(--ink);
+  line-height: 1.55;
 }
-.cv-page h1, .cv-page h2, .cv-page h3 {
-font-weight: 400; /* A lighter weight for a clean, modern feel */
+
+/* Header block (name + contact) */
+.cv-page .header {
+  margin: 0 0 1.5rem;
 }
-.cv-page h1 {
-font-size: 2.5em;
-font-weight: 700; /* Make the name stand out */
-margin-bottom: 0.1em;
+.cv-page .header h1 {
+  margin: 0 0 0.5rem;
 }
+/* Suppress the global h1 accent bar inside the CV header */
+.cv-page .header h1::after { display: none; }
+.cv-page .header p {
+  margin: 0;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+.cv-page .header .contact-role {
+  font-size: 15px;
+  line-height: 1.4;
+}
+.cv-page .header .contact-role + .contact-role {
+  margin-top: 0.15rem;
+}
+.cv-page .header .contact-location {
+  margin-top: 0.15rem;
+  color: var(--ink-3);
+}
+.cv-page .header .contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 0.9rem;
+}
+.cv-page .header a { color: var(--tps-mid); }
+.cv-page .header a.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid var(--tps-edge);
+  border-radius: 6px;
+  background: var(--tps-bg);
+  color: var(--tps-navy);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+.cv-page .header a.contact-chip:hover {
+  background: #dceaf7;
+  border-color: var(--tps-mid);
+  color: var(--tps-navy);
+  text-decoration: none;
+}
+.cv-page .header a.contact-chip svg {
+  color: var(--tps-mid);
+}
+.cv-page .header a.contact-chip:hover svg {
+  color: var(--tps-navy);
+}
+
+/* Section titles — MDX ## rows (e.g. "ABOUT ME", "HIGHLIGHTS", "SKILLS") */
 .cv-page h2 {
-font-size: 1.8em;
-border-bottom: 1px solid #eee; /* Subtle underline for section headers */
-padding-bottom: 5px;
-margin-top: 1.5em;
+  font-size: 20px;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
 }
+
+/* Job / degree / group titles — MDX ### rows */
 .cv-page h3 {
-font-size: 1.2em;
-font-weight: 700; /* Bolder for titles/degrees */
-margin-bottom: 0.1em;
+  font-size: 17px;
+  color: var(--tps-navy);
+  font-weight: 700;
+  border-left: none;
+  padding-left: 0;
+  margin-top: 1.5rem;
+  margin-bottom: 0.15rem;
+  letter-spacing: normal;
 }
+
+/* Sub-group headings inside a section — MDX #### rows (e.g. HIGHLIGHTS subsections) */
+.cv-page h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--tps-mid);
+  margin: 1.25rem 0 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+/* Meta line directly under a heading — the "**Company** | Location | *Dates*" pattern */
+.cv-page h3 + p,
+.cv-page h4 + p {
+  margin: 0 0 0.5rem;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+/* Body copy + bullets */
 .cv-page p, .cv-page li {
-font-size: 1em;
-font-weight: 300; /* Light text for readability */
+  font-size: 15px;
 }
 .cv-page ul {
-padding-left: 20px;
-list-style-type: disc;
+  margin: 0.35rem 0 1rem 1.25rem;
+  padding-left: 0.5rem;
+  list-style-type: disc;
 }
-.cv-page /* Style the horizontal rule as a clean divider */
-hr {
-border: 0;
-height: 1px;
-background: #ddd;
-margin: 2.5em 0; /* Generous spacing */
+.cv-page li {
+  margin-bottom: 0.35rem;
+  line-height: 1.5;
 }
-.cv-page /* Header section styling */
-.header {
-text-align: center;
-margin-bottom: 2em;
+
+/* Pull-quote for the Feedback section */
+.cv-page blockquote {
+  border-left: 3px solid var(--tps-mid);
+  margin: 0.75rem 0;
+  padding: 0.15rem 0 0.15rem 1rem;
+  color: var(--ink-2);
+  font-style: italic;
 }
-.cv-page .header p {
-font-size: 1.1em;
-font-weight: 400;
-margin-top: 0.5em;
+.cv-page blockquote p { margin: 0.15rem 0; }
+.cv-page blockquote strong {
+  color: var(--tps-navy);
+  font-style: normal;
 }
-.cv-page /* Style for CV entries (work, .cv-page education) */
-/* This class is no longer used for Work Experience, .cv-page but kept for Education etc. */
-.cv-entry {
-margin-bottom: 1.5em;
-}
-.cv-page .cv-entry p {
-margin: 0.25em 0;
-}
-.cv-page /* Using <strong> for company/school and <em> for date */
-.cv-meta {
-font-size: 1em;
-font-weight: 400;
-color: #555;
-}
-.cv-page a {
-color: #007bff; /* A standard, accessible blue link color */
-text-decoration: none;
-}
-.cv-page a:hover {
-text-decoration: underline;
-}
-.cv-page /* Style for the new publications list */
-.pub-list {
-padding-left: 0;
-list-style-type: none;
+
+/* Links */
+.cv-page a { color: var(--tps-mid); }
+.cv-page a:hover { color: var(--tps-navy); }
+
+/* Publications list — tighter than default bullets */
+.cv-page .pub-list {
+  padding-left: 0;
+  list-style-type: none;
 }
 .cv-page .pub-list li {
-margin-bottom: 1em; /* Space out each publication */
-line-height: 1.5;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
 }
