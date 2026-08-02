@@ -1,0 +1,470 @@
+/* ============================================================
+   ECE 444 — palette (matched to assets/reveal/course-slides.css)
+   ============================================================
+   --tps-navy   : #004a85    (primary, brand)
+   --tps-mid    : #0067b9    (accent / borders / table headers)
+   --tps-light  : #0067b9    (h3 left border)
+   --tps-bg     : #f0f5fa    (key concept background)
+   --tps-bg-alt : #f5f9fc    (example/table even rows)
+   --tps-edge   : #cddce9    (light divider)
+   --tps-edge-2 : #b9d2e5    (medium divider)
+*/
+
+
+/* ============================================================
+   Typography
+   ============================================================ */
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+
+/* ============================================================
+   Heading Styles
+   ============================================================ */
+
+h1 {
+  color: #004a85;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.15;
+}
+h1::after {
+  content: '';
+  display: block;
+  width: 2.5em;
+  height: 4px;
+  background-color: #0067b9;
+  border-radius: 2px;
+  margin-top: 0.4em;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  color: #004a85;
+  font-weight: 700;
+  border-bottom: 1px solid #cddce9;
+  padding-bottom: 0.2em;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.2;
+}
+
+h3 {
+  color: #0067b9;
+  font-weight: 600;
+  border-left: 4px solid #0067b9;
+  padding-left: 0.65em;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+/* Inline code styling (consumes JetBrains Mono, navy on --tps-bg) */
+:not(pre) > code {
+  background-color: #f0f5fa;
+  color: #004a85;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
+  font-size: 0.86em;
+  font-weight: 500;
+}
+
+/* ============================================================
+   Textbook Callout Styles
+   ============================================================ */
+
+/* --- Key Concept boxes ------------------------------------ */
+.admonition.key-concept,
+div.admonition.key-concept {
+  border: 1px solid #b8c9e8 !important;
+  border-left: 5px solid #004a85 !important;
+  border-radius: 0 6px 6px 0 !important;
+  background-color: #f0f5fa !important;
+  padding: 0 !important;
+  overflow: hidden;
+  margin: 1.5em 0;
+  box-shadow: none !important;
+}
+.admonition.key-concept > .admonition-title,
+div.admonition.key-concept > p.admonition-title {
+  background-color: #004a85 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.85em !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4em 1em !important;
+  margin: 0 !important;
+}
+/* Aggressively suppress the theme's bell/warning icon on Key Concept titles */
+.admonition.key-concept > .admonition-title::before,
+div.admonition.key-concept > p.admonition-title::before,
+.admonition.key-concept > .admonition-title::after,
+div.admonition.key-concept > p.admonition-title::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+.admonition.key-concept > *:not(.admonition-title),
+div.admonition.key-concept > *:not(.admonition-title) {
+  padding: 0.75em 1.5em !important;
+  margin: 0 !important;
+}
+
+/* --- Callout list breathing room --------------------------- */
+/* Bump padding-left on ordered / unordered lists inside any of the
+   four callout cards so the list markers ("1.", "•") don't crowd
+   the colored left border. Higher specificity than the body padding
+   rules below so it actually wins. */
+.admonition.key-concept > ol .admonition.key-concept > ul .admonition.example-problem > ol .admonition.example-problem > ul .admonition.type-along > ol .admonition.type-along > ul .admonition.ground-rules > ol .admonition.ground-rules > ul div.admonition.key-concept > ol div.admonition.key-concept > ul div.admonition.example-problem > ol div.admonition.example-problem > ul div.admonition.type-along > ol div.admonition.type-along > ul div.admonition.ground-rules > ol div.admonition.ground-rules > ul {
+  padding-left: 2.6em !important;
+}
+
+/* --- Type-along boxes (mid-blue) -------------------------- */
+.admonition.type-along,
+div.admonition.type-along {
+  border: 1px solid #b9d2e5 !important;
+  border-left: 5px solid #0067b9 !important;
+  border-radius: 0 6px 6px 0 !important;
+  background-color: #f6fbff !important;
+  padding: 0 !important;
+  overflow: hidden;
+  margin: 1.5em 0;
+  box-shadow: none !important;
+}
+.admonition.type-along > .admonition-title,
+div.admonition.type-along > p.admonition-title {
+  background-color: #0067b9 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.85em !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4em 1em !important;
+  margin: 0 !important;
+}
+.admonition.type-along > .admonition-title::before,
+div.admonition.type-along > p.admonition-title::before,
+.admonition.type-along > .admonition-title::after,
+div.admonition.type-along > p.admonition-title::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+.admonition.type-along > *:not(.admonition-title),
+div.admonition.type-along > *:not(.admonition-title) {
+  padding: 0.5em 1.5em !important;
+  margin: 0 !important;
+}
+/* Make the nested Solution dropdown read as a child of the exercise. */
+.admonition.type-along .admonition.dropdown {
+  margin: 0.5em 0 0 !important;
+  border-radius: 4px !important;
+}
+
+/* --- Example Problem boxes -------------------------------- */
+div.admonition.example-problem {
+  border: 1px solid #ddb896;
+  border-left: 5px solid #7b3000;
+  border-radius: 0 6px 6px 0;
+  background-color: #fdf6f1;
+  padding: 0;
+  overflow: hidden;
+  margin: 1.5em 0;
+}
+div.admonition.example-problem > p.admonition-title {
+  background-color: #7b3000;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4em 1em;
+  margin: 0;
+}
+div.admonition.example-problem > p.admonition-title::before {
+  display: none;
+}
+div.admonition.example-problem > *:not(.admonition-title) {
+  padding: 0.5em 1.5em 0.25em 1.5em;
+  margin: 0;
+}
+
+
+/* ============================================================
+   Hero section (intro page)
+   ============================================================ */
+.hero {
+  position: relative;
+  margin: 0 0 28px;
+  padding: 56px 44px 44px;
+  background: #eaf2fb;
+  color: var(--ink);
+  border: 1px solid var(--tps-edge);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 4px;
+  background: #0067b9;
+}
+.hero .hero-eyebrow {
+  margin: 0 0 12px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #1f6098;
+}
+.hero h1.hero-title {
+  color: #004a85;
+  font-size: clamp(28px, 4.2vw, 44px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0 0 12px;
+  max-width: 18ch;
+}
+/* Suppress the normal h1::after underline inside the hero. */
+.hero h1.hero-title::after { display: none; }
+.hero .hero-lede {
+  margin: 0 0 22px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 50ch;
+}
+.hero .hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.hero .cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #0067b9;
+  color: #004a85 !important;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.hero .cta:hover {
+  background: rgba(0, 103, 185, 0.08);
+  border-color: #004a85;
+}
+.hero .cta-primary {
+  background: #0067b9;
+  border-color: #0067b9;
+  color: #fff !important;
+}
+.hero .cta-primary:hover {
+  background: #004a85;
+  border-color: #004a85;
+}
+@media (max-width: 720px) {
+  .hero {
+    padding: 40px 24px 32px;
+  }
+}
+
+
+/* ============================================================
+   Block grid (intro page)
+   ============================================================ */
+/* ECE 215 has three blocks, not the four ECE 495 had, so a fixed 2-column grid
+   would strand the third card alone on a second row. Auto-fit keeps all three
+   on one row when there is width for it and degrades gracefully. */
+.block-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+@media (max-width: 560px) {
+  .block-grid { grid-template-columns: 1fr; }
+}
+.block-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px 14px;
+  background: #fff;
+  border: 1px solid var(--tps-rule, #d8e2ec);
+  border-radius: 8px;
+  color: var(--ink, #15202b) !important;
+  text-decoration: none !important;
+  transition: border-color 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
+}
+.block-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: #00205B;
+  border-radius: 8px 8px 0 0;
+}
+.block-card:hover {
+  border-color: #1f6098;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 32, 91, 0.08);
+}
+.block-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #00205B;
+  border-left: none;
+  padding-left: 0;
+}
+.block-card p {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  color: #3b4651;
+  line-height: 1.45;
+  flex: 1;
+}
+.block-card footer {
+  font-size: 11px;
+  color: #1d7a4d;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+
+/* ============================================================
+   Deliverable cards (intro page)
+   ============================================================ */
+.deliverable-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0;
+}
+@media (max-width: 720px) {
+  .deliverable-cards { grid-template-columns: 1fr; }
+}
+.deliverable-card {
+  border: 1px solid var(--tps-rule, #d8e2ec);
+  border-left: 5px solid #00205B;
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px 14px;
+  background: #f8fbff;
+}
+.deliverable-card .d-eyebrow {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1f6098;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.deliverable-card h3 {
+  margin: 4px 0 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #00205B;
+  border-left: none;
+  padding-left: 0;
+}
+.deliverable-card .d-weight {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: #3b4651;
+}
+.deliverable-card .d-weight .d-w-num {
+  font-weight: 700;
+  color: #00205B;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  margin-right: 4px;
+}
+.deliverable-card .d-due {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #3b4651;
+}
+.deliverable-card .d-due strong {
+  color: #00205B;
+  font-weight: 700;
+}
+.deliverable-card .d-link {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f6098;
+  text-decoration: none;
+}
+.deliverable-card .d-link:hover {
+  text-decoration: underline;
+  color: #00205B;
+}
+.deliverable-card .d-link-muted {
+  color: #1d7a4d;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.deliverable-card .d-link-muted:hover {
+  text-decoration: none;
+  color: #1d7a4d;
+}
+
+
+/* ============================================================
+   Ground-rules callout (rust accent, like example-problem)
+   ============================================================ */
+.admonition.ground-rules,
+div.admonition.ground-rules {
+  border: 1px solid #ddb896 !important;
+  border-left: 5px solid #7b3000 !important;
+  border-radius: 0 6px 6px 0 !important;
+  background-color: #fdf6f1 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  margin: 1.5em 0;
+  box-shadow: none !important;
+}
+.admonition.ground-rules > .admonition-title,
+div.admonition.ground-rules > p.admonition-title {
+  background-color: #7b3000 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.85em !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4em 1em !important;
+  margin: 0 !important;
+}
+.admonition.ground-rules > .admonition-title::before,
+div.admonition.ground-rules > p.admonition-title::before,
+.admonition.ground-rules > .admonition-title::after,
+div.admonition.ground-rules > p.admonition-title::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+.admonition.ground-rules > *:not(.admonition-title),
+div.admonition.ground-rules > *:not(.admonition-title) {
+  padding: 0.75em 1.5em !important;
+  margin: 0 !important;
+}
+
+
+

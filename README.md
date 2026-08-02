@@ -1,43 +1,33 @@
-# Chirpy Starter
+# livethisdream.github.io
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+Personal site of Neil Rogers — RF Field Applications Engineer at Analog Devices,
+teaching antennas and SDRs at USAFA. Live at
+<https://livethisdream.github.io>.
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+This is the **umbrella site** — a card-grid front door, patterned on
+[usafa-ece.org](https://usafa-ece.org/), that links out to the standalone
+course books:
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+- **ECE 444** — Antennas, Phased Arrays, and Radar Systems ·
+  <https://livethisdream.github.io/ece444/> ·
+  [livethisdream/ece444](https://github.com/livethisdream/ece444)
+- **ECE 448** — Software Defined Radios ·
+  <https://livethisdream.github.io/ece448/> ·
+  [livethisdream/ece448](https://github.com/livethisdream/ece448)
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
+and hosts personal pages inline (CV, writeups, wishlist, vCard QR utility).
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
-```
+## Stack
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+- Vite + React + TypeScript
+- react-router-dom v7 with BrowserRouter (+ GH Pages 404 fallback)
+- @mdx-js/rollup for long-form pages (CV, GRCon25 CTF writeup)
+- CSS palette + hero/card system shared with the two course books
 
-## Usage
+Everything under [web/](web/). Build with `npm run build`; serve locally with
+`npm run dev`.
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+## Deploy
 
-## Contributing
-
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
-
-## License
-
-This work is published under [MIT][mit] License.
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+`.github/workflows/pages-deploy.yml` builds `web/dist` and publishes via
+`actions/deploy-pages@v4` on push to `main`.

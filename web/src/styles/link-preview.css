@@ -1,0 +1,67 @@
+/* Link-preview card — used in the wishlist. */
+
+.link-preview-card {
+  margin: 1.5rem 0;
+  border: 1px solid var(--tps-edge);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.link-preview-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+}
+
+.link-preview-card a {
+  display: flex;
+  text-decoration: none !important;
+  color: inherit !important;
+  min-height: 120px;
+}
+
+.link-preview-card .link-preview-image {
+  flex: 0 0 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-right: 1px solid var(--tps-edge);
+}
+@media (max-width: 500px) {
+  .link-preview-card .link-preview-image { display: none; }
+}
+
+.link-preview-card .link-preview-content {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+.link-preview-card .link-preview-title {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--tps-navy);
+  line-height: 1.3;
+}
+.link-preview-card .link-preview-description {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.link-preview-card .link-preview-url {
+  font-size: 0.70rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  color: var(--tps-mid);
+  margin-top: auto;
+}
