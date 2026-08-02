@@ -31,7 +31,6 @@ export default function Projects() {
       <div className="block-grid" style={{ marginTop: 24 }}>
         {writeups.map((w) => (
           <Link key={w.to} to={w.to} className="block-card">
-            <span className="num">✍</span>
             <h3>{w.title}</h3>
             <p>{w.blurb}</p>
             <footer>{w.date} · Read →</footer>

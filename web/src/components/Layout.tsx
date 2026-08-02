@@ -1,17 +1,42 @@
-import { NavLink, Link, Outlet } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, Outlet } from 'react-router-dom'
 
 export default function Layout() {
+  const [q, setQ] = useState('')
+
+  function onSearchSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const query = q.trim()
+    if (!query) return
+    const url =
+      'https://www.google.com/search?q=' +
+      encodeURIComponent('site:livethisdream.github.io ' + query)
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
   return (
     <div className="site">
       <header className="site-header">
         <div className="container">
-          <Link to="/" className="brand">N. Rogers</Link>
-          <nav aria-label="Primary">
-            <NavLink to="/cv">CV</NavLink>
-            <NavLink to="/projects">Projects</NavLink>
-            <NavLink to="/ece444/" reloadDocument>ECE 444</NavLink>
-            <NavLink to="/ece448/" reloadDocument>ECE 448</NavLink>
-          </nav>
+          <Link to="/" className="brand" aria-label="Neil Rogers — home">
+            <img src="/nr-logo.png" alt="Neil Rogers" className="brand-logo" />
+          </Link>
+          <form
+            className="header-search"
+            role="search"
+            onSubmit={onSearchSubmit}
+          >
+            <label htmlFor="site-search" className="visually-hidden">
+              Search this site
+            </label>
+            <input
+              id="site-search"
+              type="search"
+              placeholder="Search…"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+            />
+          </form>
         </div>
       </header>
 

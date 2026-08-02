@@ -15,3 +15,6 @@ vendor
 # Vite SPA in web/ — build output and lockfiles are per-environment.
 web/dist/
 web/.vite/
+
+# Claude Code local session settings (agents, permissions, etc.)
+.claude/
