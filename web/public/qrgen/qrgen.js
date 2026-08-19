@@ -222,17 +222,18 @@
     const qr = buildQR(text, v);
     qr.append(host);
 
-    // qr-code-styling renders async; poll briefly for the canvas.
-    const qrCanvas = await new Promise((resolve) => {
-      const start = Date.now();
-      const tick = () => {
-        const c = host.querySelector('canvas');
-        if (c) return resolve(c);
-        if (Date.now() - start > 3000) return resolve(null);
-        requestAnimationFrame(tick);
-      };
-      tick();
-    });
+    // qr-code-styling inserts its <canvas> synchronously but paints it a tick
+    // later, so waiting for the element to merely exist composites a blank
+    // bitmap — the modules land after we've already copied it. Wait on the
+    // library's own drawing promise; getRawData() is the public fallback (it
+    // awaits the same promise internally). Keep a timeout so a future API
+    // change degrades to "no QR" rather than a hung page.
+    const drawn = qr._canvasDrawingPromise || qr.getRawData('png');
+    await Promise.race([
+      Promise.resolve(drawn).catch(() => {}),
+      new Promise((resolve) => setTimeout(resolve, 5000)),
+    ]);
+    const qrCanvas = host.querySelector('canvas');
 
     if (token !== renderToken) { host.remove(); return; }
     if (!qrCanvas) { host.remove(); return; }
