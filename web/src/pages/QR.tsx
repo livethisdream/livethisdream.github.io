@@ -59,17 +59,17 @@ export default function QR() {
           <form id="qrgen-form" className="qrgen-form" autoComplete="off">
             <fieldset>
               <legend>Contact</legend>
-              <label>Full name <input type="text" name="fn" placeholder="Don Hotchkiss" required /></label>
-              <label>Title <input type="text" name="title" placeholder="Principal Account Manager" /></label>
-              <label>Organization <input type="text" name="org" placeholder="Analog Devices" /></label>
-              <label>Email <input type="email" name="email" placeholder="don.hotchkiss@analog.com" /></label>
-              <label>Phone <input type="tel" name="phone" placeholder="+1 972-742-0453" /></label>
+              <label>Full name <input type="text" name="fn" placeholder="Jane Doe" required /></label>
+              <label>Title <input type="text" name="title" placeholder="Account Manager" /></label>
+              <label>Organization <input type="text" name="org" placeholder="Example Corp" /></label>
+              <label>Email <input type="email" name="email" placeholder="jane.doe@example.com" /></label>
+              <label>Phone <input type="tel" name="phone" placeholder="+1 555-555-0100" /></label>
               <label>Website <input type="url" name="url" placeholder="https://" /></label>
             </fieldset>
 
             <fieldset>
               <legend>Style</legend>
-              <label>Initials (center plaque) <input type="text" name="initials" maxLength={3} placeholder="DH" /></label>
+              <label>Initials (center plaque) <input type="text" name="initials" maxLength={3} placeholder="JD" /></label>
               <label>Foreground <input type="color" name="fg" defaultValue="#111111" /></label>
               <label>Background <input type="color" name="bg" defaultValue="#ffffff" /></label>
               <label>Plaque color <input type="color" name="plaque" defaultValue="#111111" /></label>
