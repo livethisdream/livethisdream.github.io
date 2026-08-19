@@ -148,7 +148,10 @@
     // Optional ADI band: compute band height from logo aspect after tight crop.
     let adiImg = null, adiCrop = null;
     let bandH = 0, bandW = 0;
-    const bandPadTop = -40, bandPadBot = 24;
+    // Symmetric padding above and below the logo. A negative bandPadTop pulls
+    // the logo up into the QR's quiet zone, which crowds the bottom finder
+    // pattern and can cost scanners a lock.
+    const bandPadTop = 24, bandPadBot = 24;
     if (v.useAdiLogo) {
       try {
         adiImg = await loadImage(ADI_LOGO_URL);
