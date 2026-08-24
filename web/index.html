@@ -21,6 +21,22 @@
         }
       }(window.location));
     </script>
+    <script>
+      // The old Chirpy-era site registered a PWA service worker that cached
+      // every page; returning visitors get that stale site until it's removed.
+      // /sw.js + /sw.min.js are kill-switch workers that handle it, but also
+      // unregister and purge here in case this page loads first.
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (regs) {
+          regs.forEach(function (reg) { reg.unregister(); });
+        });
+      }
+      if (window.caches) {
+        caches.keys().then(function (keys) {
+          keys.forEach(function (key) { caches.delete(key); });
+        });
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
