@@ -6,7 +6,7 @@ import Courses from './pages/Courses'
 import Projects from './pages/Projects'
 import Wishlist from './pages/Wishlist'
 import QR from './pages/QR'
-import Placeholder from './pages/Placeholder'
+import NotFound from './pages/NotFound'
 import GRCon25CTF from './pages/writeups/GRCon25CTF'
 
 export default function App() {
@@ -20,8 +20,9 @@ export default function App() {
         <Route path="posts/grcon25-ctf" element={<GRCon25CTF />} />
         <Route path="wishlist" element={<Wishlist />} />
         <Route path="qr" element={<QR />} />
-        <Route path="*" element={<Placeholder title="Not Found" note="No page at that URL." />} />
       </Route>
+      {/* Outside Layout: the waterfall is full-bleed, no header or footer. */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
