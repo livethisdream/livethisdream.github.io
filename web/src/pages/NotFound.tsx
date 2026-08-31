@@ -235,8 +235,7 @@ export default function NotFound() {
         <p className="nf-code">404</p>
         <p className="nf-sub">Signal not found</p>
         <p className="nf-body">
-          Nothing is transmitting at this URL. The band is not empty. Give it a minute and watch
-          the waterfall.
+          Nothing is transmitting at this URL. The band is not empty.
         </p>
         <Link className="nf-home" to="/">
           ← home
