@@ -17,7 +17,7 @@
   .back:hover { text-decoration:underline; }
   h1 { color:var(--navy); font-weight:800; font-size:clamp(26px,4vw,36px); line-height:1.15; margin:10px 0 14px; }
   h1::after { content:''; display:block; width:2.5em; height:4px; background:var(--mid); border-radius:2px; margin-top:0.35em; }
-  .controls { display:grid; grid-template-columns:1fr 1fr auto; gap:10px 22px; align-items:center;
+  .controls { display:grid; grid-template-columns:1fr auto; gap:10px 22px; align-items:center;
               padding:10px 14px; background:var(--bg); border:1px solid var(--edge); border-radius:8px; }
   .ctl { display:flex; align-items:center; gap:10px; min-width:0; }
   .ctl label { font-size:13px; color:var(--ink3); font-weight:700; white-space:nowrap; }
@@ -45,13 +45,8 @@
 
   <div class="controls">
     <div class="ctl">
-      <label for="f0">wheel f<sub>0</sub></label>
-      <input type="range" id="f0" min="-3" max="3" step="0.01" value="0.9">
-      <span class="val" id="f0v">—</span>
-    </div>
-    <div class="ctl">
       <label for="fs">camera f<sub>s</sub></label>
-      <input type="range" id="fs" min="2" max="12" step="0.5" value="6">
+      <input type="range" id="fs" min="0.35" max="6" step="0.05" value="4">
       <span class="val" id="fsv">—</span>
     </div>
     <div class="btns">
@@ -89,12 +84,17 @@ const C = { navy:'#004a85', mid:'#0067b9', edge:'#cddce9', bg:'#f5f9fc', ink:'#1
 const SANS = "Inter, system-ui, -apple-system, 'Segoe UI', sans-serif";
 const $ = id => document.getElementById(id);
 
-const S = { ratio: 0.9, fs: 6, playing: true, t: 0 };
-const f0 = () => S.ratio * S.fs;
+// The wheel turns at a fixed, slow 1 rev/s clockwise (counterclockwise is positive),
+// so the frame rate is the only thing that changes. fs stays above |f0|/3 so the
+// spectrum's +-3fs axis always holds the true tone.
+const F0 = -1;
+const S = { fs: 4, playing: true, t: 0 };
+const f0 = () => F0;
 // The rotation's alias wraps into [-fs/2, fs/2); the shadow's folds into [0, fs/2].
 function wrap(f, fs) { let a = f - fs * Math.round(f / fs); if (a >= fs / 2 - 1e-9) a -= fs; return a; }
 const fold = (f, fs) => Math.abs(wrap(f, fs));
-const signed = v => { const x = Math.abs(v) < 0.005 ? 0 : v; return (x > 0 ? '+' : x < 0 ? '−' : '') + Math.abs(x).toFixed(2); };
+// speed and direction: clockwise ↻, counterclockwise ↺
+const spin = v => { const x = Math.abs(v) < 0.005 ? 0 : v; return Math.abs(x).toFixed(2) + (x < 0 ? ' ↻' : x > 0 ? ' ↺' : ''); };
 
 function prep(cv, hFn) {
   const dpr = window.devicePixelRatio || 1, w = cv.clientWidth || 300, h = hFn(w);
@@ -228,14 +228,12 @@ function drawSpec() {
 function drawAll(dt) {
   drawWheels(dt); drawTime(); drawSpec();
   const f = f0(), fs = S.fs, fw = wrap(f, fs);
-  $('f0v').textContent = signed(f) + ' rev/s';
-  $('fsv').textContent = S.fs.toFixed(1) + ' frames/s';
-  $('rTrue').textContent = signed(f);
-  $('rAlias').textContent = Math.abs(Math.abs(fw) - fs / 2) < 1e-6 ? '±' + (fs / 2).toFixed(2) : signed(fw);
+  $('fsv').textContent = S.fs.toFixed(2) + ' frames/s';
+  $('rTrue').textContent = spin(f);
+  $('rAlias').textContent = Math.abs(Math.abs(fw) - fs / 2) < 1e-6 ? (fs / 2).toFixed(2) + ' ?' : spin(fw);
 }
 
-$('f0').addEventListener('input', e => { S.ratio = parseFloat(e.target.value); drawAll(); });
-$('fs').addEventListener('input', e => { S.fs = parseFloat(e.target.value); drawAll(); });   // f0 keeps its ratio to fs
+$('fs').addEventListener('input', e => { S.fs = parseFloat(e.target.value); drawAll(); });
 const playBtn = $('play');
 let lastTs = null;
 function setPlaying(on) {
