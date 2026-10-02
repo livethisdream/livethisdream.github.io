@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#004a85">
+<meta name="description" content="An analog-to-digital converter, one step at a time: sample, quantize, encode.">
+<title>The ADC: Sample, Quantize, Encode</title>
+<style>
+  :root { --navy:#004a85; --mid:#0067b9; --edge:#cddce9; --edge2:#b9d2e5; --bg:#f5f9fc;
+          --ink:#15202b; --ink3:#5b6573; --red:#b01e24; --amber:#8a5a00; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; background:#fff; color:var(--ink);
+              font-family:Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  main { max-width:1000px; margin:0 auto; padding:20px 16px 40px; }
+  .back { font-size:13px; color:var(--mid); text-decoration:none; font-weight:600; }
+  .back:hover { text-decoration:underline; }
+  h1 { color:var(--navy); font-weight:800; font-size:clamp(26px,4vw,36px); line-height:1.15; margin:10px 0 14px; }
+  h1::after { content:''; display:block; width:2.5em; height:4px; background:var(--mid); border-radius:2px; margin-top:0.35em; }
+  .controls { display:grid; grid-template-columns:1fr 1fr auto; gap:10px 22px; align-items:center;
+              padding:10px 14px; background:var(--bg); border:1px solid var(--edge); border-radius:8px; }
+  .ctl { display:flex; align-items:center; gap:10px; min-width:0; }
+  .ctl label { font-size:13px; color:var(--ink3); font-weight:700; white-space:nowrap; }
+  .ctl .val { color:var(--navy); font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; min-width:88px; text-align:right; }
+  .ctl input[type=range] { flex:1 1 auto; min-width:90px; accent-color:var(--mid); }
+  .btns { display:flex; gap:8px; }
+  .btns button { font:inherit; font-size:12px; font-weight:700; padding:6px 12px; border-radius:6px; border:1px solid var(--edge2); background:#fff; color:var(--navy); cursor:pointer; }
+  .btns button:focus-visible { outline:2px solid var(--navy); outline-offset:2px; }
+  .panel { border:1px solid var(--edge); border-radius:8px; background:#fff; padding:10px; margin-top:12px; }
+  .panel h2 { font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:var(--navy); margin:0 0 6px; font-weight:800; }
+  .panel h2 span { color:var(--mid); margin-right:6px; }
+  canvas { display:block; width:100%; touch-action:manipulation; cursor:pointer; }
+  .flow { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:8px 12px; margin-top:12px;
+          font-size:20px; font-weight:700; font-variant-numeric:tabular-nums; }
+  .flow .chip { padding:6px 14px; border-radius:8px; border:1px solid var(--edge2); background:var(--bg); }
+  .flow .arr { color:var(--ink3); font-weight:400; }
+  #vS { color:var(--mid); }
+  #vQ { color:var(--red); }
+  #vC { color:var(--navy); font-family:ui-monospace, 'SF Mono', Menlo, Consolas, monospace; letter-spacing:0.08em; }
+  @media (max-width:620px) { .controls { grid-template-columns:1fr; } .btns { justify-self:start; } .flow { font-size:17px; } }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="/">← livethisdream.github.io</a>
+  <h1>The ADC: Sample, Quantize, Encode</h1>
+
+  <div class="controls">
+    <div class="ctl">
+      <label for="ns">samples</label>
+      <input type="range" id="ns" min="4" max="32" step="1" value="12">
+      <span class="val" id="nsv">—</span>
+    </div>
+    <div class="ctl">
+      <label for="nb">bits</label>
+      <input type="range" id="nb" min="1" max="6" step="1" value="3">
+      <span class="val" id="nbv">—</span>
+    </div>
+    <div class="btns">
+      <button type="button" id="play" aria-pressed="true">Pause</button>
+      <button type="button" id="step" title="Pause and move to the next sample">Step ▸</button>
+    </div>
+  </div>
+
+  <div class="flow" aria-live="polite">
+    <span class="chip" id="vS">—</span><span class="arr">→</span>
+    <span class="chip" id="vQ">—</span><span class="arr">→</span>
+    <span class="chip" id="vC">—</span>
+  </div>
+
+  <section class="panel">
+    <h2><span>1</span>Sample</h2>
+    <canvas id="cS" aria-label="The analog signal with the sampling instants marked"></canvas>
+  </section>
+  <section class="panel">
+    <h2><span>2</span>Quantize</h2>
+    <canvas id="cQ" aria-label="Each sample rounded to the nearest of the allowed levels"></canvas>
+  </section>
+  <section class="panel">
+    <h2><span>3</span>Encode</h2>
+    <canvas id="cE" aria-label="Each level written as a binary code, one column per sample"></canvas>
+  </section>
+</main>
+
+<script>
+'use strict';
+const C = { navy:'#004a85', mid:'#0067b9', edge:'#cddce9', bg:'#f5f9fc', ink:'#15202b',
+            ink3:'#5b6573', red:'#b01e24', gray:'#9aa6b2', grid:'#e3ebf3', hi:'rgba(0,103,185,0.10)' };
+const SANS = "Inter, system-ui, -apple-system, 'Segoe UI', sans-serif";
+const MONO = "ui-monospace, 'SF Mono', Menlo, Consolas, monospace";
+const $ = id => document.getElementById(id);
+
+// One period of a smooth signal inside the full-scale range [-1, 1].
+const x = t => 0.82 * Math.sin(2 * Math.PI * t) + 0.12 * Math.sin(2 * Math.PI * 2 * t + 0.6);
+const S = { ns: 12, nb: 3, cur: 0, playing: true };
+const L = () => 1 << S.nb;                                   // number of levels
+const tOf = n => (n + 0.5) / S.ns;                           // sample instants across [0, 1)
+const code = v => Math.max(0, Math.min(L() - 1, Math.floor((v + 1) / 2 * L())));   // offset binary
+const level = k => -1 + (k + 0.5) * 2 / L();                 // the level's center
+const bin = k => k.toString(2).padStart(S.nb, '0');
+
+function prep(cv, h) {
+  const dpr = window.devicePixelRatio || 1, w = cv.clientWidth || 300;
+  cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); cv.style.height = h + 'px';
+  const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
+  return { ctx, w, h };
+}
+// shared horizontal layout so the three panels line up sample for sample
+function frame(w) {
+  const mL = w < 500 ? 34 : 46, mR = 10;
+  return { mL, pw: w - mL - mR, X: t => mL + t * (w - mL - mR) };
+}
+function txt(ctx, s, x, y, px, color, align = 'center', font = SANS, bold = false) {
+  ctx.fillStyle = color; ctx.font = (bold ? '700 ' : '') + px + 'px ' + font;
+  ctx.textAlign = align; ctx.textBaseline = 'middle'; ctx.fillText(s, x, y);
+}
+function highlight(ctx, X, h) {
+  const half = 0.5 / S.ns, t = tOf(S.cur);
+  ctx.fillStyle = C.hi; ctx.fillRect(X(t - half), 0, X(t + half) - X(t - half), h);
+}
+const heightFor = w => Math.round(Math.min(220, Math.max(150, w * 0.22)));
+
+function drawSample() {
+  const cv = $('cS'), { ctx, w, h } = prep(cv, heightFor(cv.clientWidth || 300));
+  const { mL, pw, X } = frame(w), mT = 10, ph = h - 20, Y = v => mT + (1 - v) / 2 * ph;
+  highlight(ctx, X, h);
+  ctx.strokeStyle = C.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(mL, Y(0)); ctx.lineTo(mL + pw, Y(0)); ctx.stroke();
+  txt(ctx, '+1', mL - 6, Y(1), 11, C.ink3, 'right'); txt(ctx, '0', mL - 6, Y(0), 11, C.ink3, 'right'); txt(ctx, '−1', mL - 6, Y(-1), 11, C.ink3, 'right');
+  ctx.strokeStyle = C.gray; ctx.lineWidth = 2; ctx.beginPath();
+  for (let i = 0; i <= 400; i++) { const t = i / 400; i ? ctx.lineTo(X(t), Y(x(t))) : ctx.moveTo(X(t), Y(x(t))); }
+  ctx.stroke();
+  for (let n = 0; n < S.ns; n++) {
+    const t = tOf(n), v = x(t), on = n === S.cur;
+    ctx.strokeStyle = C.mid; ctx.lineWidth = on ? 2.5 : 1.5;
+    ctx.beginPath(); ctx.moveTo(X(t), Y(0)); ctx.lineTo(X(t), Y(v)); ctx.stroke();
+    ctx.fillStyle = C.mid; ctx.beginPath(); ctx.arc(X(t), Y(v), on ? 6.5 : 4.5, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+
+function drawQuantize() {
+  const cv = $('cQ'), { ctx, w, h } = prep(cv, heightFor(cv.clientWidth || 300));
+  const { mL, pw, X } = frame(w), mT = 10, ph = h - 20, Y = v => mT + (1 - v) / 2 * ph;
+  highlight(ctx, X, h);
+  const nL = L();
+  // the allowed levels; their codes on the left when they fit
+  const rowH = ph / nL, showCodes = rowH >= 13;
+  for (let k = 0; k < nL; k++) {
+    ctx.strokeStyle = C.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(mL, Y(level(k))); ctx.lineTo(mL + pw, Y(level(k))); ctx.stroke();
+    if (showCodes) txt(ctx, bin(k), mL - 5, Y(level(k)), Math.min(11, rowH - 2), C.ink3, 'right', MONO);
+  }
+  // the true signal, faint, for reference
+  ctx.strokeStyle = C.gray; ctx.globalAlpha = 0.45; ctx.lineWidth = 1.5; ctx.beginPath();
+  for (let i = 0; i <= 400; i++) { const t = i / 400; i ? ctx.lineTo(X(t), Y(x(t))) : ctx.moveTo(X(t), Y(x(t))); }
+  ctx.stroke(); ctx.globalAlpha = 1;
+  for (let n = 0; n < S.ns; n++) {
+    const t = tOf(n), v = x(t), q = level(code(v)), on = n === S.cur;
+    // the rounding: from the sample to its level
+    ctx.strokeStyle = C.red; ctx.lineWidth = on ? 2 : 1.2; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(X(t), Y(v)); ctx.lineTo(X(t), Y(q)); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#fff'; ctx.strokeStyle = C.mid; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(X(t), Y(v), on ? 5 : 3.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(X(t), Y(q), on ? 6.5 : 4.5, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+
+function drawEncode() {
+  const cv = $('cE'), w0 = cv.clientWidth || 300;
+  const { mL, pw, X } = frame(w0);
+  const colW = pw / S.ns, cell = Math.max(6, Math.min(28, colW - 4, 26));
+  const { ctx, w, h } = prep(cv, Math.round(S.nb * (cell + 3) + 16));
+  highlight(ctx, X, h);
+  const showDigits = cell >= 13;
+  for (let n = 0; n < S.ns; n++) {
+    const t = tOf(n), b = bin(code(x(t))), on = n === S.cur;
+    for (let i = 0; i < S.nb; i++) {
+      const cx = X(t) - cell / 2, cy = 8 + i * (cell + 3), one = b[i] === '1';
+      ctx.fillStyle = one ? C.navy : '#fff'; ctx.strokeStyle = on ? C.mid : C.edge; ctx.lineWidth = on ? 2 : 1;
+      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(cx, cy, cell, cell, 3) : ctx.rect(cx, cy, cell, cell); ctx.fill(); ctx.stroke();
+      if (showDigits) txt(ctx, b[i], cx + cell / 2, cy + cell / 2 + 0.5, Math.min(14, cell * 0.6), one ? '#fff' : C.ink3, 'center', MONO, true);
+    }
+  }
+  if (S.nb > 1 && cell >= 10) { txt(ctx, 'MSB', mL - 5, 8 + cell / 2, 10, C.ink3, 'right'); txt(ctx, 'LSB', mL - 5, 8 + (S.nb - 1) * (cell + 3) + cell / 2, 10, C.ink3, 'right'); }
+}
+
+function drawAll() {
+  if (S.cur >= S.ns) S.cur = 0;
+  drawSample(); drawQuantize(); drawEncode();
+  const v = x(tOf(S.cur)), k = code(v);
+  $('nsv').textContent = S.ns + ' per period';
+  $('nbv').textContent = S.nb + (S.nb === 1 ? ' bit' : ' bits') + ' · ' + L() + ' levels';
+  $('vS').textContent = (v < 0 ? '−' : '+') + Math.abs(v).toFixed(3);
+  $('vQ').textContent = (level(k) < 0 ? '−' : '+') + Math.abs(level(k)).toFixed(3);
+  $('vC').textContent = bin(k);
+}
+
+// ---------- controls ----------
+$('ns').addEventListener('input', e => { S.ns = +e.target.value; drawAll(); });
+$('nb').addEventListener('input', e => { S.nb = +e.target.value; drawAll(); });
+const playBtn = $('play');
+let timer = null;
+function setPlaying(on) {
+  S.playing = on; playBtn.textContent = on ? 'Pause' : 'Play'; playBtn.setAttribute('aria-pressed', on);
+  clearInterval(timer); timer = null;
+  if (on) timer = setInterval(() => { S.cur = (S.cur + 1) % S.ns; drawAll(); }, 700);
+}
+playBtn.addEventListener('click', () => setPlaying(!S.playing));
+$('step').addEventListener('click', () => { setPlaying(false); S.cur = (S.cur + 1) % S.ns; drawAll(); });
+// click or tap any panel to pick a sample
+for (const id of ['cS', 'cQ', 'cE']) $(id).addEventListener('click', e => {
+  const r = e.currentTarget.getBoundingClientRect(), { mL, pw } = frame(r.width);
+  const n = Math.floor((e.clientX - r.left - mL) / pw * S.ns);
+  if (n >= 0 && n < S.ns) { setPlaying(false); S.cur = n; drawAll(); }
+});
+window.addEventListener('resize', drawAll);
+drawAll();
+setPlaying(!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches));
+</script>
+</body>
+</html>
