@@ -23,8 +23,9 @@
   .ctl label { font-size:13px; color:var(--ink3); font-weight:700; white-space:nowrap; }
   .ctl .val { color:var(--navy); font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; min-width:84px; text-align:right; }
   .ctl input[type=range] { flex:1 1 auto; min-width:90px; accent-color:var(--mid); }
-  #play { font:inherit; font-size:12px; font-weight:700; padding:6px 12px; border-radius:6px; border:1px solid var(--edge2); background:#fff; color:var(--navy); cursor:pointer; }
-  #play:focus-visible { outline:2px solid var(--navy); outline-offset:2px; }
+  .btns { display:flex; gap:8px; }
+  .btns button { font:inherit; font-size:12px; font-weight:700; padding:6px 12px; border-radius:6px; border:1px solid var(--edge2); background:#fff; color:var(--navy); cursor:pointer; }
+  .btns button:focus-visible { outline:2px solid var(--navy); outline-offset:2px; }
   .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
   .panel { border:1px solid var(--edge); border-radius:8px; background:#fff; padding:10px; min-width:0; }
   .panel h2 { font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:var(--navy); margin:0 0 6px; font-weight:800; }
@@ -34,7 +35,7 @@
   .readout small { font-size:13px; font-weight:500; color:var(--ink3); }
   #rTrue { color:var(--ink); }
   #rAlias { color:var(--red); }
-  @media (max-width:620px) { .controls { grid-template-columns:1fr; } #play { justify-self:start; } }
+  @media (max-width:620px) { .controls { grid-template-columns:1fr; } .btns { justify-self:start; } }
 </style>
 </head>
 <body>
@@ -53,7 +54,10 @@
       <input type="range" id="fs" min="2" max="12" step="0.5" value="6">
       <span class="val" id="fsv">—</span>
     </div>
-    <button type="button" id="play" aria-pressed="true">Pause</button>
+    <div class="btns">
+      <button type="button" id="play" aria-pressed="true">Pause</button>
+      <button type="button" id="step" title="Pause and advance one camera frame">Step ▸</button>
+    </div>
   </div>
 
   <div class="grid">
@@ -147,7 +151,7 @@ function turnArrow(g, f, color) {
   arrow(ctx, ...P(a0 + span * 0.8), ...P(a0 + span), color, 2.5, 10);
 }
 function drawWheels(dt) {
-  const f = f0(), fs = S.fs, th = 2 * Math.PI * f * S.t, d = dt || 1 / 60;
+  const f = f0(), fs = S.fs, th = 2 * Math.PI * f * S.t, d = S.playing ? (dt || 1 / 60) : 0;
   // motion blur over one display frame, so the screen's own refresh does not alias the true wheel
   const M = Math.max(1, Math.min(48, Math.ceil(Math.abs(f) * d * SPOKES * 6)));
   const angs = []; for (let i = 0; i < M; i++) angs.push(th - 2 * Math.PI * f * d * i / M);
@@ -239,6 +243,12 @@ function setPlaying(on) {
   if (on) { lastTs = null; requestAnimationFrame(tick); }
 }
 playBtn.addEventListener('click', () => setPlaying(!S.playing));
+// Step: pause, then jump to the next camera frame, so each click is one sample.
+$('step').addEventListener('click', () => {
+  setPlaying(false);
+  S.t = (Math.floor(S.t * S.fs + 1e-6) + 1) / S.fs + 1e-9;
+  drawAll();
+});
 function tick(ts) {
   if (!S.playing) return;
   const dt = lastTs === null ? 1 / 60 : Math.min(0.1, (ts - lastTs) / 1000);
