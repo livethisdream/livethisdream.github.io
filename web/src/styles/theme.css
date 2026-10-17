@@ -301,10 +301,11 @@ div.admonition.example-problem > *:not(.admonition-title) {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 16px 18px 14px;
+  padding: 20px 28px 18px;
   background: #fff;
   border: 1px solid var(--tps-rule, #d8e2ec);
-  border-radius: 8px;
+  border-radius: 28px;
+  overflow: hidden;
   color: var(--ink, #15202b) !important;
   text-decoration: none !important;
   transition: border-color 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
@@ -315,7 +316,6 @@ div.admonition.example-problem > *:not(.admonition-title) {
   top: 0; left: 0; right: 0;
   height: 3px;
   background: #00205B;
-  border-radius: 8px 8px 0 0;
 }
 .block-card:hover {
   border-color: #1f6098;

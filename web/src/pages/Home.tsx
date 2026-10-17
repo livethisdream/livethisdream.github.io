@@ -15,7 +15,7 @@ export default function Home() {
       <section className="block-grid" aria-label="Sections">
         <a className="block-card" href="/courses">
           <h3>Courses</h3>
-          <p>ECE 444 and ECE 448 at USAFA.</p>
+          <p>ECE 343, 444, and 448 at USAFA.</p>
           <footer>Browse →</footer>
         </a>
 
