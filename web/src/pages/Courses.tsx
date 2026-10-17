@@ -11,18 +11,18 @@ export default function Courses() {
 
       <section className="block-grid" aria-label="Courses">
         <a className="block-card" href="/ece343/">
-          <h3>ECE 343 — Intro to Electromagnetics</h3>
-          <p>Spring 2027 · A hands-on, interactive approach to dynamic field propagation.</p>
+          <span className="card-code">ECE 343</span>
+          <h3>Intro to Electromagnetics</h3>
         </a>
 
         <a className="block-card" href="/ece444/">
-          <h3>ECE 444 — Antennas, Phased Arrays, and Radar</h3>
-          <p>Fall 2026 · Antenna theory and real-world applications.</p>
+          <span className="card-code">ECE 444</span>
+          <h3>Antennas, Phased Arrays, and Radar</h3>
         </a>
 
         <a className="block-card" href="/ece448/">
-          <h3>ECE 448 — Software Defined Radios</h3>
-          <p>Spring 2026 · Learning communications through GNURadio and practical signals.</p>
+          <span className="card-code">ECE 448</span>
+          <h3>Software Defined Radios</h3>
         </a>
       </section>
     </div>
