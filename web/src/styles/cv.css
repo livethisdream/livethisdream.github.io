@@ -41,9 +41,9 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 10px;
-  border: 1px solid var(--tps-edge);
-  border-radius: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--card-rule);
+  border-radius: 999px;
   background: var(--tps-bg);
   color: var(--tps-navy);
   font-size: 13px;

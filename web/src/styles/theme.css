@@ -208,16 +208,10 @@ div.admonition.example-problem > *:not(.admonition-title) {
   padding: 56px 44px 44px;
   background: #eaf2fb;
   color: var(--ink);
-  border: 1px solid var(--tps-edge);
-  border-radius: 10px;
+  border: 1px solid var(--card-rule);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
   overflow: hidden;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 4px;
-  background: #0067b9;
 }
 .hero .hero-eyebrow {
   margin: 0 0 12px;
@@ -306,18 +300,18 @@ div.admonition.example-problem > *:not(.admonition-title) {
   flex-direction: column;
   padding: 22px 28px 20px;
   background: #fff;
-  border: 1px solid rgba(0, 74, 133, 0.16);
-  border-radius: 28px;
-  box-shadow: 0 1px 2px rgba(0, 30, 60, .06), 0 8px 24px rgba(0, 30, 60, .05);
+  border: 1px solid var(--card-rule);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
   color: var(--ink, #15202b) !important;
   text-decoration: none !important;
   transition: border-color 0.12s ease, background 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
 }
 .block-card:hover {
-  border-color: rgba(0, 74, 133, 0.42);
-  background: #f5f9fc;
+  border-color: var(--card-rule-strong);
+  background: var(--card-hover-bg);
   transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 30, 60, .07), 0 14px 32px rgba(0, 30, 60, .09);
+  box-shadow: var(--card-shadow-hover);
 }
 .block-card h3 {
   margin: 0 0 6px;
@@ -465,3 +459,26 @@ div.admonition.ground-rules > *:not(.admonition-title) {
 
 
 
+
+
+/* ============================================================
+   Card taps and focus
+   ============================================================ */
+/* Mobile browsers paint a rectangular highlight over a tapped link, which
+   ignores the card's rounded corners. Drop it; the hover tint and lift are
+   the feedback. Keyboard focus keeps a ring, drawn on the card's own curve. */
+.block-card,
+.link-preview-card a,
+.cv-page .header a.contact-chip {
+  -webkit-tap-highlight-color: transparent;
+}
+.link-preview-card a { border-radius: inherit; }
+.block-card:focus { outline: none; }
+.block-card:focus-visible,
+.link-preview-card a:focus-visible,
+.cv-page .header a.contact-chip:focus-visible {
+  outline: 2px solid var(--tps-mid);
+  outline-offset: 3px;
+}
+.link-preview-card a:focus { outline: none; }
+.link-preview-card:has(a:focus-visible) { overflow: visible; }

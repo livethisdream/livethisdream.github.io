@@ -17,6 +17,15 @@
   --page-bg:    #ffffff;
   --max-width:  1080px;
   --side-pad:   clamp(16px, 4vw, 32px);
+
+  /* Card language, from ECE 444's shell: one soft rule, one layered shadow,
+     a tint on hover. Every card on the site draws from these. */
+  --card-radius:       28px;
+  --card-rule:         rgba(0, 74, 133, 0.16);
+  --card-rule-strong:  rgba(0, 74, 133, 0.42);
+  --card-hover-bg:     #f5f9fc;
+  --card-shadow:       0 1px 2px rgba(0, 30, 60, .06), 0 8px 24px rgba(0, 30, 60, .05);
+  --card-shadow-hover: 0 2px 4px rgba(0, 30, 60, .07), 0 14px 32px rgba(0, 30, 60, .09);
 }
 
 *, *::before, *::after {
