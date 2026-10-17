@@ -459,3 +459,26 @@ div.admonition.ground-rules > *:not(.admonition-title) {
 
 
 
+
+
+/* ============================================================
+   Card taps and focus
+   ============================================================ */
+/* Mobile browsers paint a rectangular highlight over a tapped link, which
+   ignores the card's rounded corners. Drop it; the hover tint and lift are
+   the feedback. Keyboard focus keeps a ring, drawn on the card's own curve. */
+.block-card,
+.link-preview-card a,
+.cv-page .header a.contact-chip {
+  -webkit-tap-highlight-color: transparent;
+}
+.link-preview-card a { border-radius: inherit; }
+.block-card:focus { outline: none; }
+.block-card:focus-visible,
+.link-preview-card a:focus-visible,
+.cv-page .header a.contact-chip:focus-visible {
+  outline: 2px solid var(--tps-mid);
+  outline-offset: 3px;
+}
+.link-preview-card a:focus { outline: none; }
+.link-preview-card:has(a:focus-visible) { overflow: visible; }
