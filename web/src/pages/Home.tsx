@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <>
+    <div className="article">
       <section className="hero">
         <p className="hero-eyebrow">
           RF Field Applications Engineer, Analog Devices · Erdle Chair, Department of ECE, USAFA
@@ -28,6 +28,6 @@ export default function Home() {
           <p>Work history, education, and publications.</p>
         </a>
       </section>
-    </>
+    </div>
   )
 }
