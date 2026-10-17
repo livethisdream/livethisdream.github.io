@@ -8,6 +8,9 @@ This is the **umbrella site** — a card-grid front door, patterned on
 [usafa-ece.org](https://usafa-ece.org/), that links out to the standalone
 course books:
 
+- **ECE 343** — Intro to Electromagnetics ·
+  <https://livethisdream.github.io/ece343/> ·
+  [livethisdream/ece343](https://github.com/livethisdream/ece343)
 - **ECE 444** — Antennas, Phased Arrays, and Radar Systems ·
   <https://livethisdream.github.io/ece444/> ·
   [livethisdream/ece444](https://github.com/livethisdream/ece444)
@@ -15,14 +18,16 @@ course books:
   <https://livethisdream.github.io/ece448/> ·
   [livethisdream/ece448](https://github.com/livethisdream/ece448)
 
-and hosts personal pages inline (CV, writeups, wishlist, vCard QR utility).
+and hosts personal pages inline (CV, writeups, wishlist, vCard QR utility),
+plus static slide decks under `web/public/slides/` (the GRCon26 CTF
+walkthrough, flag values redacted).
 
 ## Stack
 
 - Vite + React + TypeScript
 - react-router-dom v7 with BrowserRouter (+ GH Pages 404 fallback)
 - @mdx-js/rollup for long-form pages (CV, GRCon25 CTF writeup)
-- CSS palette + hero/card system shared with the two course books
+- CSS palette + hero/card system shared with the course books
 
 Everything under [web/](web/). Build with `npm run build`; serve locally with
 `npm run dev`.
