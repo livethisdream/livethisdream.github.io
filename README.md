@@ -18,7 +18,9 @@ course books:
   <https://livethisdream.github.io/ece448/> ·
   [livethisdream/ece448](https://github.com/livethisdream/ece448)
 
-and hosts personal pages inline (CV, writeups, wishlist, vCard QR utility).
+and hosts personal pages inline (CV, writeups, wishlist, vCard QR utility),
+plus static slide decks under `web/public/slides/` (the GRCon26 CTF
+walkthrough, flag values redacted).
 
 ## Stack
 

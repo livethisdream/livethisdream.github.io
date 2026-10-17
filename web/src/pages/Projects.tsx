@@ -2,12 +2,23 @@ import { Link } from 'react-router-dom'
 
 interface Writeup {
   to: string
+  // Static pages under public/ (e.g. slide decks) sit outside the router.
+  external?: boolean
   title: string
   blurb: string
   date: string
 }
 
 const writeups: Writeup[] = [
+  {
+    to: '/slides/grcon26-ctf/',
+    external: true,
+    title: 'GRCon 26 CTF Walkthrough Slides (spoilers)',
+    blurb:
+      'Step-by-step solution deck for the 2026 GNURadio Conference CTF — SigID, CDMA gold codes, ' +
+      'HD Radio, drone telemetry, LoRa and more. Flag values are redacted. Press P to present.',
+    date: '2026-09-28',
+  },
   {
     to: '/posts/grcon25-ctf',
     title: 'GRCon 25 CTF Challenges (spoilers)',
@@ -29,13 +40,20 @@ export default function Projects() {
       </p>
 
       <div className="block-grid" style={{ marginTop: 24 }}>
-        {writeups.map((w) => (
-          <Link key={w.to} to={w.to} className="block-card">
-            <h3>{w.title}</h3>
-            <p>{w.blurb}</p>
-            <footer>{w.date} · Read →</footer>
-          </Link>
-        ))}
+        {writeups.map((w) => {
+          const body = (
+            <>
+              <h3>{w.title}</h3>
+              <p>{w.blurb}</p>
+              <footer>{w.date} · {w.external ? 'View slides' : 'Read'} →</footer>
+            </>
+          )
+          return w.external ? (
+            <a key={w.to} href={w.to} className="block-card">{body}</a>
+          ) : (
+            <Link key={w.to} to={w.to} className="block-card">{body}</Link>
+          )
+        })}
       </div>
     </div>
   )
