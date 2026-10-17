@@ -1,6 +1,6 @@
 export default function Courses() {
   return (
-    <>
+    <div className="article">
       <section className="hero">
         <p className="hero-eyebrow">Teaching</p>
         <h1 className="hero-title">Courses</h1>
@@ -25,6 +25,6 @@ export default function Courses() {
           <p>Spring 2026 · Learning communications through GNURadio and practical signals.</p>
         </a>
       </section>
-    </>
+    </div>
   )
 }
