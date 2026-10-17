@@ -11,6 +11,12 @@ export default function Courses() {
       </section>
 
       <section className="block-grid" aria-label="Courses">
+        <a className="block-card" href="/ece343/">
+          <h3>ECE 343 — Intro to Electromagnetics</h3>
+          <p>Spring 2027 · four modules, electrostatics through dynamic fields, with labs.</p>
+          <footer>Open course →</footer>
+        </a>
+
         <a className="block-card" href="/ece444/">
           <h3>ECE 444 — Antennas, Phased Arrays, and Radar</h3>
           <p>Fall 2026 · five modules and a capstone.</p>
