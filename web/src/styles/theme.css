@@ -298,8 +298,8 @@ div.admonition.example-problem > *:not(.admonition-title) {
   .block-grid { grid-template-columns: 1fr; }
 }
 /* Pill cards in ECE 444's shell language: a soft blue rule and the shell's
-   layered shadow instead of a navy top bar; hover tints the card and firms
-   the rule, and the footer is the shell's CTA pill. */
+   layered shadow instead of a navy top bar. The whole card is the link, so
+   hover tints it and firms the rule rather than pointing at a button. */
 .block-card {
   position: relative;
   display: flex;
@@ -334,20 +334,11 @@ div.admonition.example-problem > *:not(.admonition-title) {
   line-height: 1.45;
   flex: 1;
 }
+.block-card p:last-child { margin-bottom: 0; }
 .block-card footer {
-  align-self: flex-start;
-  padding: .3em .9em;
-  border: 1px solid rgba(0, 74, 133, 0.16);
-  border-radius: 999px;
   font-size: 12px;
-  font-weight: 600;
-  color: #004a85;
-  transition: color 0.12s ease, background 0.12s ease, border-color 0.12s ease;
-}
-.block-card:hover footer {
-  background: #0067b9;
-  border-color: #0067b9;
-  color: #fff;
+  color: #5a5a5a;
+  font-variant-numeric: tabular-nums;
 }
 
 

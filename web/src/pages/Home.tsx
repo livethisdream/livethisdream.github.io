@@ -16,19 +16,16 @@ export default function Home() {
         <a className="block-card" href="/courses">
           <h3>Courses</h3>
           <p>ECE 343, 444, and 448 at USAFA.</p>
-          <footer>Browse →</footer>
         </a>
 
         <a className="block-card" href="/projects">
           <h3>Projects</h3>
           <p>Writeups and side projects.</p>
-          <footer>Browse →</footer>
         </a>
 
         <a className="block-card" href="/cv">
           <h3>CV</h3>
           <p>Work history, education, and publications.</p>
-          <footer>Read →</footer>
         </a>
       </section>
     </>
