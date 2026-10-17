@@ -45,7 +45,7 @@ export default function Projects() {
             <>
               <h3>{w.title}</h3>
               <p>{w.blurb}</p>
-              <footer>{w.date} · {w.external ? 'View slides' : 'Read'} →</footer>
+              <footer>{w.date}</footer>
             </>
           )
           return w.external ? (
