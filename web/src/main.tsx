@@ -5,6 +5,8 @@ import './styles/base.css'
 import './styles/theme.css'
 import './styles/post.css'
 import App from './App.tsx'
+// Last, so its overrides come after every page stylesheet App pulls in.
+import './styles/dark.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
