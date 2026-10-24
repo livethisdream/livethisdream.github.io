@@ -25,7 +25,7 @@ body {
    ============================================================ */
 
 h1 {
-  color: #004a85;
+  color: #0067b9;
   font-weight: 800;
   letter-spacing: -0.01em;
   font-size: clamp(28px, 4vw, 40px);
@@ -43,7 +43,7 @@ h1::after {
 }
 
 h2 {
-  color: #004a85;
+  color: #0067b9;
   font-weight: 700;
   border-bottom: 1px solid #cddce9;
   padding-bottom: 0.2em;
@@ -206,7 +206,7 @@ div.admonition.example-problem > *:not(.admonition-title) {
   position: relative;
   margin: 0 0 28px;
   padding: 56px 44px 44px;
-  background: #eaf2fb;
+  background: #e6f0fa;
   color: var(--ink);
   border: 1px solid var(--card-rule);
   border-radius: var(--card-radius);
@@ -219,10 +219,10 @@ div.admonition.example-problem > *:not(.admonition-title) {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #1f6098;
+  color: #0067b9;
 }
 .hero h1.hero-title {
-  color: #004a85;
+  color: #0067b9;
   font-size: clamp(28px, 4.2vw, 44px);
   font-weight: 800;
   line-height: 1.1;
@@ -320,18 +320,18 @@ div.admonition.example-problem > *:not(.admonition-title) {
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: #004a85;
+  color: #0067b9;
 }
 .block-card .card-code + h3 {
   margin: 4px 0 0;
   font-weight: 600;
-  color: #3b4651;
+  color: #707070;
 }
 .block-card h3 {
   margin: 0 0 6px;
   font-size: 16px;
   font-weight: 700;
-  color: #004a85;
+  color: #707070;
   border-left: none;
   padding-left: 0;
 }

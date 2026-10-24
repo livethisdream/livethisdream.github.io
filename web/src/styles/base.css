@@ -4,27 +4,28 @@
    ============================================================ */
 
 :root {
-  --tps-navy:   #004a85;
+  --tps-navy:   #0067b9;
   --tps-mid:    #0067b9;
   --tps-light:  #0067b9;
   --tps-bg:     #f0f5fa;
   --tps-bg-alt: #f5f9fc;
   --tps-edge:   #cddce9;
   --tps-edge-2: #b9d2e5;
-  --ink:        #15202b;
+  --ink:        #1a1a1a;
   --ink-2:      #3b4453;
   --ink-3:      #5b6573;
   --page-bg:    #ffffff;
   --max-width:  1080px;
   --side-pad:   clamp(16px, 4vw, 32px);
 
-  /* Card language, from ECE 444's shell: one soft rule, one layered shadow,
-     a tint on hover. Every card on the site draws from these. */
+  /* Card language, shared with the course sites: flat white cards outlined
+     in the logo blue, a tint on hover (Neil, 2026-10-24). Every card on the
+     site draws from these; dark.css restores the dark look. */
   --card-radius:       28px;
-  --card-rule:         rgba(0, 74, 133, 0.16);
-  --card-rule-strong:  rgba(0, 74, 133, 0.42);
+  --card-rule:         #0067b9;
+  --card-rule-strong:  #0067b9;
   --card-hover-bg:     #f5f9fc;
-  --card-shadow:       0 1px 2px rgba(0, 30, 60, .06), 0 8px 24px rgba(0, 30, 60, .05);
+  --card-shadow:       none;
   --card-shadow-hover: 0 2px 4px rgba(0, 30, 60, .07), 0 14px 32px rgba(0, 30, 60, .09);
 }
 
