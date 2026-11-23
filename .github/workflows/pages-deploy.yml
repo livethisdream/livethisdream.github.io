@@ -44,11 +44,31 @@ jobs:
       - name: Install
         run: npm ci
 
+      # URL of the wishlist Worker (worker/). Uses the VITE_WISHLIST_API repo
+      # variable if set; otherwise asks Cloudflare, if the token secret exists.
+      # Neither -> the wishlist renders read-only.
+      - name: Find wishlist Worker
+        id: wishlist
+        env:
+          VITE_WISHLIST_API: ${{ vars.VITE_WISHLIST_API }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          url="$VITE_WISHLIST_API"
+          if [ -z "$url" ] && [ -n "$CLOUDFLARE_API_TOKEN" ]; then
+            acct=$(../worker/scripts/cf.sh account) &&
+              url=$(../worker/scripts/cf.sh url "$acct" wishlist-marks) || url=
+          fi
+          if [ -n "$url" ] && ! curl -sf -m 10 "$url/marks" | jq -e '.marks' >/dev/null; then
+            echo "::warning::$url isn't answering; building the wishlist read-only."
+            url=
+          fi
+          echo "Wishlist API: ${url:-none (read-only)}"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
       - name: Build
         run: npm run build
         env:
-          # workers.dev URL of worker/ — leave unset for a read-only wishlist
-          VITE_WISHLIST_API: ${{ vars.VITE_WISHLIST_API }}
+          VITE_WISHLIST_API: ${{ steps.wishlist.outputs.url }}
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3

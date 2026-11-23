@@ -4,20 +4,24 @@ Cloudflare Worker that stores "someone bought this" marks for `/wishlist`.
 The wishlist content itself stays one-way (Obsidian → Gitea → this repo);
 nothing here writes back to the notes.
 
-## Deploy (one time)
+## Deploy (works from a phone)
 
-```sh
-cd worker
-npx wrangler login
-npx wrangler kv namespace create MARKS   # paste the id into wrangler.toml
-npx wrangler deploy                      # prints https://wishlist-marks.<you>.workers.dev
-```
+1. Cloudflare dashboard → My Profile → API Tokens → Create Token →
+   **Edit Cloudflare Workers** template → Continue → Create. Copy the token.
+2. GitHub repo → Settings → Secrets and variables → Actions → **New repository
+   secret**: name `CLOUDFLARE_API_TOKEN`, value = the token.
+3. GitHub repo → Actions → **Deploy wishlist Worker** → Run workflow.
 
-Then add a repo variable so the site knows where the Worker lives:
-GitHub → Settings → Secrets and variables → Actions → Variables →
-`VITE_WISHLIST_API` = the workers.dev URL. Re-run the Pages deploy.
+The workflow finds your account, creates the `wishlist-marks` KV namespace if
+needed, deploys, checks `/marks` answers, then re-runs the Pages deploy. The
+Pages build finds the Worker URL itself, so no other settings are needed.
+Later pushes that touch `worker/` redeploy automatically.
 
-Until that variable is set, the wishlist renders without "I bought this" buttons.
+If it says there's no workers.dev subdomain, open **Workers & Pages** in the
+Cloudflare dashboard once, pick a subdomain, and run the workflow again.
+
+Manual alternative: `npx wrangler login`, `npx wrangler kv namespace create
+MARKS` (paste the id into `wrangler.toml`), `npx wrangler deploy`.
 
 ## Notes
 
