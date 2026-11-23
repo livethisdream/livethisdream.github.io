@@ -5,6 +5,8 @@ import CV from './pages/CV'
 import Courses from './pages/Courses'
 import Projects from './pages/Projects'
 import Wishlist from './pages/Wishlist'
+import ListPage from './pages/ListPage'
+import ListEditor from './pages/ListEditor'
 import QR from './pages/QR'
 import NotFound from './pages/NotFound'
 import GRCon25CTF from './pages/writeups/GRCon25CTF'
@@ -19,6 +21,8 @@ export default function App() {
         <Route path="projects" element={<Projects />} />
         <Route path="posts/grcon25-ctf" element={<GRCon25CTF />} />
         <Route path="wishlist" element={<Wishlist />} />
+        <Route path="wishlist/:slug" element={<ListPage />} />
+        <Route path="wishlist/:slug/edit" element={<ListEditor />} />
         <Route path="qr" element={<QR />} />
       </Route>
       {/* Outside Layout: the waterfall is full-bleed, no header or footer. */}
