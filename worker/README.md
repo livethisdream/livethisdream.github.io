@@ -17,8 +17,9 @@ needed, deploys, checks `/marks` answers, then re-runs the Pages deploy. The
 Pages build finds the Worker URL itself, so no other settings are needed.
 Later pushes that touch `worker/` redeploy automatically.
 
-If it says there's no workers.dev subdomain, open **Workers & Pages** in the
-Cloudflare dashboard once, pick a subdomain, and run the workflow again.
+The first run needs a workers.dev name: type one into the **subdomain** box
+when you click Run workflow (e.g. `livethisdream`). The Worker's address
+becomes `https://wishlist-marks.<name>.workers.dev`. Later runs ignore it.
 
 Manual alternative: `npx wrangler login`, `npx wrangler kv namespace create
 MARKS` (paste the id into `wrangler.toml`), `npx wrangler deploy`.
