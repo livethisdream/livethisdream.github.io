@@ -1,0 +1,56 @@
+# Gitea Action: push the Obsidian wishlist note to GitHub, one way.
+#
+# Install (in your Obsidian vault repo on Gitea, not this repo):
+#   1. Copy this file to  .gitea/workflows/wishlist-sync.yml
+#   2. Set the note's path in BOTH places marked "NOTE PATH" below.
+#   3. GitHub > Settings > Developer settings > Fine-grained tokens > Generate:
+#        Repository access: only livethisdream/livethisdream.github.io
+#        Permissions: Contents = Read and write. Nothing else.
+#   4. Gitea vault repo > Settings > Actions > Secrets > Add:
+#        GH_WISHLIST_TOKEN = that token
+#   5. Make sure Actions are enabled for the vault repo and a runner is online.
+#
+# Only the one note leaves Gitea. It lands at pages/wishlist.md on GitHub,
+# which rebuilds livethisdream.github.io/wishlist. Checked items ("- [x]")
+# are treated as received and hidden.
+
+name: Sync wishlist to GitHub
+
+on:
+  push:
+    paths:
+      - 'Wishlist.md'          # NOTE PATH (relative to the vault root)
+  workflow_dispatch:
+
+env:
+  NOTE: 'Wishlist.md'          # NOTE PATH (same as above)
+  SITE_REPO: livethisdream/livethisdream.github.io
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Push note to GitHub
+        env:
+          TOKEN: ${{ secrets.GH_WISHLIST_TOKEN }}
+        run: |
+          set -euo pipefail
+          [ -n "$TOKEN" ] || { echo "::error::Add the GH_WISHLIST_TOKEN secret to this repo"; exit 1; }
+          [ -f "$NOTE" ] || { echo "::error::Note not found at '$NOTE' - fix NOTE PATH in this workflow"; exit 1; }
+
+          git clone --quiet --depth 1 "https://x-access-token:${TOKEN}@github.com/${SITE_REPO}.git" site
+          cp "$NOTE" site/pages/wishlist.md
+          cd site
+          git add pages/wishlist.md
+          if git diff --cached --quiet; then
+            echo "Wishlist unchanged; nothing to push."
+            exit 0
+          fi
+          git -c user.name="livethisdream" \
+              -c user.email="2296061+livethisdream@users.noreply.github.com" \
+              commit --quiet -m "Sync wishlist from Obsidian"
+          # One retry in case something else pushed to main meanwhile.
+          git push --quiet origin HEAD:main || { git pull --quiet --rebase origin main && git push --quiet origin HEAD:main; }
+          echo "Pushed. The site rebuilds in about a minute."

@@ -36,3 +36,11 @@ Everything under [web/](web/). Build with `npm run build`; serve locally with
 
 `.github/workflows/pages-deploy.yml` builds `web/dist` and publishes via
 `actions/deploy-pages@v4` on push to `main`.
+
+## Wishlist
+
+`/wishlist` is built from `pages/wishlist.md`, the raw Obsidian note, pushed
+here one way by a Gitea Action in the vault repo (template:
+`gitea/wishlist-sync.yml`). Checked items are treated as received and hidden.
+Guests' "I bought this" marks live in the Cloudflare Worker under `worker/`.
+

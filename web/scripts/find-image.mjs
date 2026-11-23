@@ -1,4 +1,4 @@
-// Find a product image for a wishlist URL. Order of preference:
+// Find a product image (and a short description) for a wishlist URL. Order of preference:
 //   1. Shopify product JSON (<product-url>.js) — real product photo, not the og:image logo
 //   2. JSON-LD Product.image
 //   3. og:image / twitter:image / link rel=image_src
@@ -44,7 +44,46 @@ async function shopify(url) {
   if (!/json|javascript/.test(res.headers.get('content-type') ?? '')) return null
   const p = await res.json()
   const v = variant && p.variants?.find((x) => String(x.id) === variant)
-  return ok(absolute(v?.featured_image?.src ?? p.featured_image ?? p.images?.[0], url))
+  const src = ok(absolute(v?.featured_image?.src ?? p.featured_image ?? p.images?.[0], url))
+  return src ? { src, description: clean(p.description) } : null
+}
+
+// Strip tags/entities and trim to a card-sized blurb.
+export function clean(s = '') {
+  const text = String(s)
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"')
+    .replace(/&#39;|&rsquo;|&#8217;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&[a-z]+;|&#\d+;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return text.length > 280 ? text.slice(0, 277).replace(/\s+\S*$/, '') + '…' : text
+}
+
+function describe(html) {
+  for (const m of html.matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const stack = [JSON.parse(m[1].trim())]
+      while (stack.length) {
+        const n = stack.pop()
+        if (!n || typeof n !== 'object') continue
+        if (Array.isArray(n)) { stack.push(...n); continue }
+        if ([].concat(n['@type'] ?? []).includes('Product') && typeof n.description === 'string') return clean(n.description)
+        if (n['@graph']) stack.push(n['@graph'])
+      }
+    } catch {
+      /* skip */
+    }
+  }
+  const tags = html.match(/<meta\b[^>]*>/gi) ?? []
+  for (const key of ['og:description', 'description', 'twitter:description']) {
+    for (const t of tags) {
+      const name = t.match(/\b(?:property|name)\s*=\s*["']([^"']*)["']/i)?.[1]?.toLowerCase()
+      const content = t.match(/\bcontent\s*=\s*["']([^"']*)["']/i)?.[1]
+      if (name === key && content) return clean(content)
+    }
+  }
+  return ''
 }
 
 function fromJsonLd(html, base) {
@@ -97,18 +136,19 @@ function fromMeta(html, base) {
 export async function findImage(url) {
   try {
     const s = await shopify(url)
-    if (s) return { src: s, via: 'shopify' }
+    if (s) return { ...s, via: 'shopify' }
   } catch {
     /* not Shopify, or blocked — fall through */
   }
   const res = await get(url)
   const html = (await res.text()).slice(0, 2_000_000)
   const base = res.url || url
+  const description = describe(html)
   const ld = fromJsonLd(html, base)
-  if (ld) return { src: ld, via: 'json-ld' }
+  if (ld) return { src: ld, via: 'json-ld', description }
   const meta = fromMeta(html, base)
-  if (meta) return { src: meta, via: 'meta' }
-  return null
+  if (meta) return { src: meta, via: 'meta', description }
+  return description ? { src: null, via: 'none', description } : null
 }
 
 const EXT = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/avif': 'avif', 'image/gif': 'gif' }
