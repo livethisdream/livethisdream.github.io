@@ -1,0 +1,4 @@
+{
+  "_comment": "Optional: pin an image for a store that blocks automated lookups. Key = the product URL exactly as in your Obsidian note, value = a direct image URL (right-click the photo > Copy Image Address).",
+  "https://www.example.com/product-url": "https://www.example.com/image.jpg"
+}
