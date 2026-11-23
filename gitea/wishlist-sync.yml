@@ -2,7 +2,8 @@
 #
 # Install (in your Obsidian vault repo on Gitea, not this repo):
 #   1. Copy this file to  .gitea/workflows/wishlist-sync.yml
-#   2. Set the note's path in BOTH places marked "NOTE PATH" below.
+#   2. Note path is set to _Wishlist.md at the vault root (both "NOTE PATH"
+#      lines below). If it lives in a folder, use e.g. 'Lists/_Wishlist.md'.
 #   3. GitHub > Settings > Developer settings > Fine-grained tokens > Generate:
 #        Repository access: only livethisdream/livethisdream.github.io
 #        Permissions: Contents = Read and write. Nothing else.
@@ -19,11 +20,11 @@ name: Sync wishlist to GitHub
 on:
   push:
     paths:
-      - 'Wishlist.md'          # NOTE PATH (relative to the vault root)
+      - '_Wishlist.md'         # NOTE PATH (relative to the vault root)
   workflow_dispatch:
 
 env:
-  NOTE: 'Wishlist.md'          # NOTE PATH (same as above)
+  NOTE: '_Wishlist.md'         # NOTE PATH (same as above)
   SITE_REPO: livethisdream/livethisdream.github.io
 
 jobs:
