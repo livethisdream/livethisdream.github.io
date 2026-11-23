@@ -1,0 +1,228 @@
+/* Wishlist: responsive card grid. Colors come from the site tokens in
+   base.css / dark.css; --wl-* below are local to this page. */
+
+.wl {
+  --wl-card: #fff;
+  --wl-media: #f3f7fb;
+  --wl-radius: 20px;
+}
+@media (prefers-color-scheme: dark) {
+  html .wl {
+    --wl-card: #14243a;
+    --wl-media: #e4ebf2; /* product shots are usually on white; keep them on a light panel */
+  }
+}
+
+/* ---- Header ---------------------------------------------------------- */
+.wl-hero { margin-bottom: 8px; }
+.wl-hero h1 { margin-bottom: 4px; }
+.wl-meta {
+  margin: 0 0 18px;
+  color: var(--ink-3);
+  font-size: 0.95rem;
+}
+.wl-help {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: var(--tps-bg);
+  color: var(--ink-2);
+  font-size: 0.9rem;
+}
+.wl-help p { margin: 0; }
+.wl-toggle {
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--tps-edge-2);
+  background: transparent;
+  color: var(--tps-mid);
+  cursor: pointer;
+}
+.wl-toggle[aria-pressed='true'] { background: var(--tps-mid); color: var(--page-bg); border-color: var(--tps-mid); }
+
+/* ---- Sections -------------------------------------------------------- */
+.wl-section { margin-top: 36px; }
+.wl-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wl-count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: var(--tps-bg);
+  color: var(--tps-mid);
+}
+
+/* ---- Grid ------------------------------------------------------------ */
+.wl-grid {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+@media (max-width: 520px) {
+  .wl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+}
+
+/* ---- Card ------------------------------------------------------------ */
+.wl-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--wl-card);
+  border: 1px solid var(--tps-edge);
+  border-radius: var(--wl-radius);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.wl-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--tps-edge-2);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.wl-media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background: var(--wl-media);
+  overflow: hidden;
+}
+.wl-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 14px;
+  box-sizing: border-box;
+  mix-blend-mode: multiply; /* melts white photo backgrounds into the panel */
+  transition: transform 0.25s ease;
+}
+.wl-card:hover .wl-media img { transform: scale(1.04); }
+
+.wl-monogram {
+  font-size: clamp(2.5rem, 7vw, 3.5rem);
+  font-weight: 800;
+  color: var(--tps-mid);
+  opacity: 0.35;
+}
+.wl-card .wl-media:has(.wl-monogram) {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(0, 103, 185, 0.14), transparent 60%),
+    radial-gradient(circle at 80% 85%, rgba(0, 103, 185, 0.10), transparent 55%),
+    var(--wl-media);
+}
+.wl-card.is-plain .wl-media { aspect-ratio: 8 / 3; }
+
+.wl-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+  padding: 14px 16px 16px;
+}
+.wl-title {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.wl-title a { color: inherit; text-decoration: none; }
+.wl-title a:hover { color: var(--tps-mid); }
+.wl-desc {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink-3);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.wl-foot {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+.wl-store {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tps-mid);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wl-btn {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--tps-mid);
+  background: var(--tps-mid);
+  color: var(--page-bg);
+  cursor: pointer;
+  white-space: nowrap;
+  width: 100%;
+  padding: 8px 12px;
+}
+.wl-btn:hover:not(:disabled) { filter: brightness(1.08); }
+.wl-btn.is-ghost { background: transparent; color: var(--tps-mid); }
+.wl-btn:disabled { opacity: 0.5; cursor: default; }
+
+/* ---- Bought ---------------------------------------------------------- */
+.wl-card.is-bought { opacity: 0.72; }
+.wl-card.is-bought:hover { transform: none; box-shadow: none; }
+.wl-card.is-bought .wl-media img,
+.wl-card.is-bought .wl-monogram { filter: grayscale(1); opacity: 0.6; }
+.wl-card.is-bought .wl-title { text-decoration: line-through; color: var(--ink-3); }
+.wl-ribbon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #1f8a4c;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-card, .wl-media img { transition: none; }
+  .wl-card:hover, .wl-card:hover .wl-media img { transform: none; }
+}
+
+.wl-title a:focus-visible,
+.wl-btn:focus-visible,
+.wl-toggle:focus-visible { outline: 2px solid var(--tps-mid); outline-offset: 2px; border-radius: 6px; }

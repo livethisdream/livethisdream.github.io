@@ -27,7 +27,30 @@ export function itemId(url) {
 }
 
 // "- [ ] [Title](https://url "optional tooltip")  [field:: value]"
-const ITEM = /^\s*[-*+]\s+\[( |x|X)\]\s+\[([^\]]*)\]\(\s*<?(https?:\/\/[^\s)>]+)>?(?:\s+"[^"]*")?\s*\)/
+const CHECKBOX = /^\s*[-*+]\s+\[( |x|X)\]\s*(.*)$/
+const LINKED = /^\[([^\]]*)\]\(\s*<?([^\s)>]*)>?(?:\s+"[^"]*")?\s*\)/
+
+// Items without a usable link get an ID from their title instead.
+export const titleId = (title) =>
+  createHash('sha256').update('title:' + title.toLowerCase().replace(/\s+/g, ' ').trim()).digest('hex').slice(0, 12)
+
+function parseItem(rest) {
+  const text = rest.replace(/\s*\[[\w-]+::[^\]]*\]/g, '').trim() // drop Dataview fields
+  const m = text.match(LINKED)
+  let title = (m ? m[1] : text).replace(/\*\*|__|`/g, '').trim()
+  let url = null
+  if (m && m[2]) {
+    try {
+      const u = new URL(m[2])
+      if (u.protocol === 'http:' || u.protocol === 'https:') url = u.href
+    } catch {
+      /* not a URL: keep it as a plain item */
+    }
+  }
+  if (!title) title = url ? new URL(url).host : ''
+  if (!title) return null // "- [ ]" with nothing after it
+  return { id: url ? itemId(url) : titleId(title), title, description: '', url, image: null, host: url ? new URL(url).host : null }
+}
 
 export function parse(md) {
   const sections = []
@@ -40,22 +63,16 @@ export function parse(md) {
       sections.push(current)
       continue
     }
-    const m = line.match(ITEM)
-    if (!m || m[1] !== ' ') continue // not an item, or already received
-    let url
-    try {
-      url = new URL(m[3]).href
-    } catch {
-      continue
-    }
-    const id = itemId(url)
-    if (ids.has(id)) continue
-    ids.add(id)
+    const m = line.match(CHECKBOX)
+    if (!m || m[1] !== ' ') continue // not a checklist item, or already received
+    const item = parseItem(m[2])
+    if (!item || ids.has(item.id)) continue
+    ids.add(item.id)
     if (!current) {
       current = { name: 'Wishlist', items: [] }
       sections.push(current)
     }
-    current.items.push({ id, title: m[2].trim() || new URL(url).host, description: '', url, image: null, host: new URL(url).host })
+    current.items.push(item)
   }
   return { sections: sections.filter((s) => s.items.length) }
 }
@@ -82,7 +99,8 @@ async function addImages(data) {
   const items = data.sections.flatMap((s) => s.items)
   await Promise.all(
     items.map(async (item) => {
-      const override = overrides[item.url] ?? overrides[item.id]
+      const override = (item.url && overrides[item.url]) ?? overrides[item.id]
+      if (!override && !item.url) return // plain item, nothing to look up
       if (!override && cached.has(item.id)) {
         item.image = `/wishlist-img/${cached.get(item.id)}`
         console.log(`  ${item.id} cached`)
@@ -98,7 +116,7 @@ async function addImages(data) {
         } catch (e) {
           console.log(`  ${item.id} lookup failed: ${e.message}`)
         }
-              }
+      }
       item.image = null
       for (const c of candidates) {
         try {
