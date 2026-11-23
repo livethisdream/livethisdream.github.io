@@ -153,7 +153,16 @@ export default function WishlistPage() {
               <div key={item.id} className={`link-preview-card${bought ? ' is-bought' : ''}`}>
                 <a href={item.url} target="_blank" rel="noopener noreferrer">
                   {item.image && (
-                    <div className="link-preview-image" style={{ backgroundImage: `url('${item.image}')` }} />
+                    <img
+                      className="link-preview-image"
+                      src={item.image}
+                      alt=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none'
+                      }}
+                    />
                   )}
                   <div className="link-preview-content">
                     <h4 className="link-preview-title">

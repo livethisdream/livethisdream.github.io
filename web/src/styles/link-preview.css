@@ -25,9 +25,11 @@
 
 .link-preview-card .link-preview-image {
   flex: 0 0 150px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 150px;
+  align-self: stretch;
+  object-fit: contain;
+  padding: 12px;
+  box-sizing: border-box;
   background-color: var(--tps-bg-alt);
 }
 @media (max-width: 500px) {
