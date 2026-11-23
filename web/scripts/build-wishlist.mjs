@@ -1,23 +1,24 @@
-// Build-time: turn the synced wishlist note (pages/nr-wishlist.md, pushed
-// one-way from Obsidian -> Gitea -> here) into public/wishlist.json.
+// Build-time: turn the wishlist note (pages/wishlist.md — the raw Obsidian
+// note, pushed one-way Obsidian -> Gitea -> here by the Gitea Action in
+// gitea/wishlist-sync.yml) into public/wishlist.json.
+//
+// Note format: "## Section" headings with "- [ ] [Title](url)" items.
+// Checked items ("- [x]") have been received and are left out.
 // Item IDs are derived from the normalized product URL so they stay stable
 // when the note is reordered or re-synced; the "bought" Worker keys on them.
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const here = dirname(fileURLToPath(import.meta.url))
-const src = resolve(here, '../../pages/nr-wishlist.md')
+const src = resolve(here, '../../pages/wishlist.md')
 const out = resolve(here, '../public/wishlist.json')
 const imgDir = resolve(here, '../public/wishlist-img')
 // Hand-picked images for stores that block automated lookups:
 // { "<product url>": "<image url>" }
 const overridesFile = resolve(here, '../../pages/wishlist-images.json')
-
-const decode = (s = '') =>
-  s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim()
 
 export function itemId(url) {
   const u = new URL(url)
@@ -25,40 +26,55 @@ export function itemId(url) {
   return createHash('sha256').update(norm).digest('hex').slice(0, 12)
 }
 
+// "- [ ] [Title](https://url "optional tooltip")  [field:: value]"
+const ITEM = /^\s*[-*+]\s+\[( |x|X)\]\s+\[([^\]]*)\]\(\s*<?(https?:\/\/[^\s)>]+)>?(?:\s+"[^"]*")?\s*\)/
+
 export function parse(md) {
-  const updated = md.match(/_Last updated:\s*([^_]+)_/)?.[1].trim() ?? null
   const sections = []
   let current = null
   const ids = new Set()
-  for (const block of md.split(/^(?=## )/m)) {
-    const heading = block.match(/^## (.+)$/m)?.[1].trim()
-    if (heading) { current = { name: heading, items: [] }; sections.push(current) }
-    const cards = block.match(/<div class="link-preview-card">[\s\S]*?<\/a>\s*<\/div>/g) ?? []
-    for (const card of cards) {
-      const url = decode(card.match(/<a href="([^"]+)"/)?.[1])
-      if (!url) continue
-      const id = itemId(url)
-      if (ids.has(id)) continue
-      ids.add(id)
-      if (!current) { current = { name: 'Wishlist', items: [] }; sections.push(current) }
-      current.items.push({
-        id,
-        title: decode(card.match(/link-preview-title">([\s\S]*?)<\/h4>/)?.[1]) || url,
-        description: decode(card.match(/link-preview-description">([\s\S]*?)<\/p>/)?.[1]),
-        url,
-        image: decode(card.match(/background-image:\s*url\('([^']+)'\)/)?.[1]).replace(/^http:\/\//, 'https://') || null,
-        host: new URL(url).host,
-      })
+  for (const line of md.split(/\r?\n/)) {
+    const heading = line.match(/^#{1,6}\s+(.+?)\s*#*\s*$/)
+    if (heading) {
+      current = { name: heading[1], items: [] }
+      sections.push(current)
+      continue
     }
+    const m = line.match(ITEM)
+    if (!m || m[1] !== ' ') continue // not an item, or already received
+    let url
+    try {
+      url = new URL(m[3]).href
+    } catch {
+      continue
+    }
+    const id = itemId(url)
+    if (ids.has(id)) continue
+    ids.add(id)
+    if (!current) {
+      current = { name: 'Wishlist', items: [] }
+      sections.push(current)
+    }
+    current.items.push({ id, title: m[2].trim() || new URL(url).host, description: '', url, image: null, host: new URL(url).host })
   }
-  return { updated, sections: sections.filter((s) => s.items.length) }
+  return { sections: sections.filter((s) => s.items.length) }
 }
 
-// For each item: override > image found on the product page > image from the
-// sync. The winner is downloaded into public/wishlist-img/ so the site serves
+// When the note last changed (git history), else now.
+function lastUpdated() {
+  try {
+    const iso = execFileSync('git', ['log', '-1', '--format=%cI', '--', src], { encoding: 'utf8' }).trim()
+    if (iso) return iso
+  } catch {
+    /* not a git checkout */
+  }
+  return new Date().toISOString()
+}
+
+// For each item: override > image found on the product page. The winner is downloaded into public/wishlist-img/ so the site serves
 // its own copy. Any failure just leaves the best URL we have (or none).
 async function addImages(data) {
-  const { findImage, download, looksLikeLogo } = await import('./find-image.mjs')
+  const { findImage, download } = await import('./find-image.mjs')
   const overrides = existsSync(overridesFile) ? JSON.parse(readFileSync(overridesFile, 'utf8')) : {}
   delete overrides._comment
   mkdirSync(imgDir, { recursive: true })
@@ -77,12 +93,12 @@ async function addImages(data) {
       else {
         try {
           const found = await findImage(item.url)
-          if (found) candidates.push(found)
+          if (found?.description) item.description = found.description
+          if (found?.src) candidates.push(found)
         } catch (e) {
           console.log(`  ${item.id} lookup failed: ${e.message}`)
         }
-        if (item.image && !looksLikeLogo(item.image)) candidates.push({ src: item.image, via: 'sync' })
-      }
+              }
       item.image = null
       for (const c of candidates) {
         try {
@@ -104,7 +120,7 @@ async function addImages(data) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const data = parse(readFileSync(src, 'utf8'))
+  const data = { updated: lastUpdated(), ...parse(readFileSync(src, 'utf8')) }
   if (process.env.WISHLIST_OFFLINE !== '1') await addImages(data)
   mkdirSync(dirname(out), { recursive: true })
   writeFileSync(out, JSON.stringify(data, null, 2) + '\n')

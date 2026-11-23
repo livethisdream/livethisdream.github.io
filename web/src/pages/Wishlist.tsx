@@ -128,7 +128,12 @@ export default function WishlistPage() {
       <h1>Neil's Wishlist</h1>
       {list?.updated && (
         <p>
-          <em>Last updated: {list.updated}</em>
+          <em>
+            Last updated:{' '}
+            {Number.isNaN(Date.parse(list.updated))
+              ? list.updated
+              : new Date(list.updated).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+          </em>
         </p>
       )}
       {API && (
