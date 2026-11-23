@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prebuild": "node scripts/build-wishlist.mjs",
+    "predev": "node scripts/build-wishlist.mjs"
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.1",
