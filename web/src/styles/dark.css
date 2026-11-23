@@ -4,7 +4,7 @@
    Follows the system setting, as the course sites do, with their dark
    palette (ECE 444 shell.css). The tokens carry most of it; the rest are
    rules that hard-code a light color. Selectors start at `html` so this
-   file wins over the page styles (cv.css, link-preview.css) that load
+   file wins over the page styles (cv.css, wishlist.css) that load
    after it. */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -32,7 +32,6 @@
   html .header-search input[type="search"] { background: #14243a; }
   html .hero { background: #14243a; }
   html .block-card,
-  html .link-preview-card { background: #14243a; }
 
   /* Headings */
   html h1, html h2, html .hero h1.hero-title { color: #8cc4ee; }

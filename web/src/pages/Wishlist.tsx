@@ -1,14 +1,14 @@
-import { useCallback, useEffect, useState } from 'react'
-import '../styles/link-preview.css'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
+import '../styles/wishlist.css'
 
 /*
- * Content: /wishlist.json, generated at build time from pages/nr-wishlist.md
+ * Content: /wishlist.json, generated at build time from pages/wishlist.md
  * (synced one-way from Obsidian via Gitea) by scripts/build-wishlist.mjs.
  * Marks: the wishlist-marks Cloudflare Worker (worker/). If VITE_WISHLIST_API
  * isn't set, the list renders read-only.
  */
 
-type Item = { id: string; title: string; description: string; url: string; image: string | null; host: string }
+type Item = { id: string; title: string; description: string; url: string | null; image: string | null; host: string | null }
 type Wishlist = { updated: string | null; sections: { name: string; items: Item[] }[] }
 type Marks = Record<string, { at: number | null }>
 type Undo = Record<string, { token: string; at: number }>
@@ -17,6 +17,8 @@ const API = (import.meta.env.VITE_WISHLIST_API as string | undefined)?.replace(/
 const UNDO_MS = 10 * 60_000
 const UNDO_KEY = 'wishlist-undo'
 const HIDE_KEY = 'wishlist-hide-marks'
+// Short-link hosts shown as the store people recognize.
+const STORE_NAMES: Record<string, string> = { 'a.co': 'amazon.com', 'amzn.to': 'amazon.com', 'amzn.com': 'amazon.com' }
 
 function load<T>(key: string, fallback: T): T {
   try {
@@ -123,80 +125,132 @@ export default function WishlistPage() {
     save(HIDE_KEY, !hide)
   }
 
+  const total = list?.sections.reduce((n, s) => n + s.items.length, 0) ?? 0
+  const updated =
+    list?.updated && !Number.isNaN(Date.parse(list.updated))
+      ? new Date(list.updated).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
+      : list?.updated
+
   return (
-    <article className="article">
-      <h1>Neil's Wishlist</h1>
-      {list?.updated && (
-        <p>
-          <em>
-            Last updated:{' '}
-            {Number.isNaN(Date.parse(list.updated))
-              ? list.updated
-              : new Date(list.updated).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
-          </em>
-        </p>
-      )}
-      {API && (
-        <p className="wishlist-help">
-          Bought something? Tap <strong>I bought this</strong> so nobody doubles up.{' '}
-          <button type="button" className="wishlist-linkbtn" onClick={toggleHide}>
-            {hide ? 'Show bought marks' : 'Hide bought marks (for Neil)'}
-          </button>
-        </p>
-      )}
+    <article className="article wl">
+      <header className="wl-hero">
+        <h1>Neil's Wishlist</h1>
+        {list && (
+          <p className="wl-meta">
+            {total} {total === 1 ? 'idea' : 'ideas'}
+            {updated && <> · updated {updated}</>}
+          </p>
+        )}
+        {API && (
+          <div className="wl-help">
+            <p>
+              Bought something? Tap <strong>I bought this</strong> so nobody doubles up.
+            </p>
+            <button type="button" className="wl-toggle" aria-pressed={hide} onClick={toggleHide}>
+              {hide ? 'Show bought marks' : 'Hide bought marks (for Neil)'}
+            </button>
+          </div>
+        )}
+      </header>
+
       {error && <p>{error}</p>}
-      {!list && !error && <p>Loading…</p>}
+      {!list && !error && <p className="wl-loading">Loading…</p>}
 
       {list?.sections.map((section) => (
-        <section key={section.name}>
-          <h2>{section.name}</h2>
-          {section.items.map((item) => {
-            const bought = !hide && Boolean(marks[item.id])
-            const u = undo[item.id]
-            const canUndo = !hide && u && Date.now() - u.at < UNDO_MS
-            return (
-              <div key={item.id} className={`link-preview-card${bought ? ' is-bought' : ''}`}>
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
-                  {item.image && (
-                    <img
-                      className="link-preview-image"
-                      src={item.image}
-                      alt=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none'
-                      }}
-                    />
-                  )}
-                  <div className="link-preview-content">
-                    <h4 className="link-preview-title">
-                      {item.title}
-                      {bought && <span className="wishlist-badge">Bought</span>}
-                    </h4>
-                    {item.description && <p className="link-preview-description">{item.description}</p>}
-                    <span className="link-preview-url">{item.host}</span>
-                  </div>
-                </a>
-                {API && !hide && (!bought || canUndo) && (
-                  <div className="wishlist-actions">
-                    {!bought && (
-                      <button type="button" disabled={busy === item.id} onClick={() => markBought(item)}>
-                        I bought this
-                      </button>
-                    )}
-                    {canUndo && bought && (
-                      <button type="button" disabled={busy === item.id} onClick={() => undoMark(item)}>
-                        Undo
-                      </button>
-                    )}
-                  </div>
-                )}
-              </div>
-            )
-          })}
+        <section key={section.name} className="wl-section">
+          <h2 className="wl-section-title">
+            {section.name}
+            <span className="wl-count">{section.items.length}</span>
+          </h2>
+          <ul className="wl-grid">
+            {section.items.map((item) => (
+              <Card
+                key={item.id}
+                item={item}
+                bought={!hide && Boolean(marks[item.id])}
+                canUndo={!hide && Boolean(undo[item.id]) && Date.now() - undo[item.id].at < UNDO_MS}
+                showActions={Boolean(API) && !hide}
+                busy={busy === item.id}
+                onBuy={() => markBought(item)}
+                onUndo={() => undoMark(item)}
+              />
+            ))}
+          </ul>
         </section>
       ))}
     </article>
+  )
+}
+
+function Card(props: {
+  item: Item
+  bought: boolean
+  canUndo: boolean
+  showActions: boolean
+  busy: boolean
+  onBuy: () => void
+  onUndo: () => void
+}) {
+  const { item, bought, canUndo, showActions, busy, onBuy, onUndo } = props
+  const [imgOk, setImgOk] = useState(true)
+  const host = item.host?.replace(/^www\./, '') ?? null
+  const store = host && (STORE_NAMES[host] ?? host)
+  const initial = (store ?? item.title).charAt(0).toUpperCase()
+
+  return (
+    <li className={`wl-card${bought ? ' is-bought' : ''}${item.url ? '' : ' is-plain'}`}>
+      <Media url={item.url}>
+        {item.image && imgOk ? (
+          <img
+            src={item.image}
+            alt=""
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            onError={() => setImgOk(false)}
+          />
+        ) : (
+          <span className="wl-monogram" aria-hidden="true">
+            {initial}
+          </span>
+        )}
+        {bought && <span className="wl-ribbon">Bought</span>}
+      </Media>
+      <div className="wl-body">
+        <h3 className="wl-title">
+          {item.url ? (
+            <a href={item.url} target="_blank" rel="noopener noreferrer">
+              {item.title}
+            </a>
+          ) : (
+            item.title
+          )}
+        </h3>
+        {item.description && <p className="wl-desc">{item.description}</p>}
+        <div className="wl-foot">
+          <span className="wl-store">{store ?? 'Any store'}</span>
+          {showActions && !bought && (
+            <button type="button" className="wl-btn" disabled={busy} onClick={onBuy}>
+              I bought this
+            </button>
+          )}
+          {showActions && bought && canUndo && (
+            <button type="button" className="wl-btn is-ghost" disabled={busy} onClick={onUndo}>
+              Undo
+            </button>
+          )}
+        </div>
+      </div>
+    </li>
+  )
+}
+
+// The picture area links to the product when there is one.
+function Media({ url, children }: { url: string | null; children: ReactNode }) {
+  return url ? (
+    <a className="wl-media" href={url} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden="true">
+      {children}
+    </a>
+  ) : (
+    <div className="wl-media">{children}</div>
   )
 }
