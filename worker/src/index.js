@@ -54,6 +54,17 @@ export default {
         for (const k of page.keys) marks[k.name.slice(5)] = { at: k.metadata?.at ?? null }
         cursor = page.list_complete ? undefined : page.cursor
       } while (cursor)
+      // Items you check off in Obsidian ("received") drop out of wishlist.json;
+      // forget their marks too so the store doesn't grow forever.
+      const known = await knownIds(env).catch(() => null)
+      if (known) {
+        for (const id of Object.keys(marks)) {
+          if (!known.has(id)) {
+            delete marks[id]
+            await env.MARKS.delete(`mark:${id}`)
+          }
+        }
+      }
       return json({ marks }, 200, { ...cors, 'cache-control': 'no-store' })
     }
 

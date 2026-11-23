@@ -2,7 +2,7 @@
 
 .link-preview-card {
   margin: 1.5rem 0;
-  border: 1px solid var(--card-rule);
+  border: 1px solid var(--tps-edge);
   border-radius: var(--card-radius);
   background: #fff;
   overflow: hidden;
@@ -10,7 +10,7 @@
   transition: border-color 0.12s ease, background 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
 }
 .link-preview-card:hover {
-  border-color: var(--card-rule-strong);
+  border-color: var(--tps-edge-2);
   background: var(--card-hover-bg);
   transform: translateY(-2px);
   box-shadow: var(--card-shadow-hover);
@@ -28,7 +28,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-right: 1px solid var(--card-rule);
+  background-color: var(--tps-bg-alt);
 }
 @media (max-width: 500px) {
   .link-preview-card .link-preview-image { display: none; }
@@ -85,7 +85,7 @@
 .link-preview-card.is-bought .wishlist-badge { text-decoration: none; }
 .wishlist-actions {
   display: flex; justify-content: flex-end; gap: 8px;
-  padding: 8px 26px 14px; border-top: 1px solid var(--card-rule);
+  padding: 0 26px 16px;
 }
 .wishlist-actions button {
   font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer;

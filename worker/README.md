@@ -23,6 +23,8 @@ Until that variable is set, the wishlist renders without "I bought this" buttons
 
 - Item IDs are a hash of each product URL, so editing titles or reordering
   the note keeps marks attached. Changing an item's URL makes it a new item.
+- Checking an item off in Obsidian removes it from the page ("received");
+  its bought mark is cleaned up automatically on the next page load.
 - Only IDs present in the published `wishlist.json` are accepted.
 - Undo works for 10 minutes from the browser that made the mark.
 - Rate limit: 10 marks per IP per hour.
