@@ -1,13 +1,15 @@
 name = "wishlist-marks"
 main = "src/index.js"
+workers_dev = true
 compatibility_date = "2026-11-01"
 
 [vars]
 ALLOWED_ORIGINS = "https://livethisdream.github.io,http://localhost:5173"
 WISHLIST_URL = "https://livethisdream.github.io/wishlist.json"
 
-# Create with: npx wrangler kv namespace create MARKS
-# then paste the id it prints below.
+# Filled in automatically by .github/workflows/worker-deploy.yml (KV
+# namespace titled "wishlist-marks"). For a manual deploy, run
+# `npx wrangler kv namespace create MARKS` and paste the id here.
 [[kv_namespaces]]
 binding = "MARKS"
 id = "REPLACE_WITH_KV_NAMESPACE_ID"

@@ -1,0 +1,77 @@
+name: Deploy wishlist Worker
+
+# Deploys worker/ to Cloudflare, then rebuilds the site so /wishlist points
+# at it. Needs one repo secret: CLOUDFLARE_API_TOKEN (Cloudflare dashboard >
+# My Profile > API Tokens > "Edit Cloudflare Workers" template).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [worker/**, .github/workflows/worker-deploy.yml]
+
+permissions:
+  contents: read
+  actions: write   # to start the Pages deploy afterwards
+
+concurrency:
+  group: wishlist-worker
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: worker
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check token
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::Add the CLOUDFLARE_API_TOKEN repo secret first (Settings > Secrets and variables > Actions)."
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Find account and KV namespace
+        id: cf
+        run: |
+          acct=$(scripts/cf.sh account)
+          echo "::add-mask::$acct"
+          kv=$(scripts/cf.sh kv "$acct" wishlist-marks)
+          sed -i "s/^id = \".*\"/id = \"$kv\"/" wrangler.toml
+          grep -q "id = \"$kv\"" wrangler.toml
+          echo "account=$acct" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy Worker
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ steps.cf.outputs.account }}
+        run: npx --yes wrangler@4 deploy
+
+      - name: Smoke test
+        id: url
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ steps.cf.outputs.account }}
+        run: |
+          url=$(scripts/cf.sh url "$CLOUDFLARE_ACCOUNT_ID" wishlist-marks)
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          # A brand-new workers.dev route can take a few seconds to go live.
+          for i in 1 2 3 4 5 6; do
+            if curl -sf "$url/marks" | jq -e '.marks' >/dev/null; then ok=1; break; fi
+            sleep 10
+          done
+          [ -n "${ok:-}" ] || { echo "::error::$url/marks did not answer"; exit 1; }
+          echo "### Wishlist Worker is live" >> "$GITHUB_STEP_SUMMARY"
+          echo "$url" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Rebuild site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-deploy.yml --repo "$GITHUB_REPOSITORY" --ref main
