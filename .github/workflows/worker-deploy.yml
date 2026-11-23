@@ -6,6 +6,11 @@ name: Deploy wishlist Worker
 
 on:
   workflow_dispatch:
+    inputs:
+      subdomain:
+        description: 'workers.dev name (only needed the first time; lowercase letters, numbers, dashes)'
+        required: false
+        default: ''
   push:
     branches: [main]
     paths: [worker/**, .github/workflows/worker-deploy.yml]
@@ -49,6 +54,13 @@ jobs:
           sed -i "s/^id = \".*\"/id = \"$kv\"/" wrangler.toml
           grep -q "id = \"$kv\"" wrangler.toml
           echo "account=$acct" >> "$GITHUB_OUTPUT"
+
+      - name: Make sure a workers.dev subdomain exists
+        env:
+          WANT: ${{ inputs.subdomain }}
+        run: |
+          acct=$(scripts/cf.sh account)
+          scripts/cf.sh subdomain "$acct" "$WANT"
 
       - name: Deploy Worker
         env:

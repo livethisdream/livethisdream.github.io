@@ -3,6 +3,8 @@
 #   cf.sh account            -> account id (first account the token can see)
 #   cf.sh kv <account> <title> -> KV namespace id, created if missing
 #   cf.sh url <account> <worker> -> https://<worker>.<subdomain>.workers.dev
+#   cf.sh subdomain <account> [name] -> current workers.dev subdomain; registers
+#                                       <name> first if the account has none
 set -euo pipefail
 API=https://api.cloudflare.com/client/v4
 
@@ -41,6 +43,19 @@ case "${1:-}" in
     [ -n "$sub" ] || { echo "No workers.dev subdomain yet: open Workers & Pages in the Cloudflare dashboard once to pick one" >&2; exit 1; }
     echo "https://$worker.$sub.workers.dev"
     ;;
+  subdomain)
+    acct=$2 want=${3:-}
+    sub=$(cf "$API/accounts/$acct/workers/subdomain" 2>/dev/null | jq -r '.result.subdomain // empty') || sub=
+    if [ -z "$sub" ]; then
+      [ -n "$want" ] || { echo "No workers.dev subdomain yet: run the workflow again and fill in the 'subdomain' box" >&2; exit 1; }
+      sub=$(cf -X PUT "$API/accounts/$acct/workers/subdomain" \
+        --data "$(jq -nc --arg s "$want" '{subdomain: $s}')" | jq -r '.result.subdomain')
+      echo "Registered workers.dev subdomain $sub" >&2
+    elif [ -n "$want" ] && [ "$want" != "$sub" ]; then
+      echo "Account already uses subdomain '$sub'; ignoring '$want'" >&2
+    fi
+    echo "$sub"
+    ;;
   *)
-    echo "usage: cf.sh account | kv <account> <title> | url <account> <worker>" >&2; exit 2 ;;
+    echo "usage: cf.sh account | kv <account> <title> | url <account> <worker> | subdomain <account> [name]" >&2; exit 2 ;;
 esac
