@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { API, ownerName } from '../lib/wishlist'
+import { API, ownerName, priorityTone } from '../lib/wishlist'
 import '../styles/wishlist.css'
 
 /*
@@ -225,8 +225,9 @@ export default function ListEditor() {
       />
 
       {active.map((s) => (
-        <section key={s.name + s.si} className="wl-section">
+        <section key={s.name + s.si} className={`wl-section tone-${priorityTone(s.name)}`}>
           <h2 className="wl-section-title">
+            <span className="wl-dot" aria-hidden="true" />
             {s.name}
             <span className="wl-count">{s.items.length}</span>
           </h2>

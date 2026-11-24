@@ -11,3 +11,12 @@ export const LISTS: ListRef[] = [
   { slug: 'nr', name: 'Neil', source: 'static' },
   { slug: 'kmr', name: 'KMR', source: 'web' },
 ]
+
+// Color family for a priority section: high / medium / low, else neutral.
+export function priorityTone(name: string): 'high' | 'medium' | 'low' | 'other' {
+  const n = name.trim().toLowerCase()
+  if (/^(high|top|must)/.test(n)) return 'high'
+  if (/^(med|mid)/.test(n)) return 'medium'
+  if (/^low/.test(n)) return 'low'
+  return 'other'
+}

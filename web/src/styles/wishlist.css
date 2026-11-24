@@ -39,12 +39,60 @@
 .wl-toggle[aria-pressed='true'] { background: var(--tps-mid); color: var(--page-bg); border-color: var(--tps-mid); }
 
 /* ---- Sections -------------------------------------------------------- */
-.wl-section { margin-top: 36px; }
+.wl-section { margin-top: 40px; }
+/* Priority tones: a tinted band per section and a matching badge on each
+   card. Badges sit on the light photo panel, so they keep light colors in
+   both themes. */
+.tone-high   { --tone: #d4543f; --tone-bg: #fdebe7; --tone-ink: #9b2f1e; --badge-bg: #fdebe7; --badge-ink: #9b2f1e; }
+.tone-medium { --tone: #d39200; --tone-bg: #fdf3d9; --tone-ink: #7a5300; --badge-bg: #fdf3d9; --badge-ink: #7a5300; }
+.tone-low    { --tone: #4f7cad; --tone-bg: #e6eef7; --tone-ink: #2c5580; --badge-bg: #e6eef7; --badge-ink: #2c5580; }
+.tone-other  { --tone: var(--tps-mid); --tone-bg: var(--tps-bg); --tone-ink: var(--tps-mid); --badge-bg: #e6eef7; --badge-ink: #0067b9; }
+@media (prefers-color-scheme: dark) {
+  html .tone-high   { --tone-bg: rgba(212, 84, 63, 0.18);  --tone-ink: #f3a99b; }
+  html .tone-medium { --tone-bg: rgba(211, 146, 0, 0.18);  --tone-ink: #f0c867; }
+  html .tone-low    { --tone-bg: rgba(79, 124, 173, 0.24); --tone-ink: #a9c6e8; }
+}
+
 .wl-section-title {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin: 0;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--tone-bg, var(--tps-bg));
+  color: var(--tone-ink, var(--tps-mid));
+  font-size: clamp(1.15rem, 2.4vw, 1.35rem);
 }
+.wl-section-title .wl-count {
+  margin-left: auto;
+  background: var(--wl-card);
+  color: var(--tone-ink, var(--tps-mid));
+}
+.wl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--tone, var(--tps-mid));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tone, var(--tps-mid)) 22%, transparent);
+}
+.wl-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--badge-bg, #e6eef7);
+  color: var(--badge-ink, #0067b9);
+  border: 1px solid color-mix(in srgb, var(--tone, #0067b9) 30%, transparent);
+}
+.wl-card.is-bought .wl-badge { opacity: 0.6; }
 .wl-count {
   font-size: 0.75rem;
   font-weight: 700;
