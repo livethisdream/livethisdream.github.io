@@ -43,15 +43,15 @@
 /* Priority tones: one hue (the site blue) at three strengths, so priority
    reads as emphasis rather than good/bad. Tinted heading band per section
    and a small matching dot on each card's photo. */
-.tone-high   { --tone: #0067b9; --tone-bg: #dcebf8; --tone-ink: #004a85; }
-.tone-medium { --tone: #5b9bd5; --tone-bg: #eaf2fa; --tone-ink: #2f6aa0; }
-.tone-low    { --tone: #a9bccf; --tone-bg: #f2f5f8; --tone-ink: #5b6b7d; }
-.tone-other  { --tone: #7f9bb8; --tone-bg: #f2f5f8; --tone-ink: #4a6075; }
+.tone-high   { --tone: #0067b9; --tone-bg: #dcebf8; --tone-ink: #004a85; --dot-ink: #fff; }
+.tone-medium { --tone: #4f8fca; --tone-bg: #eaf2fa; --tone-ink: #2f6aa0; --dot-ink: #fff; }
+.tone-low    { --tone: #c3d1de; --tone-bg: #f2f5f8; --tone-ink: #5b6b7d; --dot-ink: #34475a; }
+.tone-other  { --tone: #6f8aa6; --tone-bg: #f2f5f8; --tone-ink: #4a6075; --dot-ink: #fff; }
 @media (prefers-color-scheme: dark) {
-  html .tone-high   { --tone: #58a7e5; --tone-bg: rgba(88, 167, 229, 0.22); --tone-ink: #a9d3f5; }
+  html .tone-high   { --dot-ink: #0b1a2b; --tone: #58a7e5; --tone-bg: rgba(88, 167, 229, 0.22); --tone-ink: #a9d3f5; }
   html .tone-medium { --tone: #4a86bd; --tone-bg: rgba(88, 167, 229, 0.12); --tone-ink: #8fb8db; }
-  html .tone-low    { --tone: #6b7d90; --tone-bg: rgba(147, 163, 181, 0.10); --tone-ink: #93a3b5; }
-  html .tone-other  { --tone: #6b7d90; --tone-bg: rgba(147, 163, 181, 0.10); --tone-ink: #93a3b5; }
+  html .tone-low    { --dot-ink: #fff; --tone: #6b7d90; --tone-bg: rgba(147, 163, 181, 0.10); --tone-ink: #93a3b5; }
+  html .tone-other  { --dot-ink: #fff; --tone: #6b7d90; --tone-bg: rgba(147, 163, 181, 0.10); --tone-ink: #93a3b5; }
 }
 
 .wl-section-title {
@@ -81,13 +81,19 @@
 }
 .wl-pdot {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 12px;
-  height: 12px;
+  top: 10px;
+  right: 10px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--dot-ink, #fff);
   background: var(--tone, var(--tps-mid));
-  box-shadow: 0 0 0 3px #fff, 0 1px 4px rgba(0, 20, 40, 0.18);
+  box-shadow: 0 0 0 2px #fff, 0 1px 4px rgba(0, 20, 40, 0.18);
 }
 .wl-card.is-bought .wl-pdot { opacity: 0.5; }
 .wl-count {

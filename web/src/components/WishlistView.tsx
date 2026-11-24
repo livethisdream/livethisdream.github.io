@@ -219,7 +219,9 @@ function Card(props: {
           </span>
         )}
         {bought && <span className="wl-ribbon">Bought</span>}
-        <span className="wl-pdot" role="img" aria-label={`${priority} priority`} title={`${priority} priority`} />
+        <span className="wl-pdot" role="img" aria-label={`${priority} priority`} title={`${priority} priority`}>
+          <span aria-hidden="true">{priority.trim().charAt(0).toUpperCase()}</span>
+        </span>
       </Media>
       <div className="wl-body">
         <h3 className="wl-title">
