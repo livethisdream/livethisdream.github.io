@@ -31,7 +31,7 @@
   html .site-header { background: #0d1826; }
   html .header-search input[type="search"] { background: #14243a; }
   html .hero { background: #14243a; }
-  html .block-card,
+  html .block-card { background: #14243a; }
 
   /* Headings */
   html h1, html h2, html .hero h1.hero-title { color: #8cc4ee; }
