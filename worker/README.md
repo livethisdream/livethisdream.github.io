@@ -1,5 +1,17 @@
 # wishlist-marks
 
+Cloudflare Worker behind every wishlist:
+
+- **Bought marks** for Neil's list (`/wishlist`, built from Obsidian) and the
+  web-managed lists.
+- **Web-managed lists** (`/wishlist/<name>`, edited at `/wishlist/<name>/edit`)
+  for people without Obsidian. To add a person, put their lowercase first
+  name in `ALLOWED_LISTS` in `wrangler.toml`, merge (the Worker redeploys),
+  then they open `/wishlist/<name>/edit`, tap **Create my list**, and
+  bookmark the page: that private link is their edit key.
+  Lost link? Delete `listkey:<name>` from the KV namespace in the Cloudflare
+  dashboard and they can set it up again (the list itself is kept).
+
 Cloudflare Worker that stores "someone bought this" marks for `/wishlist`.
 The wishlist content itself stays one-way (Obsidian → Gitea → this repo);
 nothing here writes back to the notes.

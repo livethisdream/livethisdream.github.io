@@ -6,6 +6,9 @@ compatibility_date = "2026-11-01"
 [vars]
 ALLOWED_ORIGINS = "https://livethisdream.github.io,http://localhost:5173"
 WISHLIST_URL = "https://livethisdream.github.io/wishlist.json"
+# Web-managed lists that may be set up (one-time claim of the edit link at
+# https://livethisdream.github.io/wishlist/<name>/edit). Comma-separated.
+ALLOWED_LISTS = "kmr"
 
 # Filled in automatically by .github/workflows/worker-deploy.yml (KV
 # namespace titled "wishlist-marks"). For a manual deploy, run
