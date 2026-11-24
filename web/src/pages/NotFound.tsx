@@ -10,8 +10,8 @@ const NBINS = 512 // frequency bins across the display
 const ROWS = 336 // time rows held on screen
 const FRAME_MS = 50 // one waterfall row per 50 ms
 const PAINT_REPEAT = 3 // hold each bitmap row this many rows -- real paint is slow
-const FIRST_PAINT_MS = 11000
-const PAINT_GAP_MS = 24000
+const FIRST_PAINT_MS = 2500 // the painted "404 PAGE NOT FOUND" is the message; show it soon
+const PAINT_GAP_MS = 16000
 const PAINT_POWER = 26 // ~14 dB over the noise floor
 const SPAN_DB = 26
 
@@ -231,16 +231,11 @@ export default function NotFound() {
         aria-label="Spectrum waterfall showing the 404 band"
       />
 
-      <div className="nf-panel">
-        <p className="nf-code">404</p>
-        <p className="nf-sub">Signal not found</p>
-        <p className="nf-body">
-          Nothing is transmitting at this URL. The band is not empty.
-        </p>
-        <Link className="nf-home" to="/">
-          ← home
-        </Link>
-      </div>
+      <h1 className="nf-sr">404: page not found</h1>
+
+      <Link className="nf-home" to="/">
+        ← home
+      </Link>
 
       <label className="nf-gain">
         GAIN
