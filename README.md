@@ -39,8 +39,9 @@ Everything under [web/](web/). Build with `npm run build`; serve locally with
 
 ## Wishlist
 
-`/wishlist` is built from `pages/wishlist.md`, the raw Obsidian note, pushed
+`/wishlist` lists everyone's wishlists. Neil's, `/wishlist/nr`, is built from `pages/wishlist.md`, the raw Obsidian note, pushed
 here one way by a Gitea Action in the vault repo (template:
 `gitea/wishlist-sync.yml`). Checked items are treated as received and hidden.
-Guests' "I bought this" marks live in the Cloudflare Worker under `worker/`.
+Others are managed in the browser at `/wishlist/<name>/edit` (see
+`worker/README.md`). Guests' "I bought this" marks live in the Cloudflare Worker under `worker/`.
 

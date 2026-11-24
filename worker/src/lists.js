@@ -15,12 +15,14 @@ const SLUG = /^[a-z0-9][a-z0-9-]{0,31}$/
 const ID = /^[0-9a-f]{12}$/
 const MAX_ITEMS = 300
 const DEFAULT_SECTIONS = ['High', 'Medium', 'Low']
+// Names the site uses for other pages; never claimable as web lists.
+const RESERVED = new Set(['nr', 'new', 'edit', 'index'])
 
 const allowedSlugs = (env) =>
   (env.ALLOWED_LISTS ?? '')
     .split(',')
     .map((s) => s.trim().toLowerCase())
-    .filter(Boolean)
+    .filter((s) => s && !RESERVED.has(s))
 
 function newKey() {
   const bytes = crypto.getRandomValues(new Uint8Array(24))
