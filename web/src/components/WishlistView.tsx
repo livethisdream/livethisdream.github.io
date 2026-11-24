@@ -219,7 +219,7 @@ function Card(props: {
           </span>
         )}
         {bought && <span className="wl-ribbon">Bought</span>}
-        <span className="wl-badge">{priority}</span>
+        <span className="wl-pdot" role="img" aria-label={`${priority} priority`} title={`${priority} priority`} />
       </Media>
       <div className="wl-body">
         <h3 className="wl-title">
