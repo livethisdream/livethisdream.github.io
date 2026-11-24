@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/wishlist.css'
 import { API } from '../lib/wishlist'
 
@@ -129,6 +130,9 @@ export default function WishlistView({ title, owner, list, error }: { title: str
   return (
     <article className="article wl">
       <header className="wl-hero">
+        <Link className="wl-back" to="/wishlist">
+          ← All wishlists
+        </Link>
         <h1>{title}</h1>
         {list && (
           <p className="wl-meta">
