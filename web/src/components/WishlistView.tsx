@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/wishlist.css'
-import { API } from '../lib/wishlist'
+import { API, priorityTone } from '../lib/wishlist'
 
 /*
  * Shared wishlist grid + "I bought this" marks. Used by Neil's list
@@ -159,14 +159,16 @@ export default function WishlistView({ title, list, error }: { title: string; li
       {!list && !error && <p className="wl-loading">Loading…</p>}
 
       {list?.sections.map((section) => (
-        <section key={section.name} className="wl-section">
+        <section key={section.name} className={`wl-section tone-${priorityTone(section.name)}`}>
           <h2 className="wl-section-title">
+            <span className="wl-dot" aria-hidden="true" />
             {section.name}
             <span className="wl-count">{section.items.length}</span>
           </h2>
           <ul className="wl-grid">
             {section.items.map((item) => (
               <Card
+                priority={section.name}
                 key={item.id}
                 item={item}
                 bought={Boolean(marks[item.id]) && (show || mine(item.id))}
@@ -185,6 +187,7 @@ export default function WishlistView({ title, list, error }: { title: string; li
 }
 
 function Card(props: {
+  priority: string
   item: Item
   bought: boolean
   canUndo: boolean
@@ -193,7 +196,7 @@ function Card(props: {
   onBuy: () => void
   onUndo: () => void
 }) {
-  const { item, bought, canUndo, showActions, busy, onBuy, onUndo } = props
+  const { priority, item, bought, canUndo, showActions, busy, onBuy, onUndo } = props
   const [imgOk, setImgOk] = useState(true)
   const host = item.host?.replace(/^www\./, '') ?? null
   const store = host && (STORE_NAMES[host] ?? host)
@@ -216,6 +219,9 @@ function Card(props: {
           </span>
         )}
         {bought && <span className="wl-ribbon">Bought</span>}
+        <span className="wl-pdot" role="img" aria-label={`${priority} priority`} title={`${priority} priority`}>
+          <span aria-hidden="true">{priority.trim().charAt(0).toUpperCase()}</span>
+        </span>
       </Media>
       <div className="wl-body">
         <h3 className="wl-title">
