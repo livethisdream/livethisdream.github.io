@@ -18,7 +18,8 @@ type Undo = Record<string, { token: string; at: number }>
 
 const UNDO_MS = 10 * 60_000
 const UNDO_KEY = 'wishlist-undo'
-const HIDE_KEY = 'wishlist-hide-marks'
+// Opt-in per browser: bought marks stay hidden unless someone asks to see them.
+const SHOW_KEY = 'wishlist-show-marks'
 // Short-link hosts shown as the store people recognize.
 const STORE_NAMES: Record<string, string> = { 'a.co': 'amazon.com', 'amzn.to': 'amazon.com', 'amzn.com': 'amazon.com' }
 
@@ -43,10 +44,10 @@ function save(key: string, value: unknown) {
   }
 }
 
-export default function WishlistView({ title, owner, list, error }: { title: string; owner: string; list: Wishlist | null; error: string | null }) {
+export default function WishlistView({ title, list, error }: { title: string; list: Wishlist | null; error: string | null }) {
   const [marks, setMarks] = useState<Marks>({})
   const [undo, setUndo] = useState<Undo>(() => load(UNDO_KEY, {}))
-  const [hide, setHide] = useState<boolean>(() => load(HIDE_KEY, false))
+  const [show, setShow] = useState<boolean>(() => load(SHOW_KEY, false))
   const [busy, setBusy] = useState<string | null>(null)
   const [, tick] = useState(0)
 
@@ -76,7 +77,9 @@ export default function WishlistView({ title, owner, list, error }: { title: str
   }
 
   async function markBought(item: Item) {
-    if (!API || !confirm(`Mark "${item.title}" as bought? Everyone visiting this page will see it.`)) return
+    if (!API) return
+    if (marks[item.id]) return alert('Someone already got this one. Tap “Show what’s been bought” to see everything that’s taken.')
+    if (!confirm(`Mark "${item.title}" as bought? Everyone visiting this page will see it.`)) return
     setBusy(item.id)
     try {
       const res = await fetch(`${API}/marks/${item.id}`, { method: 'POST' })
@@ -116,10 +119,13 @@ export default function WishlistView({ title, owner, list, error }: { title: str
     }
   }
 
-  const toggleHide = () => {
-    setHide(!hide)
-    save(HIDE_KEY, !hide)
+  const toggleShow = () => {
+    setShow(!show)
+    save(SHOW_KEY, !show)
   }
+
+  // This browser marked it and can still undo: show it even while marks are hidden.
+  const mine = (id: string) => Boolean(undo[id]) && Date.now() - undo[id].at < UNDO_MS
 
   const total = list?.sections.reduce((n, s) => n + s.items.length, 0) ?? 0
   const updated =
@@ -142,11 +148,8 @@ export default function WishlistView({ title, owner, list, error }: { title: str
         )}
         {API && (
           <div className="wl-help">
-            <p>
-              Bought something? Tap <strong>I bought this</strong> so nobody doubles up.
-            </p>
-            <button type="button" className="wl-toggle" aria-pressed={hide} onClick={toggleHide}>
-              {hide ? 'Show bought marks' : `Hide bought marks (for ${owner})`}
+            <button type="button" className="wl-toggle" aria-pressed={show} onClick={toggleShow}>
+              {show ? 'Hide what’s been bought' : 'Show what’s been bought'}
             </button>
           </div>
         )}
@@ -166,9 +169,9 @@ export default function WishlistView({ title, owner, list, error }: { title: str
               <Card
                 key={item.id}
                 item={item}
-                bought={!hide && Boolean(marks[item.id])}
-                canUndo={!hide && Boolean(undo[item.id]) && Date.now() - undo[item.id].at < UNDO_MS}
-                showActions={Boolean(API) && !hide}
+                bought={Boolean(marks[item.id]) && (show || mine(item.id))}
+                canUndo={mine(item.id)}
+                showActions={Boolean(API)}
                 busy={busy === item.id}
                 onBuy={() => markBought(item)}
                 onUndo={() => undoMark(item)}

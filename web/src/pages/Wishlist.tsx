@@ -16,5 +16,5 @@ export default function WishlistPage() {
       .catch(() => setError('Could not load the wishlist.'))
   }, [])
 
-  return <WishlistView title="Neil's Wishlist" owner="Neil" list={list} error={error} />
+  return <WishlistView title="Neil's Wishlist" list={list} error={error} />
 }
