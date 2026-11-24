@@ -44,7 +44,7 @@ function save(key: string, value: unknown) {
   }
 }
 
-export default function WishlistView({ title, owner, list, error }: { title: string; owner: string; list: Wishlist | null; error: string | null }) {
+export default function WishlistView({ title, list, error }: { title: string; list: Wishlist | null; error: string | null }) {
   const [marks, setMarks] = useState<Marks>({})
   const [undo, setUndo] = useState<Undo>(() => load(UNDO_KEY, {}))
   const [show, setShow] = useState<boolean>(() => load(SHOW_KEY, false))
@@ -148,10 +148,6 @@ export default function WishlistView({ title, owner, list, error }: { title: str
         )}
         {API && (
           <div className="wl-help">
-            <p>
-              Shopping for {owner}? Tap <strong>Show what’s been bought</strong> first, then tap{' '}
-              <strong>I bought this</strong> after you buy something so nobody doubles up.
-            </p>
             <button type="button" className="wl-toggle" aria-pressed={show} onClick={toggleShow}>
               {show ? 'Hide what’s been bought' : 'Show what’s been bought'}
             </button>

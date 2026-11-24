@@ -38,5 +38,5 @@ export default function ListPage() {
     )
 
   const owner = ownerName(slug)
-  return <WishlistView title={list?.title || `${owner}'s Wishlist`} owner={owner} list={list} error={error} />
+  return <WishlistView title={list?.title || `${owner}'s Wishlist`} list={list} error={error} />
 }
