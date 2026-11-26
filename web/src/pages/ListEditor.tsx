@@ -127,7 +127,11 @@ export default function ListEditor() {
 
   async function claim() {
     if (!API) return
-    const r = await fetch(`${API}/lists/${encodeURIComponent(slug)}/claim`, { method: 'POST' })
+    const r = await fetch(`${API}/lists/${encodeURIComponent(slug)}/claim`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ name: owner }),
+    })
     if (!r.ok) {
       alert(r.status === 409 ? 'This list was already set up. Use your private edit link.' : 'Could not set up the list.')
       return
