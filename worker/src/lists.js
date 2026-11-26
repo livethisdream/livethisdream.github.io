@@ -134,7 +134,9 @@ export async function handleLists(req, env, cors, originOk, path) {
     if (await env.MARKS.get(`listkey:${slug}`)) return json({ error: 'already set up' }, 409, cors)
     const k = newKey()
     await env.MARKS.put(`listkey:${slug}`, await sha256(k))
-    const name = slug.length <= 3 ? slug.toUpperCase() : slug.charAt(0).toUpperCase() + slug.slice(1)
+    // Display name from the site (e.g. "Avi", "KMR"); default: capitalized slug.
+    const sent = await req.json().catch(() => ({}))
+    const name = str(sent?.name, 40).replace(/<[^>]*>/g, '').replace(/[^\p{L}\p{N} .'-]/gu, '').trim() || slug.charAt(0).toUpperCase() + slug.slice(1)
     const doc = sanitize({ title: `${name}'s Wishlist`, sections: DEFAULT_SECTIONS.map((n) => ({ name: n, items: [] })) })
     await env.MARKS.put(`list:${slug}`, JSON.stringify(doc))
     return json({ key: k, list: doc }, 201, noStore)
